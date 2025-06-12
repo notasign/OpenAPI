@@ -1,0 +1,21 @@
+package com.notasign.open.api.bean.req.document;
+
+
+import com.notasign.open.api.bean.base.BaseReq;
+import com.notasign.open.api.bean.resp.document.GetFileUploadUrlResp;
+import com.notasign.open.api.constants.OpenApiUrlConstants;
+
+public class GetUploadUrlReq extends BaseReq<GetFileUploadUrlResp> {
+
+    private String fileType;
+
+    @Override
+    public Class<GetFileUploadUrlResp> getRespClass() {
+        return GetFileUploadUrlResp.class;
+    }
+
+    @Override
+    public String getApi(String... pathArgs) {
+        return OpenApiUrlConstants.GET_FILE_UPLOAD_URL;
+    }
+}
