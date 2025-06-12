@@ -5,7 +5,7 @@ package com.notasign.open.api.bean.resp.envelope;
  * @author FADADA
  * @date 2025/6/9 17:28
  */
-public class GetEnvelopeReportDownloadResp {
+public class GetEnvelopeReportResp {
 
     private String reportUrl;
 

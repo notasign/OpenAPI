@@ -14,6 +14,7 @@ import com.notasign.open.api.utils.crypt.FddCryptUtil;
 import com.notasign.open.api.utils.http.HttpUtil;
 import com.notasign.open.api.utils.json.ParameterizedTypeBaseRes;
 import com.notasign.open.api.utils.random.UUIDGenerator;
+import org.apache.commons.codec.binary.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -21,6 +22,7 @@ import java.io.File;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
 /**
  * @author Fadada
@@ -153,9 +155,10 @@ public abstract class OpenApiClient {
      */
     ApiResponse<BaseResponseEntity> invokeApiDownload(BaseReq req, String path) throws ApiException {
         String accessToken = req.getAccessToken();
+        String method = getMethod(path);
+
         Map<String, String> bodyMap = getBodyMap(req);
         Map<String, String> headerMap = getSign(getHeaderMap(accessToken), bodyMap);
-        String method = getMethod(path);
         path = path.replace(method, "").trim();
         String url = serverUrl + path;
 
@@ -209,7 +212,7 @@ public abstract class OpenApiClient {
     private HttpInfoRes httpRequest(BaseReq req, String path, Map<String, File> files) throws ApiException {
         String accessToken = req == null ? null : req.getAccessToken();
         HashMap<String, String> bodyMap = getBodyMap(req);
-        Map<String, String> headerMap = getSign(getHeaderMap(accessToken), bodyMap);
+        Map<String, String> headerMap = getSign(getHeaderMap(accessToken), Objects.isNull(accessToken) ? null : bodyMap);
         String method = getMethod(path);
         path = path.replace(method, "").trim();
         String url = serverUrl + path;
@@ -286,9 +289,9 @@ public abstract class OpenApiClient {
             if (RequestConstants.METHOD_GET.equals(method)) {
                 return HttpUtil.get(url, headerMap, bodyMap);
             } else if (RequestConstants.METHOD_POST.equals(method)) {
-                return HttpUtil.post(url, headerMap, bodyMap, fileMap);
+                return HttpUtil.postJson(url, headerMap, bodyMap.get(RequestConstants.DATA_KEY));
             } else if (RequestConstants.METHOD_PUT.equals(method)) {
-                return HttpUtil.put(url, headerMap, bodyMap, fileMap);
+                return HttpUtil.putJson(url, headerMap, bodyMap.get(RequestConstants.DATA_KEY));
             } else if (RequestConstants.METHOD_DELETE.equals(method)) {
                 return HttpUtil.delete(url, headerMap, bodyMap);
             }

@@ -20,6 +20,7 @@ import org.apache.http.conn.socket.ConnectionSocketFactory;
 import org.apache.http.conn.socket.PlainConnectionSocketFactory;
 import org.apache.http.conn.ssl.SSLConnectionSocketFactory;
 import org.apache.http.entity.ContentType;
+import org.apache.http.entity.StringEntity;
 import org.apache.http.entity.mime.HttpMultipartMode;
 import org.apache.http.entity.mime.MultipartEntityBuilder;
 import org.apache.http.impl.client.CloseableHttpClient;
@@ -122,7 +123,7 @@ public class HttpUtil {
     }
 
     /**
-     * post请求
+     * post请求(表单格式)
      *
      * @param url    请求路径
      * @param params 请求参数
@@ -144,6 +145,22 @@ public class HttpUtil {
         return httpPost;
     }
 
+    /**
+     * post请求(JSON格式)
+     *
+     * @param url    请求路径
+     * @param jsonBody JSON请求体
+     * @return HttpPost
+     */
+    private static HttpPost getHttpPost(String url, String jsonBody) {
+        HttpPost httpPost = new HttpPost(url);
+        if (jsonBody != null && !jsonBody.isEmpty()) {
+            StringEntity entity = new StringEntity(jsonBody, ContentType.APPLICATION_JSON);
+            httpPost.setEntity(entity);
+        }
+        return httpPost;
+    }
+
     public static HttpInfoRes post(String url, Map<String, String> reqHeader, Map<String, String> params,
                                    Map<String, File> files) throws ApiException {
         try {
@@ -156,6 +173,29 @@ public class HttpUtil {
             } else {
                 httpPost = getHttpPost(url, params, files);
             }
+            httpPost.setConfig(getRequestConfig(httpConfig));
+            return executeHttpRequest(httpClient, httpPost, reqHeader);
+        } catch (ApiException e) {
+            throw e;
+        } catch (Exception e) {
+            log.error("url=[{}] http请求失败：{}", url, e.getMessage(), e);
+            throw new ApiException("请求失败");
+        }
+    }
+
+    /**
+     * post请求(JSON格式)
+     *
+     * @param url      请求路径
+     * @param reqHeader 请求头
+     * @param jsonBody JSON请求体
+     * @return HttpInfoRes
+     * @throws ApiException 异常
+     */
+    public static HttpInfoRes postJson(String url, Map<String, String> reqHeader, String jsonBody) throws ApiException {
+        try {
+            CloseableHttpClient httpClient = getHttpClient(httpConfig);
+            HttpPost httpPost = getHttpPost(url, jsonBody);
             httpPost.setConfig(getRequestConfig(httpConfig));
             return executeHttpRequest(httpClient, httpPost, reqHeader);
         } catch (ApiException e) {
@@ -255,6 +295,33 @@ public class HttpUtil {
                     formParams.add(new BasicNameValuePair(entry.getKey(), entry.getValue()));
                 }
                 httpPut.setEntity(new UrlEncodedFormEntity(formParams, RequestConstants.CHARSET_UTF8));
+            }
+
+            return executeHttpRequest(httpClient, httpPut, reqHeader);
+        } catch (Exception e) {
+            log.error("PUT请求失败 url={}", url, e);
+            throw new ApiException("PUT请求失败");
+        }
+    }
+
+    /**
+     * PUT请求(JSON格式)
+     *
+     * @param url      请求路径
+     * @param reqHeader 请求头
+     * @param jsonBody JSON请求体
+     * @return HttpInfoRes
+     * @throws ApiException 异常
+     */
+    public static HttpInfoRes putJson(String url, Map<String, String> reqHeader, String jsonBody) throws ApiException {
+        try {
+            CloseableHttpClient httpClient = getHttpClient(httpConfig);
+            HttpPut httpPut = new HttpPut(url);
+            httpPut.setConfig(getRequestConfig(httpConfig));
+
+            if (jsonBody != null && !jsonBody.isEmpty()) {
+                StringEntity entity = new StringEntity(jsonBody, ContentType.APPLICATION_JSON);
+                httpPut.setEntity(entity);
             }
 
             return executeHttpRequest(httpClient, httpPut, reqHeader);
