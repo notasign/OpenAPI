@@ -156,8 +156,7 @@ public abstract class OpenApiClient {
     ApiResponse<BaseResponseEntity> invokeApiDownload(BaseReq req, String path) throws ApiException {
         String accessToken = req.getAccessToken();
         String method = getMethod(path);
-
-        Map<String, String> bodyMap = getBodyMap(req);
+        Map<String, String> bodyMap = getBodyMap(req, method);
         Map<String, String> headerMap = getSign(getHeaderMap(accessToken), bodyMap);
         path = path.replace(method, "").trim();
         String url = serverUrl + path;
@@ -211,9 +210,9 @@ public abstract class OpenApiClient {
 
     private HttpInfoRes httpRequest(BaseReq req, String path, Map<String, File> files) throws ApiException {
         String accessToken = req == null ? null : req.getAccessToken();
-        HashMap<String, String> bodyMap = getBodyMap(req);
-        Map<String, String> headerMap = getSign(getHeaderMap(accessToken), Objects.isNull(accessToken) ? null : bodyMap);
         String method = getMethod(path);
+        HashMap<String, String> bodyMap = getBodyMap(req, method);
+        Map<String, String> headerMap = getSign(getHeaderMap(accessToken), Objects.isNull(accessToken) ? null : bodyMap);
         path = path.replace(method, "").trim();
         String url = serverUrl + path;
         return request(url, method, headerMap, bodyMap, files);
@@ -270,7 +269,7 @@ public abstract class OpenApiClient {
 
     }
 
-    private HashMap<String, String> getBodyMap(BaseReq req) throws ApiException {
+    private HashMap<String, String> getBodyMap(BaseReq req, String method) throws ApiException {
         if (req == null) {
             return new HashMap<>();
         }
@@ -279,7 +278,12 @@ public abstract class OpenApiClient {
         bizContent = getJsonStrategy().toJson(req);
 
         HashMap<String, String> bodyMap = new HashMap(1);
-        bodyMap.put(RequestConstants.DATA_KEY, bizContent);
+
+        if (RequestConstants.METHOD_POST.equals(method) || RequestConstants.METHOD_PUT.equals(method)) {
+            bodyMap.put(RequestConstants.DATA_KEY, bizContent);
+        } else {
+            bodyMap = (HashMap<String, String>) getJsonStrategy().toJavaBean(bizContent, Map.class);
+        }
         return bodyMap;
     }
 

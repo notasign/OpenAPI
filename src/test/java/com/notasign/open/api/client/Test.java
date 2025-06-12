@@ -18,7 +18,8 @@ import com.notasign.open.api.utils.jwt.AccessTokenJwtUtil;
 public class Test {
     private static final String APP_ID = "63256854";
     private static final String APP_SECRET = "9846477308844f2280bee45cd3480526";
-    private static final String API_URL = "https://openapi-ap1-nota.fadada.com";
+    //https://openapi-ap1-nota.fadada.com
+    private static final String API_URL = "http://localhost:8015";
     private static final String USER_CODE = "4940c39e9ffb46e09627ce1f0c1a84ee";
 
 
@@ -38,6 +39,7 @@ public class Test {
         getEnvelopeReq.setAccessToken(accessTokens);
         getEnvelopeReq.setEnvelopeId("174971949838313");
         ApiResponse<EnvelopeDetailResp> detail = client.execute(getEnvelopeReq);
+        System.out.println(JacksonUtil.toJson(detail));
         //获取企业授权链接
         //getCorpAuthUrl() ;
         //创建任务

@@ -1,5 +1,7 @@
 package com.notasign.open.api.bean.base;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 /**
  * @author Fadada
  * 2021/9/8 16:09:38
@@ -15,6 +17,7 @@ public abstract class BaseReq<T> extends BaseBean {
         this.accessToken = accessToken;
     }
 
+    @JsonIgnore
     public abstract Class<T> getRespClass();
 
     public abstract String getApi(String... pathArgs);
