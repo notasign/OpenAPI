@@ -4,7 +4,7 @@ package com.notasign.open.api.bean.base;
  * @author Fadada
  * 2021/9/11 15:31:15
  */
-public class BasePageResp extends BaseBean {
+public class BasePageResp extends BaseResp {
     private Integer pageNumber;
     private Integer pageSize;
     private Integer totalPage;

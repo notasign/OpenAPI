@@ -1,6 +1,7 @@
 package com.notasign.open.api.bean.resp.envelope;
 
 
+import com.notasign.open.api.bean.base.BaseResp;
 import com.notasign.open.api.bean.resp.document.DocumentDTO;
 import com.notasign.open.api.bean.resp.field.DocumentFieldDTO;
 import com.notasign.open.api.bean.resp.recipient.CarbonCopyDTO;
@@ -13,7 +14,7 @@ import java.util.List;
  * @author FADADA
  * @date 2025/6/3 15:52
  */
-public class EnvelopeDetailResp {
+public class EnvelopeDetailResp extends BaseResp {
 
     private String envelopeId;
     private String senderAccountId;

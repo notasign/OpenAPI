@@ -1,11 +1,13 @@
 package com.notasign.open.api.bean.resp.recipient;
 
 
+import com.notasign.open.api.bean.base.BaseResp;
+
 /**
  * @author FADADA
  * @date 2025/6/4 15:56
  */
-public class ParticipantSignUrlResp {
+public class ParticipantSignUrlResp extends BaseResp {
 
     private String signUrl;
 
