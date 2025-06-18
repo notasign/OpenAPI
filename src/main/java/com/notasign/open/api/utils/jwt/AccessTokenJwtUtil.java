@@ -5,7 +5,6 @@ import com.nimbusds.jose.crypto.RSASSASigner;
 import com.nimbusds.jwt.JWTClaimsSet;
 import com.nimbusds.jwt.SignedJWT;
 import com.notasign.open.api.constants.RequestConstants;
-import com.notasign.open.api.utils.ResultUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -49,7 +48,6 @@ public class AccessTokenJwtUtil {
      * @return 生成的 JWT 字符串
      */
     public static String generateJwt(PrivateKey privateKey, JWTClaimsSet claimsSet) throws JOSEException {
-
         // 1. 创建 JWT 头部
         JWSHeader header = new JWSHeader.Builder(JWSAlgorithm.RS256).type(JOSEObjectType.JWT).build();
 

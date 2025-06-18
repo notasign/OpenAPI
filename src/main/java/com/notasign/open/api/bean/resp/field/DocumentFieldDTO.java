@@ -10,7 +10,7 @@ public class DocumentFieldDTO {
     private String documentId;
     private String fieldId;
     private String fieldName;
-    private String recipientId;
+    private String participantId;
     private String fieldType;
 
     public String getDocumentId() {
@@ -37,12 +37,12 @@ public class DocumentFieldDTO {
         this.fieldName = fieldName;
     }
 
-    public String getRecipientId() {
-        return recipientId;
+    public String getParticipantId() {
+        return participantId;
     }
 
-    public void setRecipientId(String recipientId) {
-        this.recipientId = recipientId;
+    public void setParticipantId(String participantId) {
+        this.participantId = participantId;
     }
 
     public String getFieldType() {

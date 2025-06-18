@@ -2,14 +2,13 @@ package com.notasign.open.api.bean.req.envelope;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.notasign.open.api.bean.base.BaseReq;
-import com.notasign.open.api.bean.resp.envelope.EnvelopeDetailResp;
 import com.notasign.open.api.constants.OpenApiUrlConstants;
 
 /**
  * @author caishangdong
  * @date 2025/6/12 18:44
  */
-public class PublishEnvelopeReq extends BaseReq<Void> {
+public class SendEnvelopeReq extends BaseReq<Void> {
 
     @JsonIgnore
     private String envelopeId;

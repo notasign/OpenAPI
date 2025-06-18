@@ -14,7 +14,7 @@ public class ParticipantSignUrlReq extends BaseReq<ParticipantSignUrlResp> {
     @JsonIgnore
     private String envelopeId;
 
-    private String recipientId;
+    private String participantId;
 
     private String redirectUrl;
 
@@ -37,12 +37,12 @@ public class ParticipantSignUrlReq extends BaseReq<ParticipantSignUrlResp> {
         this.envelopeId = envelopeId;
     }
 
-    public String getRecipientId() {
-        return recipientId;
+    public String getParticipantId() {
+        return participantId;
     }
 
-    public void setRecipientId(String recipientId) {
-        this.recipientId = recipientId;
+    public void setParticipantId(String participantId) {
+        this.participantId = participantId;
     }
 
     public String getRedirectUrl() {

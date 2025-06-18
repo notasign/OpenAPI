@@ -2,14 +2,10 @@ package com.notasign.open.api.client;
 
 
 import com.notasign.open.api.bean.base.ApiResponse;
-import com.notasign.open.api.bean.req.accesstoken.AccessTokenReq;
-import com.notasign.open.api.bean.req.envelope.DeleteEnvelopeReq;
 import com.notasign.open.api.bean.req.envelope.GetEnvelopeReq;
-import com.notasign.open.api.bean.resp.accesstoken.GetAccessTokenResp;
 import com.notasign.open.api.bean.resp.envelope.EnvelopeDetailResp;
 import com.notasign.open.api.exception.ApiException;
 import com.notasign.open.api.utils.json.JacksonUtil;
-import com.notasign.open.api.utils.jwt.AccessTokenJwtUtil;
 
 /**
  * @author FADADA

@@ -7,7 +7,7 @@ import com.notasign.open.api.constants.OpenApiUrlConstants;
 public class UploadFileReq extends BaseReq<UploadFileResp> {
 
     private String fileType;
-    private String fileUrl;
+    private String fileDownloadUrl;
 
     public String getFileType() {
         return fileType;
@@ -17,12 +17,12 @@ public class UploadFileReq extends BaseReq<UploadFileResp> {
         this.fileType = fileType;
     }
 
-    public String getFileUrl() {
-        return fileUrl;
+    public String getFileDownloadUrl() {
+        return fileDownloadUrl;
     }
 
-    public void setFileUrl(String fileUrl) {
-        this.fileUrl = fileUrl;
+    public void setFileDownloadUrl(String fileDownloadUrl) {
+        this.fileDownloadUrl = fileDownloadUrl;
     }
 
     @Override

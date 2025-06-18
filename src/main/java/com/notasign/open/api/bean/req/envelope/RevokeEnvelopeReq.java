@@ -8,7 +8,7 @@ import com.notasign.open.api.constants.OpenApiUrlConstants;
  * @author FADADA
  * @date 2025/6/4 09:34
  */
-public class CancelEnvelopeReq extends BaseReq<Void> {
+public class RevokeEnvelopeReq extends BaseReq<Void> {
 
     @JsonIgnore
     private String envelopeId;

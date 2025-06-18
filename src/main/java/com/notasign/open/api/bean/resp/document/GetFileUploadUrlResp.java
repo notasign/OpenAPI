@@ -5,23 +5,23 @@ import com.notasign.open.api.bean.base.BaseResp;
 
 public class GetFileUploadUrlResp extends BaseResp {
 
-    private String fddFileUrl;
+    private String fileUrl;
 
-    private String uploadUrl;
+    private String fileUploadUrl;
 
-    public String getFddFileUrl() {
-        return fddFileUrl;
+    public String getFileUrl() {
+        return fileUrl;
     }
 
-    public void setFddFileUrl(String fddFileUrl) {
-        this.fddFileUrl = fddFileUrl;
+    public void setFileUrl(String fileUrl) {
+        this.fileUrl = fileUrl;
     }
 
-    public String getUploadUrl() {
-        return uploadUrl;
+    public String getFileUploadUrl() {
+        return fileUploadUrl;
     }
 
-    public void setUploadUrl(String uploadUrl) {
-        this.uploadUrl = uploadUrl;
+    public void setFileUploadUrl(String fileUploadUrl) {
+        this.fileUploadUrl = fileUploadUrl;
     }
 }

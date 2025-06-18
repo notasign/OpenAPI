@@ -10,15 +10,15 @@ import java.util.List;
  */
 public class GetEnvelopesResp extends BasePageResp {
 
-    private List<SignTaskInfo> envelopes;
+    private List<EnvelopeInfo> envelopes;
 
-    public static class SignTaskInfo {
+    public static class EnvelopeInfo {
         private String envelopeId;
         private String subject;
-        private String status;
+        private String envelopeStatus;
         private String createTime;
-        private String startTime;
-        private String deadlineTime;
+        private String sendTime;
+        private String expiresTime;
         private String finishTime;
 
         public String getEnvelopeId() {
@@ -37,12 +37,12 @@ public class GetEnvelopesResp extends BasePageResp {
             this.subject = subject;
         }
 
-        public String getStatus() {
-            return status;
+        public String getEnvelopeStatus() {
+            return envelopeStatus;
         }
 
-        public void setStatus(String status) {
-            this.status = status;
+        public void setEnvelopeStatus(String envelopeStatus) {
+            this.envelopeStatus = envelopeStatus;
         }
 
         public String getCreateTime() {
@@ -53,20 +53,20 @@ public class GetEnvelopesResp extends BasePageResp {
             this.createTime = createTime;
         }
 
-        public String getStartTime() {
-            return startTime;
+        public String getSendTime() {
+            return sendTime;
         }
 
-        public void setStartTime(String startTime) {
-            this.startTime = startTime;
+        public void setSendTime(String sendTime) {
+            this.sendTime = sendTime;
         }
 
-        public String getDeadlineTime() {
-            return deadlineTime;
+        public String getExpiresTime() {
+            return expiresTime;
         }
 
-        public void setDeadlineTime(String deadlineTime) {
-            this.deadlineTime = deadlineTime;
+        public void setExpiresTime(String expiresTime) {
+            this.expiresTime = expiresTime;
         }
 
         public String getFinishTime() {
@@ -78,11 +78,11 @@ public class GetEnvelopesResp extends BasePageResp {
         }
     }
 
-    public List<SignTaskInfo> getEnvelopes() {
+    public List<EnvelopeInfo> getEnvelopes() {
         return envelopes;
     }
 
-    public void setEnvelopes(List<SignTaskInfo> envelopes) {
+    public void setEnvelopes(List<EnvelopeInfo> envelopes) {
         this.envelopes = envelopes;
     }
 }

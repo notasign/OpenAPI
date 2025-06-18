@@ -8,20 +8,20 @@ import java.util.List;
 
 public class FileConversionResp extends BaseResp {
 
-	private List<FileIdRes> fileIdList;
+	private List<FileIdRes> files;
 
-	public List<FileIdRes> getFileIdList() {
-		return fileIdList;
+	public List<FileIdRes> getFiles() {
+		return files;
 	}
 
-	public void setFileIdList(List<FileIdRes> fileIdList) {
-		this.fileIdList = fileIdList;
+	public void setFiles(List<FileIdRes> files) {
+		this.files = files;
 	}
 
 	public static class FileIdRes {
 		private String fileId;
 		private String fileType;
-		private String fddFileUrl;
+		private String fileUrl;
 		private String fileName;
 		private Integer fileTotalPages ;
 
@@ -41,12 +41,12 @@ public class FileConversionResp extends BaseResp {
 			this.fileType = fileType;
 		}
 
-		public String getFddFileUrl() {
-			return fddFileUrl;
+		public String getFileUrl() {
+			return fileUrl;
 		}
 
-		public void setFddFileUrl(String fddFileUrl) {
-			this.fddFileUrl = fddFileUrl;
+		public void setFileUrl(String fileUrl) {
+			this.fileUrl = fileUrl;
 		}
 
 		public String getFileName() {

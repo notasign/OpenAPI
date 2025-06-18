@@ -9,6 +9,14 @@ public class GetUploadUrlReq extends BaseReq<GetFileUploadUrlResp> {
 
     private String fileType;
 
+    public String getFileType() {
+        return fileType;
+    }
+
+    public void setFileType(String fileType) {
+        this.fileType = fileType;
+    }
+
     @Override
     public Class<GetFileUploadUrlResp> getRespClass() {
         return GetFileUploadUrlResp.class;

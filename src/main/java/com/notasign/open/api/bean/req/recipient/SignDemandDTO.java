@@ -12,7 +12,6 @@ public class SignDemandDTO {
 
     private List<JoinCheckConfiguration> joinCheckConfigurations;
 
-    private String signVerifyMethods;
 
     public int getOrderNo() {
         return orderNo;
@@ -28,14 +27,6 @@ public class SignDemandDTO {
 
     public void setJoinCheckConfigurations(List<JoinCheckConfiguration> joinCheckConfigurations) {
         this.joinCheckConfigurations = joinCheckConfigurations;
-    }
-
-    public String getSignVerifyMethods() {
-        return signVerifyMethods;
-    }
-
-    public void setSignVerifyMethods(String signVerifyMethods) {
-        this.signVerifyMethods = signVerifyMethods;
     }
 
     public static class JoinCheckConfiguration {

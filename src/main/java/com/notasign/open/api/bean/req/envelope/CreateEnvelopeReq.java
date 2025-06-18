@@ -24,9 +24,11 @@ public class CreateEnvelopeReq extends BaseReq<CreateEnvelopeResp> {
 
     private Long expiresTime;
 
-    private String certCA;
+    private String signatureLevel;
 
-    private Boolean autoPublish;
+    private String caIdentifier;
+
+    private Boolean autoSend;
 
     private Boolean signInOrder;
 
@@ -68,20 +70,28 @@ public class CreateEnvelopeReq extends BaseReq<CreateEnvelopeResp> {
         this.expiresTime = expiresTime;
     }
 
-    public String getCertCA() {
-        return certCA;
+    public String getSignatureLevel() {
+        return signatureLevel;
     }
 
-    public void setCertCA(String certCA) {
-        this.certCA = certCA;
+    public void setSignatureLevel(String signatureLevel) {
+        this.signatureLevel = signatureLevel;
     }
 
-    public Boolean getAutoPublish() {
-        return autoPublish;
+    public String getCaIdentifier() {
+        return caIdentifier;
     }
 
-    public void setAutoPublish(Boolean autoPublish) {
-        this.autoPublish = autoPublish;
+    public void setCaIdentifier(String caIdentifier) {
+        this.caIdentifier = caIdentifier;
+    }
+
+    public Boolean getAutoSend() {
+        return autoSend;
+    }
+
+    public void setAutoSend(Boolean autoSend) {
+        this.autoSend = autoSend;
     }
 
     public Boolean getSignInOrder() {

@@ -2,7 +2,6 @@ package com.notasign.open.api.bean.resp.recipient;
 
 import com.notasign.open.api.bean.req.recipient.SignDemandDTO;
 
-import java.time.LocalDateTime;
 
 /**
  * @author FADADA
@@ -12,11 +11,11 @@ public class ParticipantDTO {
     private String participantId;
     private String participantName;
     private String joinStatus;
-    private LocalDateTime joinTime;
+    private String joinTime;
     private String signStatus;
     private String fillStatus;
-    private LocalDateTime fillTime;
-    private LocalDateTime signTime;
+    private String fillTime;
+    private String signTime;
     private String rejectNote;
     private SignDemandDTO signDemand;
 
@@ -44,11 +43,11 @@ public class ParticipantDTO {
         this.joinStatus = joinStatus;
     }
 
-    public LocalDateTime getJoinTime() {
+    public String getJoinTime() {
         return joinTime;
     }
 
-    public void setJoinTime(LocalDateTime joinTime) {
+    public void setJoinTime(String joinTime) {
         this.joinTime = joinTime;
     }
 
@@ -68,19 +67,19 @@ public class ParticipantDTO {
         this.fillStatus = fillStatus;
     }
 
-    public LocalDateTime getFillTime() {
+    public String getFillTime() {
         return fillTime;
     }
 
-    public void setFillTime(LocalDateTime fillTime) {
+    public void setFillTime(String fillTime) {
         this.fillTime = fillTime;
     }
 
-    public LocalDateTime getSignTime() {
+    public String getSignTime() {
         return signTime;
     }
 
-    public void setSignTime(LocalDateTime signTime) {
+    public void setSignTime(String signTime) {
         this.signTime = signTime;
     }
 

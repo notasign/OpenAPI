@@ -8,7 +8,7 @@ import java.util.List;
 
 public class FileConversionReq extends BaseReq<FileConversionResp> {
 
-    private List<FileUrlInfo> fddFileUrlList;
+    private List<FileUrlInfo> fileUrls;
 
     @Override
     public Class<FileConversionResp> getRespClass() {
@@ -53,11 +53,11 @@ public class FileConversionReq extends BaseReq<FileConversionResp> {
         }
     }
 
-    public List<FileUrlInfo> getFddFileUrlList() {
-        return fddFileUrlList;
+    public List<FileUrlInfo> getFileUrls() {
+        return fileUrls;
     }
 
-    public void setFddFileUrlList(List<FileUrlInfo> fddFileUrlList) {
-        this.fddFileUrlList = fddFileUrlList;
+    public void setFileUrls(List<FileUrlInfo> fileUrls) {
+        this.fileUrls = fileUrls;
     }
 }

@@ -7,7 +7,6 @@ import com.notasign.open.api.bean.resp.field.DocumentFieldDTO;
 import com.notasign.open.api.bean.resp.recipient.CarbonCopyDTO;
 import com.notasign.open.api.bean.resp.recipient.ParticipantDTO;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
 /**
@@ -25,11 +24,12 @@ public class EnvelopeDetailResp extends BaseResp {
     private Boolean signInOrder;
     private String envelopeStatus;
     private String terminationNote;
-    private String signCaCert;
-    private LocalDateTime createTime;
-    private LocalDateTime publishTime;
-    private LocalDateTime finishTime;
-    private LocalDateTime deadlineTime;
+    private String signatureLevel;
+    private String caIdentifier;
+    private String createTime;
+    private String sendTime;
+    private String finishTime;
+    private String expiresTime;
     private List<DocumentDTO> documents;
     private List<ParticipantDTO> participants;
     private List<CarbonCopyDTO> carbonCopies;
@@ -107,44 +107,52 @@ public class EnvelopeDetailResp extends BaseResp {
         this.terminationNote = terminationNote;
     }
 
-    public String getSignCaCert() {
-        return signCaCert;
+    public String getSignatureLevel() {
+        return signatureLevel;
     }
 
-    public void setSignCaCert(String signCaCert) {
-        this.signCaCert = signCaCert;
+    public void setSignatureLevel(String signatureLevel) {
+        this.signatureLevel = signatureLevel;
     }
 
-    public LocalDateTime getCreateTime() {
+    public String getCaIdentifier() {
+        return caIdentifier;
+    }
+
+    public void setCaIdentifier(String caIdentifier) {
+        this.caIdentifier = caIdentifier;
+    }
+
+    public String getCreateTime() {
         return createTime;
     }
 
-    public void setCreateTime(LocalDateTime createTime) {
+    public void setCreateTime(String createTime) {
         this.createTime = createTime;
     }
 
-    public LocalDateTime getPublishTime() {
-        return publishTime;
+    public String getSendTime() {
+        return sendTime;
     }
 
-    public void setPublishTime(LocalDateTime publishTime) {
-        this.publishTime = publishTime;
+    public void setSendTime(String sendTime) {
+        this.sendTime = sendTime;
     }
 
-    public LocalDateTime getFinishTime() {
+    public String getFinishTime() {
         return finishTime;
     }
 
-    public void setFinishTime(LocalDateTime finishTime) {
+    public void setFinishTime(String finishTime) {
         this.finishTime = finishTime;
     }
 
-    public LocalDateTime getDeadlineTime() {
-        return deadlineTime;
+    public String getExpiresTime() {
+        return expiresTime;
     }
 
-    public void setDeadlineTime(LocalDateTime deadlineTime) {
-        this.deadlineTime = deadlineTime;
+    public void setExpiresTime(String expiresTime) {
+        this.expiresTime = expiresTime;
     }
 
     public List<DocumentDTO> getDocuments() {
