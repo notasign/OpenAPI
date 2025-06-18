@@ -11,8 +11,6 @@ public enum FieldTypeEnum {
     SEAL("seal",  "印章"),
     DATE_SIGN("date_sign",  "日期"),
     TEXT("text",  "文本"),
-    CHECKBOX("checkbox",  "复选框"),
-    PICTURE("picture",  "图片"),
     ;
 
     private final String code;

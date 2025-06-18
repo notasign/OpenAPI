@@ -6,7 +6,7 @@ import com.notasign.open.api.bean.resp.envelope.GetEnvelopeReportResp;
 import com.notasign.open.api.constants.OpenApiUrlConstants;
 
 /**
- * @author caishangdong
+ * @author FADADA
  * @date 2025/6/12 18:44
  */
 public class GetEnvelopeReportReq extends BaseReq<GetEnvelopeReportResp> {

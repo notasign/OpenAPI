@@ -16,12 +16,12 @@ import java.util.Date;
 import java.util.Objects;
 
 /**
- * @author caishangdong
+ * @author FADADA
  * @date 2025/6/12 09:31
  */
-public class AccessTokenJwtUtil {
+public class OauthJwtUtil {
 
-    private static final Logger log = LoggerFactory.getLogger(AccessTokenJwtUtil.class);
+    private static final Logger log = LoggerFactory.getLogger(OauthJwtUtil.class);
 
     public static String generateAccessTokenJwt(String privateKeyStr, String appId, String userCode,
                                                 String audience, Long exp, String scope) {

@@ -1,20 +1,19 @@
 package com.notasign.open.api.enums.envelope;
 
+
 /**
  * @author FADADA
- * @date 2025/6/10 17:45
+ * @date 2025/5/23 10:49
  */
-public enum CertCAEnum {
+public enum CaIdentifierEnum {
 
-    NOT_CA("NOT_CA", "NOT CA"),
+    DIGI_SIGN("Digi-Sign", "Digi-Sign证书机构");
 
-    DIGI_SIGN("digiSign", "digiSignCa"),
-    ;
 
     private final String code;
     private final String remark;
 
-    CertCAEnum(String code, String remark) {
+    CaIdentifierEnum(String code, String remark) {
         this.code = code;
         this.remark = remark;
     }
