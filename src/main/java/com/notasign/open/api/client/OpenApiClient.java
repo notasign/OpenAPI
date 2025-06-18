@@ -212,7 +212,7 @@ public abstract class OpenApiClient {
         String accessToken = req == null ? null : req.getAccessToken();
         String method = getMethod(path);
         HashMap<String, String> bodyMap = getBodyMap(req, method);
-        Map<String, String> headerMap = getSign(getHeaderMap(accessToken), Objects.isNull(accessToken) ? null : bodyMap);
+        Map<String, String> headerMap = getSign(getHeaderMap(accessToken), bodyMap);
         path = path.replace(method, "").trim();
         String url = serverUrl + path;
         return request(url, method, headerMap, bodyMap, files);

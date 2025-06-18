@@ -4,8 +4,8 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.notasign.api</groupId>
-    <version>1.0.0</version>
     <artifactId>global-openapi-java-sdk</artifactId>
+    <version>1.0.0</version>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <httpclient.version>4.5.13</httpclient.version>
@@ -41,6 +41,7 @@
             <artifactId>nimbus-jose-jwt</artifactId>
            <version>${nimbus-jose-jwt.version}</version>
         </dependency>
+
     </dependencies>
 
     <build>
