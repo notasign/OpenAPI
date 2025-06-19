@@ -2,16 +2,16 @@ package com.notasign.open.api.client;
 
 
 import com.notasign.open.api.bean.base.ApiResponse;
-import com.notasign.open.api.bean.req.accesstoken.AccessTokenReq;
-import com.notasign.open.api.bean.req.document.DocumentReq;
-import com.notasign.open.api.bean.req.envelope.CreateEnvelopeReq;
-import com.notasign.open.api.bean.req.envelope.GetEnvelopeReq;
-import com.notasign.open.api.bean.req.field.DocumentFieldReq;
-import com.notasign.open.api.bean.req.field.PositionDTO;
-import com.notasign.open.api.bean.req.recipient.ParticipantReq;
-import com.notasign.open.api.bean.resp.accesstoken.GetAccessTokenResp;
-import com.notasign.open.api.bean.resp.envelope.CreateEnvelopeResp;
-import com.notasign.open.api.bean.resp.envelope.EnvelopeDetailResp;
+import com.notasign.open.api.bean.dto.document.DocumentReqDTO;
+import com.notasign.open.api.bean.dto.field.PositionDTO;
+import com.notasign.open.api.req.accesstoken.AccessTokenReq;
+import com.notasign.open.api.req.envelope.CreateEnvelopeReq;
+import com.notasign.open.api.req.envelope.GetEnvelopeReq;
+import com.notasign.open.api.bean.dto.field.DocumentFieldReqDTO;
+import com.notasign.open.api.bean.dto.recipient.ParticipantReqDTO;
+import com.notasign.open.api.resp.accesstoken.GetAccessTokenResp;
+import com.notasign.open.api.resp.envelope.CreateEnvelopeResp;
+import com.notasign.open.api.resp.envelope.EnvelopeDetailResp;
 import com.notasign.open.api.enums.envelope.SignatureLevelEnum;
 import com.notasign.open.api.enums.field.FieldTypeEnum;
 import com.notasign.open.api.enums.field.PositionModeEnum;
@@ -55,46 +55,46 @@ public class Test {
         createEnvelopeReq.setSignatureLevel(SignatureLevelEnum.SES.getCode());
         createEnvelopeReq.setAutoSend(false);
 
-        List<DocumentReq> documentReqs = new ArrayList<>();
-        DocumentReq documentReq = new DocumentReq();
-        documentReq.setDocumentId("doc_001");
-        documentReq.setDocumentName("测试签署文档");
-        documentReq.setDocumentFileId("1931228266551394306");
+        List<DocumentReqDTO> documentReqDTOS = new ArrayList<>();
+        DocumentReqDTO documentReqDTO = new DocumentReqDTO();
+        documentReqDTO.setDocumentId("doc_001");
+        documentReqDTO.setDocumentName("测试签署文档");
+        documentReqDTO.setDocumentFileId("1931228266551394306");
 
-        List<DocumentFieldReq> documentFieldReqList = new ArrayList<>();
-        DocumentFieldReq documentFieldReq = new DocumentFieldReq();
-        documentFieldReq.setFieldId("field_001");
-        documentFieldReq.setFieldName("个人签名");
-        documentFieldReq.setFieldType(FieldTypeEnum.SIGNATURE.getCode());
+        List<DocumentFieldReqDTO> documentFieldReqDTOList = new ArrayList<>();
+        DocumentFieldReqDTO documentFieldReqDTO = new DocumentFieldReqDTO();
+        documentFieldReqDTO.setFieldId("field_001");
+        documentFieldReqDTO.setFieldName("个人签名");
+        documentFieldReqDTO.setFieldType(FieldTypeEnum.SIGNATURE.getCode());
 
         PositionDTO positionDTO = new PositionDTO();
         positionDTO.setPositionMode(PositionModeEnum.PIXEL.getCode());
         positionDTO.setPositionPageNo(1);
         positionDTO.setPositionX("399");
         positionDTO.setPositionY("500");
-        documentFieldReq.setPosition(positionDTO);
-        documentFieldReqList.add(documentFieldReq);
-        documentReq.setDocumentFields(documentFieldReqList);
+        documentFieldReqDTO.setPosition(positionDTO);
+        documentFieldReqDTOList.add(documentFieldReqDTO);
+        documentReqDTO.setDocumentFields(documentFieldReqDTOList);
 
-        documentReqs.add(documentReq);
+        documentReqDTOS.add(documentReqDTO);
 
-        createEnvelopeReq.setDocuments(documentReqs);
+        createEnvelopeReq.setDocuments(documentReqDTOS);
 
-        List<ParticipantReq> participantReqs = new ArrayList<>();
-        ParticipantReq participantReq = new ParticipantReq();
-        participantReq.setParticipantId("participant_001");
-        participantReq.setParticipantName("测试签署人");
-        participantReq.setEmail("caishangdong@fadada.com");
+        List<ParticipantReqDTO> participantReqDTOS = new ArrayList<>();
+        ParticipantReqDTO participantReqDTO = new ParticipantReqDTO();
+        participantReqDTO.setParticipantId("participant_001");
+        participantReqDTO.setParticipantName("测试签署人");
+        participantReqDTO.setEmail("caishangdong@fadada.com");
 
-        List<ParticipantReq.SignField> signFields = new ArrayList<>();
-        ParticipantReq.SignField signField = new ParticipantReq.SignField();
+        List<ParticipantReqDTO.SignField> signFields = new ArrayList<>();
+        ParticipantReqDTO.SignField signField = new ParticipantReqDTO.SignField();
         signField.setFieldDocId("doc_001");
         signField.setFieldId("field_001");
         signField.setFieldName("个人签名");
         signFields.add(signField);
-        participantReq.setSignFields(signFields);
-        participantReqs.add(participantReq);
-        createEnvelopeReq.setParticipants(participantReqs);
+        participantReqDTO.setSignFields(signFields);
+        participantReqDTOS.add(participantReqDTO);
+        createEnvelopeReq.setParticipants(participantReqDTOS);
         ApiResponse<CreateEnvelopeResp> createResult = client.execute(createEnvelopeReq);
         System.out.println(JacksonUtil.toJson(createResult));
 
