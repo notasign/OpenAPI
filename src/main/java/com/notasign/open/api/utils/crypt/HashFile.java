@@ -19,7 +19,7 @@ import java.io.InputStream;
 import java.security.MessageDigest;
 
 /**
- * @author Fadada
+ * @author Nota
  * 2021/9/8 16:09:38
  */
 public class HashFile {

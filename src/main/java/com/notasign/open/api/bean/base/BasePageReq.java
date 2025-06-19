@@ -1,7 +1,7 @@
 package com.notasign.open.api.bean.base;
 
 /**
- * @author Fadada
+ * @author Nota
  * 2021/9/11 15:19:05
  */
 public abstract class BasePageReq extends BaseReq {

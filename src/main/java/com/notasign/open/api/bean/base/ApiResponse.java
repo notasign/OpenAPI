@@ -4,7 +4,7 @@ import com.notasign.open.api.constants.RequestConstants;
 import org.apache.http.HttpStatus;
 
 /**
- * @author Fadada
+ * @author Nota
  * 2021/9/8 16:09:38
  */
 public class ApiResponse<T> extends BaseHttpRes {

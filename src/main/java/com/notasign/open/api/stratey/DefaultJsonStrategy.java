@@ -7,7 +7,7 @@ import java.lang.reflect.ParameterizedType;
 import java.util.List;
 
 /**
- * @author Fadada
+ * @author Nota
  * 2021/9/8 16:32:01
  */
 public class DefaultJsonStrategy implements JsonStrategy {

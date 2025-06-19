@@ -2,7 +2,7 @@ package com.notasign.open.api.enums.oauth;
 
 
 /**
- * @author FADADA
+ * @author Nota
  * @date 2025/6/5 15:06
  */
 public enum OauthGrantTypeEnum {

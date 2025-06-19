@@ -6,7 +6,7 @@ import com.notasign.open.api.resp.envelope.GetEnvelopeEditUrlResp;
 import com.notasign.open.api.constants.OpenApiUrlConstants;
 
 /**
- * @author FADADA
+ * @author Nota
  * @date 2025/6/5 19:54
  */
 public class GetEnvelopeEditUrlReq extends BaseReq<GetEnvelopeEditUrlResp> {

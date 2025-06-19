@@ -3,7 +3,7 @@ package com.notasign.open.api.bean.dto.recipient;
 import java.util.List;
 
 /**
- * @author FADADA
+ * @author Nota
  * @date 2025/5/22 17:08
  */
 public class SignDemandDTO {

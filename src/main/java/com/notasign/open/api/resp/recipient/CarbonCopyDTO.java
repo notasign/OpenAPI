@@ -2,7 +2,7 @@ package com.notasign.open.api.resp.recipient;
 
 
 /**
- * @author FADADA
+ * @author Nota
  * @date 2025/6/3 16:06
  */
 public class CarbonCopyDTO {

@@ -3,7 +3,7 @@ package com.notasign.open.api.bean.base;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 /**
- * @author Fadada
+ * @author Nota
  * 2021/9/8 16:09:38
  */
 public abstract class BaseReq<T> extends BaseBean {

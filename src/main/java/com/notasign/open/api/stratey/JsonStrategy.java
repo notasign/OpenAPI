@@ -6,7 +6,7 @@ import java.lang.reflect.ParameterizedType;
 import java.util.List;
 
 /**
- * @author Fadada
+ * @author Nota
  * 2021/9/8 16:30:57
  */
 public interface JsonStrategy {

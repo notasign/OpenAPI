@@ -25,7 +25,7 @@ import java.util.Map;
 import java.util.Objects;
 
 /**
- * @author Fadada
+ * @author Nota
  * 2021/9/8 16:09:38
  */
 public abstract class OpenApiClient {

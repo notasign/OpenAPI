@@ -16,7 +16,7 @@ import java.util.Date;
 import java.util.Objects;
 
 /**
- * @author FADADA
+ * @author Nota
  * @date 2025/6/12 09:31
  */
 public class OauthJwtUtil {

@@ -4,7 +4,7 @@ package com.notasign.open.api.resp.recipient;
 import com.notasign.open.api.bean.base.BaseResp;
 
 /**
- * @author FADADA
+ * @author Nota
  * @date 2025/6/4 15:56
  */
 public class ParticipantSignUrlResp extends BaseResp {

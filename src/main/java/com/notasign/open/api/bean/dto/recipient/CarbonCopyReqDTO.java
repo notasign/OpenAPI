@@ -2,7 +2,7 @@ package com.notasign.open.api.bean.dto.recipient;
 
 
 /**
- * @author FADADA
+ * @author Nota
  * @date 2025/5/22 17:09
  */
 

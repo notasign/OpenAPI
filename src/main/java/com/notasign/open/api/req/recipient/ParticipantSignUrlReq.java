@@ -7,7 +7,7 @@ import com.notasign.open.api.resp.recipient.ParticipantSignUrlResp;
 import com.notasign.open.api.constants.OpenApiUrlConstants;
 
 /**
- * @author FADADA
+ * @author Nota
  * @date 2025/6/4 15:54
  */
 public class ParticipantSignUrlReq extends BaseReq<ParticipantSignUrlResp> {

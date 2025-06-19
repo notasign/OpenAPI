@@ -5,7 +5,7 @@ import com.notasign.open.api.bean.base.BasePageResp;
 import java.util.List;
 
 /**
- * @author FADADA
+ * @author Nota
  * @date 2025/6/3 10:48
  */
 public class GetEnvelopesResp extends BasePageResp {

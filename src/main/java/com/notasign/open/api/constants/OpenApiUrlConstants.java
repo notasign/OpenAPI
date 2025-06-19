@@ -1,7 +1,7 @@
 package com.notasign.open.api.constants;
 
 /**
- * @author Fadada
+ * @author Nota
  * 2021/9/8 15:24:46
  */
 public class OpenApiUrlConstants {

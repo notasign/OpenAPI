@@ -1,7 +1,7 @@
 package com.notasign.open.api.enums.recipient;
 
 /**
- * @author FADADA
+ * @author Nota
  * @date 2025/6/3 17:47
  */
 public enum ParticipantFillStatusEnum {

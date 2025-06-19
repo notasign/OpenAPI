@@ -1,7 +1,7 @@
 package com.notasign.open.api.enums.envelope;
 
 /**
- * @author FADADA
+ * @author Nota
  * @date 2025/6/10 17:34
  */
 public enum EnvelopeStatusEnum {

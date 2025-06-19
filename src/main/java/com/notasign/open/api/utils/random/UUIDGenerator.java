@@ -7,7 +7,7 @@ package com.notasign.open.api.utils.random;
 import java.util.UUID;
 
 /**
- * @author Fadada
+ * @author Nota
  * 2021/9/8 16:09:38
  */
 public class UUIDGenerator {

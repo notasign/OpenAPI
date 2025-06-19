@@ -2,7 +2,7 @@ package com.notasign.open.api.enums.field;
 
 
 /**
- * @author FADADA
+ * @author Nota
  * @date 2025/6/7 19:38
  */
 public enum PositionModeEnum {

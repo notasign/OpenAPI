@@ -2,7 +2,7 @@ package com.notasign.open.api.enums.envelope;
 
 
 /**
- * @author FADADA
+ * @author Nota
  * @date 2025/6/16 19:48
  */
 public enum SignatureLevelEnum {

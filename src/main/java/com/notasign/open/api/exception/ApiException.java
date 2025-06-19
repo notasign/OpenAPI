@@ -1,7 +1,7 @@
 package com.notasign.open.api.exception;
 
 /**
- * @author Fadada
+ * @author Nota
  * 2021/9/8 16:09:38
  */
 public class ApiException extends Exception {

@@ -1,7 +1,7 @@
 package com.notasign.open.api.config;
 
 /**
- * @author Fadada
+ * @author Nota
  * 2021/9/8 17:53:20
  */
 public class HttpConfig {

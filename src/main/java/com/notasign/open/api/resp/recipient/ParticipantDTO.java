@@ -4,7 +4,7 @@ import com.notasign.open.api.bean.dto.recipient.SignDemandDTO;
 
 
 /**
- * @author FADADA
+ * @author Nota
  * @date 2025/6/3 15:56
  */
 public class ParticipantDTO {

@@ -1,7 +1,7 @@
 package com.notasign.open.api.bean.base;
 
 /**
- * @author Fadada
+ * @author Nota
  * 2021/9/9 21:34:22
  */
 public class BaseResponseEntity extends BaseHttpRes {

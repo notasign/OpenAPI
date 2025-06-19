@@ -2,7 +2,7 @@ package com.notasign.open.api.enums.field;
 
 
 /**
- * @author FADADA
+ * @author Nota
  * @date 2025/5/23 14:06
  */
 public enum FieldTypeEnum {

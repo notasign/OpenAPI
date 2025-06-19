@@ -10,7 +10,7 @@ import com.notasign.open.api.resp.recipient.ParticipantDTO;
 import java.util.List;
 
 /**
- * @author FADADA
+ * @author Nota
  * @date 2025/6/3 15:52
  */
 public class EnvelopeDetailResp extends BaseResp {

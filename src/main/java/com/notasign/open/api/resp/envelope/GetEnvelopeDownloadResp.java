@@ -4,7 +4,7 @@ package com.notasign.open.api.resp.envelope;
 import com.notasign.open.api.bean.base.BaseResp;
 
 /**
- * @author FADADA
+ * @author Nota
  * @date 2025/6/4 14:40
  */
 public class GetEnvelopeDownloadResp extends BaseResp {

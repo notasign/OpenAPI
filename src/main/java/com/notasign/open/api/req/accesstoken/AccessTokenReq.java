@@ -6,7 +6,7 @@ import com.notasign.open.api.resp.accesstoken.GetAccessTokenResp;
 import com.notasign.open.api.constants.OpenApiUrlConstants;
 
 /**
- * @author FADADA
+ * @author Nota
  * @date 2025/6/4 18:40
  */
 public class AccessTokenReq extends BaseReq<GetAccessTokenResp> {
