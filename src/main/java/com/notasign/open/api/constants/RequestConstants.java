@@ -47,6 +47,11 @@ public class RequestConstants {
      */
     public static final String DATA_KEY = "bizContent";
 
+    /**
+     * 请求的url地址
+     */
+    public static final String REQUEST_URL = "X-GLOBAL-Request-Url";
+
     public static final String FDD_REQEUST_ID = "X-GLOBAL-Request-Id";
 
 

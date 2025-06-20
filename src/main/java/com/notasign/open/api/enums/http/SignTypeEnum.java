@@ -5,10 +5,8 @@ package com.notasign.open.api.enums.http;
  * 2021/9/8 16:09:38
  */
 public enum SignTypeEnum {
-    /**
-     * SHA256
-     */
-    HMAC_SHA256("HMAC-SHA256");
+
+    RSA_SHA256("RSA-SHA256");
 
     private String type;
 

@@ -9,7 +9,7 @@ import com.notasign.open.api.constants.OpenApiUrlConstants;
  * @author Nota
  * @date 2025/6/3 10:39
  */
-public class GetEnvelopesReq extends BasePageReq {
+public class GetEnvelopesReq extends BasePageReq<GetEnvelopesResp> {
 
     private String subject;
 
@@ -52,7 +52,7 @@ public class GetEnvelopesReq extends BasePageReq {
     }
 
     @Override
-    public Class getRespClass() {
+    public Class<GetEnvelopesResp> getRespClass() {
         return GetEnvelopesResp.class;
     }
 

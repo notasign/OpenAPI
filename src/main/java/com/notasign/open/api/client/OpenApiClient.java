@@ -10,11 +10,10 @@ import com.notasign.open.api.enums.http.SignTypeEnum;
 import com.notasign.open.api.exception.ApiException;
 import com.notasign.open.api.stratey.DefaultJsonStrategy;
 import com.notasign.open.api.stratey.JsonStrategy;
-import com.notasign.open.api.utils.crypt.FddCryptUtil;
+import com.notasign.open.api.utils.crypt.NotaCryptUtil;
 import com.notasign.open.api.utils.http.HttpUtil;
 import com.notasign.open.api.utils.json.ParameterizedTypeBaseRes;
 import com.notasign.open.api.utils.random.UUIDGenerator;
-import org.apache.commons.codec.binary.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -22,7 +21,6 @@ import java.io.File;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
 
 /**
  * @author Nota
@@ -34,13 +32,13 @@ public abstract class OpenApiClient {
 
 
     private final String appId;
-    private final String appSecret;
+    private final String privateKey;
     private final String serverUrl;
 
     /**
      * 请求服务端签名加密方式，目前仅支持HMAC-SHA256，请勿修改
      */
-    private String signType = SignTypeEnum.HMAC_SHA256.getType();
+    private String signType = SignTypeEnum.RSA_SHA256.getType();
 
     /**
      * json串策率
@@ -52,9 +50,9 @@ public abstract class OpenApiClient {
      */
     private HttpConfig httpConfig;
 
-    public OpenApiClient(String appId, String appSecret, String serverUrl) {
+    public OpenApiClient(String appId, String privateKey, String serverUrl) {
         this.appId = appId;
-        this.appSecret = appSecret;
+        this.privateKey = privateKey;
         this.serverUrl = serverUrl;
     }
 
@@ -96,8 +94,8 @@ public abstract class OpenApiClient {
         return appId;
     }
 
-    public String getAppSecret() {
-        return appSecret;
+    public String getPrivateKey() {
+        return privateKey;
     }
 
     /**
@@ -156,10 +154,11 @@ public abstract class OpenApiClient {
     ApiResponse<BaseResponseEntity> invokeApiDownload(BaseReq req, String path) throws ApiException {
         String accessToken = req.getAccessToken();
         String method = getMethod(path);
-        Map<String, String> bodyMap = getBodyMap(req, method);
-        Map<String, String> headerMap = getSign(getHeaderMap(accessToken), bodyMap);
         path = path.replace(method, "").trim();
         String url = serverUrl + path;
+
+        Map<String, String> bodyMap = getBodyMap(req, method);
+        Map<String, String> headerMap = getSign(getHeaderMap(accessToken, path), bodyMap, method);
 
         BaseResponseEntity baseResponseEntity = request(url, headerMap, bodyMap);
         ApiResponse<BaseResponseEntity> res;
@@ -211,10 +210,10 @@ public abstract class OpenApiClient {
     private HttpInfoRes httpRequest(BaseReq req, String path, Map<String, File> files) throws ApiException {
         String accessToken = req == null ? null : req.getAccessToken();
         String method = getMethod(path);
-        HashMap<String, String> bodyMap = getBodyMap(req, method);
-        Map<String, String> headerMap = getSign(getHeaderMap(accessToken), bodyMap);
         path = path.replace(method, "").trim();
         String url = serverUrl + path;
+        HashMap<String, String> bodyMap = getBodyMap(req, method);
+        Map<String, String> headerMap = getSign(getHeaderMap(accessToken, path), bodyMap, method);
         return request(url, method, headerMap, bodyMap, files);
     }
 
@@ -235,23 +234,30 @@ public abstract class OpenApiClient {
     }
 
 
-    private Map<String, String> getSign(Map<String, String> headerMap, Map<String, String> bodyMap) {
+    private Map<String, String> getSign(Map<String, String> headerMap, Map<String, String> bodyMap, String method) {
         try {
-            Map<String, String> signMap = new HashMap(headerMap);
-            if (null != bodyMap) {
-                signMap.putAll(bodyMap);
+            Map<String, String> signMap = new HashMap<>(headerMap);
+
+            if (bodyMap != null && !bodyMap.isEmpty()) {
+                if (RequestConstants.METHOD_POST.equals(method) || RequestConstants.METHOD_PUT.equals(method)) {
+                    signMap.putAll(bodyMap);
+                } else {
+                    signMap.put(RequestConstants.DATA_KEY, NotaCryptUtil.sortParameters(bodyMap));
+                }
             }
-            String sortParam = FddCryptUtil.sortParameters(signMap);
-            String sign = FddCryptUtil.sign(sortParam, headerMap.get(RequestConstants.TIMESTAMP), appSecret);
+
+            String sortParam = NotaCryptUtil.sortParameters(signMap);
+            String sign = NotaCryptUtil.sign(sortParam, privateKey);
             headerMap.put(RequestConstants.SIGN, sign);
+            log.debug("签名计算成功，method: {}, bodyMap size: {}", method, bodyMap != null ? bodyMap.size() : 0);
         } catch (Exception e) {
-            log.error("计算签名失败：{}", e.getMessage(), e);
+            log.error("计算签名失败 - method: {}, bodyMap: {}, error: {}",
+                     method, bodyMap, e.getMessage(), e);
         }
         return headerMap;
     }
 
-
-    private HashMap<String, String> getHeaderMap(String accessToken) {
+    private HashMap<String, String> getHeaderMap(String accessToken, String reuqestUrl) {
         HashMap<String, String> paraMap = new HashMap();
         paraMap.put(RequestConstants.APP_ID, appId);
         paraMap.put(RequestConstants.API_SUB_VERSION, RequestConstants.CURRENT_SUB_VERSION);
@@ -264,25 +270,30 @@ public abstract class OpenApiClient {
         }
         paraMap.put(RequestConstants.TIMESTAMP, String.valueOf(System.currentTimeMillis()));
         paraMap.put(RequestConstants.NONCE, UUIDGenerator.getUuid());
+        paraMap.put(RequestConstants.REQUEST_URL, reuqestUrl);
         return paraMap;
-
-
     }
 
     private HashMap<String, String> getBodyMap(BaseReq req, String method) throws ApiException {
+        HashMap<String, String> bodyMap = new HashMap<>();
         if (req == null) {
-            return new HashMap<>();
+            return bodyMap;
         }
-        String bizContent;
-        req.setAccessToken(null);
-        bizContent = getJsonStrategy().toJson(req);
 
-        HashMap<String, String> bodyMap = new HashMap(1);
+        req.setAccessToken(null);
+        String bizContent = getJsonStrategy().toJson(req);
 
         if (RequestConstants.METHOD_POST.equals(method) || RequestConstants.METHOD_PUT.equals(method)) {
             bodyMap.put(RequestConstants.DATA_KEY, bizContent);
-        } else {
-            bodyMap = (HashMap<String, String>) getJsonStrategy().toJavaBean(bizContent, Map.class);
+            return bodyMap;
+        }
+
+        // 确保所有value都转换为String类型
+        Map<String, Object> rawMap = getJsonStrategy().toJavaBean(bizContent, Map.class);
+        if (rawMap != null) {
+            for (Map.Entry<String, Object> entry : rawMap.entrySet()) {
+                bodyMap.put(entry.getKey(), String.valueOf(entry.getValue()));
+            }
         }
         return bodyMap;
     }
@@ -290,21 +301,27 @@ public abstract class OpenApiClient {
 
     private HttpInfoRes request(String url, String method, Map<String, String> headerMap, Map<String, String> bodyMap, Map<String, File> fileMap) throws ApiException {
         try {
-            if (RequestConstants.METHOD_GET.equals(method)) {
-                return HttpUtil.get(url, headerMap, bodyMap);
-            } else if (RequestConstants.METHOD_POST.equals(method)) {
-                return HttpUtil.postJson(url, headerMap, bodyMap.get(RequestConstants.DATA_KEY));
-            } else if (RequestConstants.METHOD_PUT.equals(method)) {
-                return HttpUtil.putJson(url, headerMap, bodyMap.get(RequestConstants.DATA_KEY));
-            } else if (RequestConstants.METHOD_DELETE.equals(method)) {
-                return HttpUtil.delete(url, headerMap, bodyMap);
+            switch (method) {
+                case RequestConstants.METHOD_GET:
+                    return HttpUtil.get(url, headerMap, bodyMap);
+                case RequestConstants.METHOD_POST:
+                    return HttpUtil.postJson(url, headerMap,
+                            bodyMap != null ? bodyMap.get(RequestConstants.DATA_KEY) : null);
+                case RequestConstants.METHOD_PUT:
+                    return HttpUtil.putJson(url, headerMap,
+                            bodyMap != null ? bodyMap.get(RequestConstants.DATA_KEY) : null);
+                case RequestConstants.METHOD_DELETE:
+                    return HttpUtil.delete(url, headerMap, bodyMap);
+                default:
+                    log.error("不支持的HTTP方法: {}", method);
+                    throw new ApiException("不支持的HTTP方法: " + method);
             }
-            return null;
-        } catch (ApiException apie) {
-            throw apie;
+        } catch (ApiException e) {
+            log.error("API请求失败 - method: {}, url: {}, error: {}", method, url, e.getMessage(), e);
+            throw e;
         } catch (Exception e) {
-            log.error("http请求失败：{}", e.getMessage(), e);
-            throw new ApiException("http请求失败");
+            log.error("HTTP请求异常 - method: {}, url: {}, error: {}", method, url, e.getMessage(), e);
+            throw new ApiException("HTTP请求异常: " + e.getMessage());
         }
     }
 
