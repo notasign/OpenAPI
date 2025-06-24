@@ -3,10 +3,10 @@ package com.notasign.open.api.req.envelope;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.notasign.open.api.bean.base.BaseReq;
+import com.notasign.open.api.bean.base.EmptyResp;
 import com.notasign.open.api.bean.dto.document.DocumentReqDTO;
 import com.notasign.open.api.bean.dto.recipient.CarbonCopyReqDTO;
 import com.notasign.open.api.bean.dto.recipient.ParticipantReqDTO;
-import com.notasign.open.api.resp.envelope.CreateEnvelopeResp;
 import com.notasign.open.api.constants.OpenApiUrlConstants;
 
 import java.util.List;
@@ -15,7 +15,7 @@ import java.util.List;
  * @author Nota
  * @date 2025/5/22 16:42
  */
-public class UpdateEnvelopeReq extends BaseReq<CreateEnvelopeResp> {
+public class UpdateEnvelopeReq extends BaseReq<EmptyResp> {
 
     @JsonIgnore
     private String envelopeId;
@@ -119,8 +119,8 @@ public class UpdateEnvelopeReq extends BaseReq<CreateEnvelopeResp> {
     }
 
     @Override
-    public Class<CreateEnvelopeResp> getRespClass() {
-        return CreateEnvelopeResp.class;
+    public Class<EmptyResp> getRespClass() {
+        return EmptyResp.class;
     }
 
     @Override

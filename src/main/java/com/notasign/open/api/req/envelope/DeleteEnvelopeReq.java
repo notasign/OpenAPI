@@ -2,13 +2,14 @@ package com.notasign.open.api.req.envelope;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.notasign.open.api.bean.base.BaseReq;
+import com.notasign.open.api.bean.base.EmptyResp;
 import com.notasign.open.api.constants.OpenApiUrlConstants;
 
 /**
  * @author Nota
  * @date 2025/6/12 18:44
  */
-public class DeleteEnvelopeReq extends BaseReq<Void> {
+public class DeleteEnvelopeReq extends BaseReq<EmptyResp> {
 
     @JsonIgnore
     private String envelopeId;
@@ -22,8 +23,8 @@ public class DeleteEnvelopeReq extends BaseReq<Void> {
     }
 
     @Override
-    public Class<Void> getRespClass() {
-        return Void.class;
+    public Class<EmptyResp> getRespClass() {
+        return EmptyResp.class;
     }
 
     @Override
