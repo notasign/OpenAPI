@@ -125,10 +125,8 @@ Nota Sign平台分配的appId，appSecret，API请求地址在初始化时作为
 
 ```
 
-更多示例详见demo代码()
-
-
-
 # 参考
 
 Nota Sign OpenAPI (服务端) 接口文档
+https://developers.uat.notasign.com/api-docs/
+
