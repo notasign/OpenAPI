@@ -204,6 +204,7 @@ public abstract class OpenApiClient {
         }
         ApiResponse<T> apiResponse = getJsonStrategy().toJavaBean(httpInfoRes.getBody(), new ParameterizedTypeBaseRes(clzz));
         apiResponse.setHttpStatusCode(httpInfoRes.getHttpStatusCode());
+        apiResponse.setRequestId(httpInfoRes.getRequestId());
         return apiResponse;
     }
 
