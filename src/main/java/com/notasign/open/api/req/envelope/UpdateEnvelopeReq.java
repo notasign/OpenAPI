@@ -7,6 +7,8 @@ import com.notasign.open.api.bean.base.EmptyResp;
 import com.notasign.open.api.bean.dto.document.DocumentReqDTO;
 import com.notasign.open.api.bean.dto.recipient.CarbonCopyReqDTO;
 import com.notasign.open.api.bean.dto.recipient.ParticipantReqDTO;
+import com.notasign.open.api.bean.dto.template.CreateTemplateFieldDTO;
+import com.notasign.open.api.bean.dto.template.CreateTemplateRoleDTO;
 import com.notasign.open.api.constants.OpenApiUrlConstants;
 
 import java.util.List;
@@ -20,15 +22,17 @@ public class UpdateEnvelopeReq extends BaseReq<EmptyResp> {
     @JsonIgnore
     private String envelopeId;
 
+    private String templateId;
+
     private String subject;
 
     private String remark;
 
     private Long expiresTime;
 
-    private String certCA;
+    private String signatureLevel;
 
-    private Boolean autoPublish;
+    private Boolean autoSend;
 
     private Boolean signInOrder;
 
@@ -38,12 +42,24 @@ public class UpdateEnvelopeReq extends BaseReq<EmptyResp> {
 
     private List<CarbonCopyReqDTO> carbonCopies;
 
+    private CreateTemplateFieldDTO templateFields;
+
+    private List<CreateTemplateRoleDTO> templateRoles;
+
     public String getEnvelopeId() {
         return envelopeId;
     }
 
     public void setEnvelopeId(String envelopeId) {
         this.envelopeId = envelopeId;
+    }
+
+    public String getTemplateId() {
+        return templateId;
+    }
+
+    public void setTemplateId(String templateId) {
+        this.templateId = templateId;
     }
 
     public String getSubject() {
@@ -70,20 +86,20 @@ public class UpdateEnvelopeReq extends BaseReq<EmptyResp> {
         this.expiresTime = expiresTime;
     }
 
-    public String getCertCA() {
-        return certCA;
+    public String getSignatureLevel() {
+        return signatureLevel;
     }
 
-    public void setCertCA(String certCA) {
-        this.certCA = certCA;
+    public void setSignatureLevel(String signatureLevel) {
+        this.signatureLevel = signatureLevel;
     }
 
-    public Boolean getAutoPublish() {
-        return autoPublish;
+    public Boolean getAutoSend() {
+        return autoSend;
     }
 
-    public void setAutoPublish(Boolean autoPublish) {
-        this.autoPublish = autoPublish;
+    public void setAutoSend(Boolean autoSend) {
+        this.autoSend = autoSend;
     }
 
     public Boolean getSignInOrder() {
@@ -116,6 +132,22 @@ public class UpdateEnvelopeReq extends BaseReq<EmptyResp> {
 
     public void setCarbonCopies(List<CarbonCopyReqDTO> carbonCopies) {
         this.carbonCopies = carbonCopies;
+    }
+
+    public CreateTemplateFieldDTO getTemplateFields() {
+        return templateFields;
+    }
+
+    public void setTemplateFields(CreateTemplateFieldDTO templateFields) {
+        this.templateFields = templateFields;
+    }
+
+    public List<CreateTemplateRoleDTO> getTemplateRoles() {
+        return templateRoles;
+    }
+
+    public void setTemplateRoles(List<CreateTemplateRoleDTO> templateRoles) {
+        this.templateRoles = templateRoles;
     }
 
     @Override

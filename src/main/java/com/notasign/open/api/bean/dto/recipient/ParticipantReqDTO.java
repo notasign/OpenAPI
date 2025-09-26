@@ -20,6 +20,8 @@ public class ParticipantReqDTO {
 
     private String email;
 
+    private String signingMode;
+
     private List<SignField> signFields;
 
     private List<FillField> fillFields;
@@ -64,6 +66,14 @@ public class ParticipantReqDTO {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getSigningMode() {
+        return signingMode;
+    }
+
+    public void setSigningMode(String signingMode) {
+        this.signingMode = signingMode;
     }
 
     public List<SignField> getSignFields() {

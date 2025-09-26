@@ -26,7 +26,11 @@ public class OpenApiUrlConstants {
     /*DOCUMENT*/
     public static final String GET_FILE_UPLOAD_URL = "GET /api/file/upload-url";
     public static final String FILE_UPLOAD = "POST /api/file/upload";
-    public static final String FILE_CONVERSION = "POST /api/file/conversion";
+    public static final String FILE_CONVERSION = "POST /api/file/process";
+
+
+    /*TEMPLATE*/
+    public static final String GET_TEMPLATE = "GET /api/template/%s";
 
 
 

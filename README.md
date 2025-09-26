@@ -110,18 +110,14 @@ Nota Sign平台分配的appId，appSecret，API请求地址在初始化时作为
         accessTokenReq.setGrantType(OauthGrantTypeEnum.JWT.getCode());
         ApiResponse<GetAccessTokenResp> result = notaSignClient.execute(accessTokenReq);
         String accessToken = result.getData().getAccessToken();
-        // 初始化业务客户端
-        ServiceClient serviceClient=new ServiceClient(openApiClient);
-        
-        BaseRes<AccessTokenRes> res=serviceClient.getAccessToken();
         String accessToken=res.getData().getAccessToken();
 
         String envelopeId = "xxxxxxxx";
-        // 获取企业用户授权链接
+        // 调用查询信封详情方法
         GetEnvelopeReq getEnvelopeReq = new GetEnvelopeReq();
         getEnvelopeReq.setAccessToken(accessToken);
         getEnvelopeReq.setEnvelopeId(envelopeId);
-        ApiResponse<EnvelopeDetailResp> detail = client.execute(getEnvelopeReq);
+        ApiResponse<EnvelopeDetailResp> detail = notaSignClient.execute(getEnvelopeReq);
 
 ```
 

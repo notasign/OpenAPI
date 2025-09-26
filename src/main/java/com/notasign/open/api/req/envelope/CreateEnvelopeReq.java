@@ -5,6 +5,8 @@ import com.notasign.open.api.bean.base.BaseReq;
 import com.notasign.open.api.bean.dto.document.DocumentReqDTO;
 import com.notasign.open.api.bean.dto.recipient.CarbonCopyReqDTO;
 import com.notasign.open.api.bean.dto.recipient.ParticipantReqDTO;
+import com.notasign.open.api.bean.dto.template.CreateTemplateFieldDTO;
+import com.notasign.open.api.bean.dto.template.CreateTemplateRoleDTO;
 import com.notasign.open.api.resp.envelope.CreateEnvelopeResp;
 import com.notasign.open.api.constants.OpenApiUrlConstants;
 
@@ -26,8 +28,6 @@ public class CreateEnvelopeReq extends BaseReq<CreateEnvelopeResp> {
 
     private String signatureLevel;
 
-    private String caIdentifier;
-
     private Boolean autoSend;
 
     private Boolean signInOrder;
@@ -37,6 +37,10 @@ public class CreateEnvelopeReq extends BaseReq<CreateEnvelopeResp> {
     private List<ParticipantReqDTO> participants;
 
     private List<CarbonCopyReqDTO> carbonCopies;
+
+    private CreateTemplateFieldDTO templateFields;
+
+    private List<CreateTemplateRoleDTO> templateRoles;
 
     public String getTemplateId() {
         return templateId;
@@ -78,14 +82,6 @@ public class CreateEnvelopeReq extends BaseReq<CreateEnvelopeResp> {
         this.signatureLevel = signatureLevel;
     }
 
-    public String getCaIdentifier() {
-        return caIdentifier;
-    }
-
-    public void setCaIdentifier(String caIdentifier) {
-        this.caIdentifier = caIdentifier;
-    }
-
     public Boolean getAutoSend() {
         return autoSend;
     }
@@ -124,6 +120,22 @@ public class CreateEnvelopeReq extends BaseReq<CreateEnvelopeResp> {
 
     public void setCarbonCopies(List<CarbonCopyReqDTO> carbonCopies) {
         this.carbonCopies = carbonCopies;
+    }
+
+    public CreateTemplateFieldDTO getTemplateFields() {
+        return templateFields;
+    }
+
+    public void setTemplateFields(CreateTemplateFieldDTO templateFields) {
+        this.templateFields = templateFields;
+    }
+
+    public List<CreateTemplateRoleDTO> getTemplateRoles() {
+        return templateRoles;
+    }
+
+    public void setTemplateRoles(List<CreateTemplateRoleDTO> templateRoles) {
+        this.templateRoles = templateRoles;
     }
 
     @Override
