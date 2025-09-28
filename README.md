@@ -70,19 +70,19 @@ JAVA JDK 版本: JDK 1.7-1.8
 
 项目启动后必须先进行初始化，才能调用jar包方法。初始化仅需一次，之后可重复使用。
 
-Nota Sign平台分配的appId，appSecret，API请求地址在初始化时作为入参传入，请求超时配置、序列化策率可以初始化后设置。
+Nota Sign平台分配的appId，privateKey，API请求地址在初始化时作为入参传入，请求超时配置、序列化策率可以初始化后设置。
 
 ```java
         //法大大分配的appId
         String appId="xxxxx";
         //法大大分配的appId对应的秘钥
-        String appSecret="xxxxx";
+        String privateKey="xxxxx";
         //API请求地址
         String serverUrl="";
         //用户授权码
         String userCode="xxxxx";
         // 初始化客户端
-        NotaSignClient notaSignClient = new NotaSignClient(appId,appSecret,serverUrl,userCode);
+        NotaSignClient notaSignClient = new NotaSignClient(appId,privateKey,serverUrl,userCode);
 
         // http超时配置设置， 默认不设置超时时间
         // 如果不设置超时时间 该设置可忽略
