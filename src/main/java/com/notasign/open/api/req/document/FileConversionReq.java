@@ -22,18 +22,18 @@ public class FileConversionReq extends BaseReq<FileConversionResp> {
 
 
     public static class FileUrlInfo {
-        private String fddFileUrl;
+        private String fileUrl;
 
         private String fileName;
 
         private String fileType;
 
-        public String getFddFileUrl() {
-            return fddFileUrl;
+        public String getFileUrl() {
+            return fileUrl;
         }
 
-        public void setFddFileUrl(String fddFileUrl) {
-            this.fddFileUrl = fddFileUrl;
+        public void setFileUrl(String fileUrl) {
+            this.fileUrl = fileUrl;
         }
 
         public String getFileName() {
