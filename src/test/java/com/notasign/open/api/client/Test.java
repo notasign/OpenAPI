@@ -6,6 +6,7 @@ import com.notasign.open.api.bean.dto.document.DocumentReqDTO;
 import com.notasign.open.api.bean.dto.field.DocumentFieldReqDTO;
 import com.notasign.open.api.bean.dto.field.PositionDTO;
 import com.notasign.open.api.bean.dto.recipient.ParticipantReqDTO;
+import com.notasign.open.api.config.HttpConfig;
 import com.notasign.open.api.enums.envelope.SignatureLevelEnum;
 import com.notasign.open.api.enums.field.FieldTypeEnum;
 import com.notasign.open.api.enums.field.PositionModeEnum;
@@ -17,6 +18,7 @@ import com.notasign.open.api.req.envelope.GetEnvelopeReq;
 import com.notasign.open.api.resp.accesstoken.GetAccessTokenResp;
 import com.notasign.open.api.resp.envelope.CreateEnvelopeResp;
 import com.notasign.open.api.resp.envelope.EnvelopeDetailResp;
+import com.notasign.open.api.stratey.DefaultJsonStrategy;
 import com.notasign.open.api.utils.json.JacksonUtil;
 import com.notasign.open.api.utils.jwt.OauthJwtUtil;
 

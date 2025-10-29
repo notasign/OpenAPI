@@ -31,16 +31,18 @@ public class SignDemandDTO {
 
     public static class JoinCheckConfiguration {
 
-        private String joinMethod;
+        private String verificationMethod;
 
         private String accessCode;
 
-        public String getJoinMethod() {
-            return joinMethod;
+        private String verificationEmail;
+
+        public String getVerificationMethod() {
+            return verificationMethod;
         }
 
-        public void setJoinMethod(String joinMethod) {
-            this.joinMethod = joinMethod;
+        public void setVerificationMethod(String verificationMethod) {
+            this.verificationMethod = verificationMethod;
         }
 
         public String getAccessCode() {
@@ -49,6 +51,14 @@ public class SignDemandDTO {
 
         public void setAccessCode(String accessCode) {
             this.accessCode = accessCode;
+        }
+
+        public String getVerificationEmail() {
+            return verificationEmail;
+        }
+
+        public void setVerificationEmail(String verificationEmail) {
+            this.verificationEmail = verificationEmail;
         }
     }
 
