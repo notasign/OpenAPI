@@ -1,5 +1,6 @@
 package com.notasign.open.api.resp.template;
 
+import com.notasign.open.api.bean.base.BaseResp;
 import com.notasign.open.api.bean.dto.template.TemplateFieldDTO;
 import com.notasign.open.api.bean.dto.template.TemplateRoleDTO;
 import com.notasign.open.api.resp.document.DocumentDTO;
@@ -10,7 +11,7 @@ import java.util.List;
  * @author Nota
  * @date 2025/9/26 10:52
  */
-public class GetTemplateDetailResp {
+public class GetTemplateDetailResp extends BaseResp {
 
 
     private String templateId;

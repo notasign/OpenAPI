@@ -10,7 +10,7 @@ public class SignDemandDTO {
 
     private int orderNo;
 
-    private List<JoinCheckConfiguration> joinCheckConfigurations;
+    private List<JoinCheckConfiguration> identityVerifications;
 
 
     public int getOrderNo() {
@@ -21,12 +21,12 @@ public class SignDemandDTO {
         this.orderNo = orderNo;
     }
 
-    public List<JoinCheckConfiguration> getJoinCheckConfigurations() {
-        return joinCheckConfigurations;
+    public List<JoinCheckConfiguration> getIdentityVerifications() {
+        return identityVerifications;
     }
 
-    public void setJoinCheckConfigurations(List<JoinCheckConfiguration> joinCheckConfigurations) {
-        this.joinCheckConfigurations = joinCheckConfigurations;
+    public void setIdentityVerifications(List<JoinCheckConfiguration> identityVerifications) {
+        this.identityVerifications = identityVerifications;
     }
 
     public static class JoinCheckConfiguration {
