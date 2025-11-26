@@ -7,6 +7,8 @@ package com.notasign.open.api.bean.dto.template;
 public class CreateTemplateRoleDTO {
     
     private String roleName;
+
+    private String participantId;
     
     private String participantName;
     
@@ -24,6 +26,14 @@ public class CreateTemplateRoleDTO {
 
     public void setRoleName(String roleName) {
         this.roleName = roleName;
+    }
+
+    public String getParticipantId() {
+        return participantId;
+    }
+
+    public void setParticipantId(String participantId) {
+        this.participantId = participantId;
     }
 
     public String getParticipantName() {
