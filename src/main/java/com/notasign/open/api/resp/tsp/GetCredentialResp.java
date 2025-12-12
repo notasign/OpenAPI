@@ -1,12 +1,14 @@
 package com.notasign.open.api.resp.tsp;
 
+import com.notasign.open.api.bean.base.BaseResp;
+
 import java.util.List;
 
 /**
  * @author fadada
  * @date 2025/10/13 15:32
  */
-public class GetCredentialResp {
+public class GetCredentialResp extends BaseResp {
     
     private List<CredentialDTO> credentials;
 
