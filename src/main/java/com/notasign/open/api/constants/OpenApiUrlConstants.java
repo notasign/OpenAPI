@@ -35,7 +35,7 @@ public class OpenApiUrlConstants {
 
     /*XML*/
     public static final String XML_SIGN = "POST /api/tsp/xml-sign";
-    public static final String DOWNLOAD_XML_SIGNED = "GET /api/tsp/%s/download-url";
+    public static final String DOWNLOAD_XML_SIGNED = "POST /api/tsp/%s/download-url";
 
 
     /*TSP*/
