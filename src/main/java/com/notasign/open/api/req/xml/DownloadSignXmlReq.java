@@ -6,7 +6,7 @@ import com.notasign.open.api.constants.OpenApiUrlConstants;
 import com.notasign.open.api.resp.xml.DownloadSignXmlResp;
 
 /**
- * @author caishangdong
+ * @author fadada
  * @date 2025/10/13 14:28
  */
 public class DownloadSignXmlReq extends BaseReq<DownloadSignXmlResp> {

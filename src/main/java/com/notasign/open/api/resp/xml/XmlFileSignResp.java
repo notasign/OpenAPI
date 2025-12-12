@@ -4,7 +4,7 @@ package com.notasign.open.api.resp.xml;
 import com.notasign.open.api.bean.base.BaseResp;
 
 /**
- * @author caishangdong
+ * @author fadada
  * @date 2025/10/13 14:55
  */
 public class XmlFileSignResp extends BaseResp {

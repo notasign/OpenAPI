@@ -38,5 +38,7 @@ public class OpenApiUrlConstants {
     public static final String DOWNLOAD_XML_SIGNED = "GET /api/tsp/%s/download-url";
 
 
+    /*TSP*/
+    public static final String GET_CREDENTIAL = "GET /api/tsp/credentials";
 
 }

@@ -7,7 +7,7 @@ import com.notasign.open.api.resp.xml.XmlFileSignResp;
 import java.util.List;
 
 /**
- * @author caishangdong
+ * @author fadada
  * @date 2025/10/11 18:22
  */
 public class XmlFileSignReq extends BaseReq<XmlFileSignResp> {
