@@ -1,4 +1,4 @@
-package com.notasign.open.api.resp.intesi;
+package com.notasign.open.api.resp.tsp;
 
 import java.util.List;
 

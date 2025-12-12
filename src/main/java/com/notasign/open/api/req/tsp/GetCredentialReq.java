@@ -1,9 +1,9 @@
-package com.notasign.open.api.req.intesi;
+package com.notasign.open.api.req.tsp;
 
 
 import com.notasign.open.api.bean.base.BaseReq;
 import com.notasign.open.api.constants.OpenApiUrlConstants;
-import com.notasign.open.api.resp.intesi.GetCredentialResp;
+import com.notasign.open.api.resp.tsp.GetCredentialResp;
 
 /**
  * @author fadada
