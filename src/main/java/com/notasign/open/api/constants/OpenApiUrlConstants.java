@@ -33,5 +33,10 @@ public class OpenApiUrlConstants {
     public static final String GET_TEMPLATE = "GET /api/template/%s";
 
 
+    /*XML*/
+    public static final String XML_SIGN = "POST /api/tsp/xml-sign";
+    public static final String DOWNLOAD_XML_SIGNED = "GET /api/tsp/%s/download-url";
+
+
 
 }
