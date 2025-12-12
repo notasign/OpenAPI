@@ -12,6 +12,7 @@
         <slf4j-log4j12.version>2.0.0-alpha0</slf4j-log4j12.version>
         <jackson-databind.version>2.13.0</jackson-databind.version>
         <nimbus-jose-jwt.version>10.3</nimbus-jose-jwt.version>
+        <hutool-version>5.8.26</hutool-version>
     </properties>
     <dependencies>
         <dependency>
@@ -40,6 +41,12 @@
             <groupId>com.nimbusds</groupId>
             <artifactId>nimbus-jose-jwt</artifactId>
             <version>${nimbus-jose-jwt.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>cn.hutool</groupId>
+            <artifactId>hutool-all</artifactId>
+            <version>${hutool-version}</version>
         </dependency>
 
     </dependencies>
