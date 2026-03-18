@@ -12,6 +12,12 @@ public class SignDemandDTO {
 
     private List<JoinCheckConfiguration> identityVerifications;
 
+    private String signatureType;
+
+    private ESealConfigDTO esealConfig;
+
+    private List<String> signatureOptions;
+
 
     public int getOrderNo() {
         return orderNo;
@@ -27,6 +33,30 @@ public class SignDemandDTO {
 
     public void setIdentityVerifications(List<JoinCheckConfiguration> identityVerifications) {
         this.identityVerifications = identityVerifications;
+    }
+
+    public String getSignatureType() {
+        return signatureType;
+    }
+
+    public void setSignatureType(String signatureType) {
+        this.signatureType = signatureType;
+    }
+
+    public ESealConfigDTO getEsealConfig() {
+        return esealConfig;
+    }
+
+    public void setEsealConfig(ESealConfigDTO esealConfig) {
+        this.esealConfig = esealConfig;
+    }
+
+    public List<String> getSignatureOptions() {
+        return signatureOptions;
+    }
+
+    public void setSignatureOptions(List<String> signatureOptions) {
+        this.signatureOptions = signatureOptions;
     }
 
     public static class JoinCheckConfiguration {

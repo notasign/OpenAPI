@@ -1,5 +1,7 @@
 package com.notasign.open.api.bean.dto.template;
 
+import com.notasign.open.api.bean.dto.recipient.TemplateRoleSignDemandDTO;
+
 /**
  * @author Nota
  * @date 2025/8/26 14:06
@@ -19,6 +21,8 @@ public class CreateTemplateRoleDTO {
     private String email;
     
     private String signingMode;
+
+    private TemplateRoleSignDemandDTO signDemand;
 
     public String getRoleName() {
         return roleName;

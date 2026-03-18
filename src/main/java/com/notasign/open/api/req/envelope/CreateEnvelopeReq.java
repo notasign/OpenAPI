@@ -26,11 +26,14 @@ public class CreateEnvelopeReq extends BaseReq<CreateEnvelopeResp> {
 
     private Long expiresTime;
 
+    @Deprecated
     private String signatureLevel;
 
     private Boolean autoSend;
 
     private Boolean signInOrder;
+
+    private Boolean freeformSigningMode;
 
     private List<DocumentReqDTO> documents;
 
@@ -96,6 +99,14 @@ public class CreateEnvelopeReq extends BaseReq<CreateEnvelopeResp> {
 
     public void setSignInOrder(Boolean signInOrder) {
         this.signInOrder = signInOrder;
+    }
+
+    public Boolean getFreeformSigningMode() {
+        return freeformSigningMode;
+    }
+
+    public void setFreeformSigningMode(Boolean freeformSigningMode) {
+        this.freeformSigningMode = freeformSigningMode;
     }
 
     public List<DocumentReqDTO> getDocuments() {

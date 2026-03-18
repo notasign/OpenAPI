@@ -12,6 +12,8 @@ public class ParticipantReqDTO {
 
     private String participantId;
 
+    private String participantType;
+
     private String participantName;
 
     private String phoneCountryCode;
@@ -34,6 +36,14 @@ public class ParticipantReqDTO {
 
     public void setParticipantId(String participantId) {
         this.participantId = participantId;
+    }
+
+    public String getParticipantType() {
+        return participantType;
+    }
+
+    public void setParticipantType(String participantType) {
+        this.participantType = participantType;
     }
 
     public String getParticipantName() {

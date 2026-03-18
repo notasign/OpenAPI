@@ -10,6 +10,7 @@ public class OpenApiUrlConstants {
 
     /*envelopeClient*/
     public static final String CREATE_ENVELOPE = "POST /api/envelope/create";
+    public static final String CREATE_SELF_SIGN_DOCS =  "/envelope/self-sign-docs";
     public static final String UPDATE_ENVELOPE = "PUT /api/envelope/%s";
     public static final String PUBLISH_ENVELOPE = "POST /api/envelope/%s/send";
     public static final String REVOKE_ENVELOPE = "POST /api/envelope/%s/revoke";
