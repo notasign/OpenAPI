@@ -17,7 +17,7 @@ public class OpenApiUrlConstants {
     public static final String DELETE_ENVELOPE = "DELETE /api/envelope/%s";
     public static final String GET_ENVELOPE_EDIT_URL = "POST /api/envelope/edit-url";
     public static final String GET_ENVELOPE_PREVIEW_URL = "POST /api/envelope/preview-url";
-    public static final String REMIND_ENVELOPE = "POST /envelope/%s/remind";
+    public static final String REMIND_ENVELOPE = "POST /api/envelope/%s/remind";
 
     public static final String GET_ENVELOPE_DETAIL = "GET /api/envelope/%s";
     public static final String GET_ENVELOPES = "GET /api/envelopes";
