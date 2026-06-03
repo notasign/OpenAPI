@@ -36,6 +36,8 @@ public class UpdateEnvelopeReq extends BaseReq<EmptyResp> {
 
     private Boolean signInOrder;
 
+    private String freeformSigningMode;
+
     private List<DocumentReqDTO> documents;
 
     private List<ParticipantReqDTO> participants;
@@ -108,6 +110,14 @@ public class UpdateEnvelopeReq extends BaseReq<EmptyResp> {
 
     public void setSignInOrder(Boolean signInOrder) {
         this.signInOrder = signInOrder;
+    }
+
+    public String getFreeformSigningMode() {
+        return freeformSigningMode;
+    }
+
+    public void setFreeformSigningMode(String freeformSigningMode) {
+        this.freeformSigningMode = freeformSigningMode;
     }
 
     public List<DocumentReqDTO> getDocuments() {

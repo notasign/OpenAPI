@@ -12,6 +12,8 @@ public class TemplateRoleSignDemandDTO {
 
     private List<String> signatureOptions;
 
+    private BlockConfigDTO blockConfig;
+
     public ESealConfigDTO getEsealConfig() {
         return esealConfig;
     }
@@ -26,5 +28,13 @@ public class TemplateRoleSignDemandDTO {
 
     public void setSignatureOptions(List<String> signatureOptions) {
         this.signatureOptions = signatureOptions;
+    }
+
+    public BlockConfigDTO getBlockConfig() {
+        return blockConfig;
+    }
+
+    public void setBlockConfig(BlockConfigDTO blockConfig) {
+        this.blockConfig = blockConfig;
     }
 }

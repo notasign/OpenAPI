@@ -9,6 +9,7 @@ import com.notasign.open.api.bean.dto.recipient.SignDemandDTO;
  */
 public class ParticipantDTO {
     private String participantId;
+    private String participantType;
     private String participantName;
     private String joinStatus;
     private String joinTime;
@@ -25,6 +26,14 @@ public class ParticipantDTO {
 
     public void setParticipantId(String participantId) {
         this.participantId = participantId;
+    }
+
+    public String getParticipantType() {
+        return participantType;
+    }
+
+    public void setParticipantType(String participantType) {
+        this.participantType = participantType;
     }
 
     public String getParticipantName() {

@@ -33,7 +33,7 @@ public class CreateEnvelopeReq extends BaseReq<CreateEnvelopeResp> {
 
     private Boolean signInOrder;
 
-    private Boolean freeformSigningMode;
+    private String freeformSigningMode;
 
     private List<DocumentReqDTO> documents;
 
@@ -101,11 +101,11 @@ public class CreateEnvelopeReq extends BaseReq<CreateEnvelopeResp> {
         this.signInOrder = signInOrder;
     }
 
-    public Boolean getFreeformSigningMode() {
+    public String getFreeformSigningMode() {
         return freeformSigningMode;
     }
 
-    public void setFreeformSigningMode(Boolean freeformSigningMode) {
+    public void setFreeformSigningMode(String freeformSigningMode) {
         this.freeformSigningMode = freeformSigningMode;
     }
 

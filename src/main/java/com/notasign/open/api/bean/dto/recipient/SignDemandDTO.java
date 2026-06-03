@@ -18,6 +18,8 @@ public class SignDemandDTO {
 
     private List<String> signatureOptions;
 
+    private BlockConfigDTO blockConfig;
+
 
     public int getOrderNo() {
         return orderNo;
@@ -57,6 +59,14 @@ public class SignDemandDTO {
 
     public void setSignatureOptions(List<String> signatureOptions) {
         this.signatureOptions = signatureOptions;
+    }
+
+    public BlockConfigDTO getBlockConfig() {
+        return blockConfig;
+    }
+
+    public void setBlockConfig(BlockConfigDTO blockConfig) {
+        this.blockConfig = blockConfig;
     }
 
     public static class JoinCheckConfiguration {

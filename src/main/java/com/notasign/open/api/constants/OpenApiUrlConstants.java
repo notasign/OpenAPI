@@ -10,7 +10,7 @@ public class OpenApiUrlConstants {
 
     /*envelopeClient*/
     public static final String CREATE_ENVELOPE = "POST /api/envelope/create";
-    public static final String CREATE_SELF_SIGN_DOCS =  "/envelope/self-sign-docs";
+    public static final String CREATE_SELF_SIGN_DOCS =  "POST /api/envelope/self-sign-docs";
     public static final String UPDATE_ENVELOPE = "PUT /api/envelope/%s";
     public static final String PUBLISH_ENVELOPE = "POST /api/envelope/%s/send";
     public static final String REVOKE_ENVELOPE = "POST /api/envelope/%s/revoke";
@@ -43,5 +43,34 @@ public class OpenApiUrlConstants {
 
     /*TSP*/
     public static final String GET_CREDENTIAL = "GET /api/tsp/credentials";
+    public static final String GET_CERTIFICATE = "POST /api/tsp/certificate";
+    public static final String SIGN_HASH = "POST /api/tsp/signHash";
+
+    /*ENVELOPE CORRECTION*/
+    public static final String START_CORRECTION = "POST /api/envelope/%s/correct/start";
+    public static final String CLOSE_CORRECTION = "POST /api/envelope/%s/correct/close";
+
+    /*ENVELOPE PARTICIPANTS*/
+    public static final String ADD_PARTICIPANTS = "POST /api/envelope/%s/participants";
+    public static final String REMOVE_PARTICIPANT = "DELETE /api/envelope/%s/participants/%s";
+    public static final String UPDATE_PARTICIPANT = "PUT /api/envelope/%s/participants/%s";
+    public static final String UNBLOCK_PARTICIPANT = "POST /api/envelope/%s/participants/%s/unblock";
+
+    /*ENVELOPE FIELDS*/
+    public static final String ADD_FIELDS = "POST /api/envelope/%s/documents/%s/fields";
+    public static final String REMOVE_FIELDS = "DELETE /api/envelope/%s/documents/%s/fields";
+
+    /*MEMBER*/
+    public static final String GET_MEMBER_LIST = "GET /api/members/list";
+    public static final String GET_OAUTH_CODE = "POST /api/oauth/code";
+
+
+    /*XML VALIDATION*/
+    public static final String CREATE_XML_VALIDATION = "POST /api/tsp/xml-validations";
+    public static final String GET_XML_VALIDATION_STATUS = "GET /api/tsp/xml-validations/%s";
+    public static final String GET_XML_VALIDATION_ITEMS = "GET /api/tsp/xml-validations/%s/items";
+    public static final String GET_XML_VALIDATION_ITEM_DETAIL = "GET /api/tsp/xml-validations/%s/items/%s";
+    public static final String GET_XML_VALIDATION_ITEM_ISSUES = "GET /api/tsp/xml-validations/%s/items/%s/issues";
+    public static final String RERUN_XML_VALIDATION = "POST /api/tsp/xml-validations/%s/rerun";
 
 }

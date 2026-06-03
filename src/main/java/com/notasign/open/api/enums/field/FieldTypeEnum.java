@@ -9,8 +9,11 @@ public enum FieldTypeEnum {
 
     SIGNATURE("signature",  "签名"),
     SEAL("seal",  "印章"),
+    ESEAL("eseal",  "电子印章"),
     DATE_SIGN("date_sign",  "日期"),
     TEXT("text",  "文本"),
+    ATTACHMENT("attachment",  "附件"),
+    DRAWING("drawing",  "绘图"),
     ;
 
     private final String code;
