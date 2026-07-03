@@ -20,6 +20,10 @@ public class SignDemandDTO {
 
     private BlockConfigDTO blockConfig;
 
+    private List<String> terms;
+
+    private ReadingRequirementDTO readingRequirement;
+
 
     public int getOrderNo() {
         return orderNo;
@@ -67,6 +71,22 @@ public class SignDemandDTO {
 
     public void setBlockConfig(BlockConfigDTO blockConfig) {
         this.blockConfig = blockConfig;
+    }
+
+    public List<String> getTerms() {
+        return terms;
+    }
+
+    public void setTerms(List<String> terms) {
+        this.terms = terms;
+    }
+
+    public ReadingRequirementDTO getReadingRequirement() {
+        return readingRequirement;
+    }
+
+    public void setReadingRequirement(ReadingRequirementDTO readingRequirement) {
+        this.readingRequirement = readingRequirement;
     }
 
     public static class JoinCheckConfiguration {

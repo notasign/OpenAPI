@@ -1,6 +1,7 @@
 package com.notasign.open.api.bean.dto.document;
 
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.notasign.open.api.bean.dto.field.DocumentFieldReqDTO;
 
 import java.util.List;
@@ -16,6 +17,9 @@ public class DocumentReqDTO {
     private String documentName;
 
     private String documentFileId;
+
+    @JsonProperty("eMeteraiDocType")
+    private String eMeteraiDocType;
 
     private List<DocumentFieldReqDTO> documentFields;
 
@@ -41,6 +45,14 @@ public class DocumentReqDTO {
 
     public void setDocumentFileId(String documentFileId) {
         this.documentFileId = documentFileId;
+    }
+
+    public String getEMeteraiDocType() {
+        return eMeteraiDocType;
+    }
+
+    public void setEMeteraiDocType(String eMeteraiDocType) {
+        this.eMeteraiDocType = eMeteraiDocType;
     }
 
     public List<DocumentFieldReqDTO> getDocumentFields() {

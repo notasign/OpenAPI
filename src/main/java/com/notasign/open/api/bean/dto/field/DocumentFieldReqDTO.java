@@ -1,5 +1,6 @@
 package com.notasign.open.api.bean.dto.field;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
  * @author Nota
@@ -16,6 +17,7 @@ public class DocumentFieldReqDTO {
 
     private String fieldValue;
 
+    @JsonProperty("isRequired")
     private Boolean isRequired;
 
     private String toolTips;
@@ -25,6 +27,8 @@ public class DocumentFieldReqDTO {
     private StampFieldConfigDTO stampConfig;
 
     private AttachmentFieldConfigDTO attachmentConfig;
+
+    private DrawingFieldConfigDTO drawingConfig;
 
     public String getFieldId() {
         return fieldId;
@@ -58,10 +62,26 @@ public class DocumentFieldReqDTO {
         this.fieldValue = fieldValue;
     }
 
+    public Boolean getIsRequired() {
+        return isRequired;
+    }
+
+    public void setIsRequired(Boolean isRequired) {
+        this.isRequired = isRequired;
+    }
+
+    /**
+     * @deprecated 使用 {@link #getIsRequired()} 代替，保持与 JSON 字段名 isRequired 一致
+     */
+    @Deprecated
     public Boolean getRequired() {
         return isRequired;
     }
 
+    /**
+     * @deprecated 使用 {@link #setIsRequired(Boolean)} 代替，保持与 JSON 字段名 isRequired 一致
+     */
+    @Deprecated
     public void setRequired(Boolean required) {
         isRequired = required;
     }
@@ -96,5 +116,13 @@ public class DocumentFieldReqDTO {
 
     public void setAttachmentConfig(AttachmentFieldConfigDTO attachmentConfig) {
         this.attachmentConfig = attachmentConfig;
+    }
+
+    public DrawingFieldConfigDTO getDrawingConfig() {
+        return drawingConfig;
+    }
+
+    public void setDrawingConfig(DrawingFieldConfigDTO drawingConfig) {
+        this.drawingConfig = drawingConfig;
     }
 }

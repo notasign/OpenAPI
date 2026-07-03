@@ -14,6 +14,12 @@ public class TemplateRoleSignDemandDTO {
 
     private BlockConfigDTO blockConfig;
 
+    private List<SignDemandDTO.JoinCheckConfiguration> identityVerifications;
+
+    private ReadingRequirementDTO readingRequirement;
+
+    private List<String> terms;
+
     public ESealConfigDTO getEsealConfig() {
         return esealConfig;
     }
@@ -36,5 +42,29 @@ public class TemplateRoleSignDemandDTO {
 
     public void setBlockConfig(BlockConfigDTO blockConfig) {
         this.blockConfig = blockConfig;
+    }
+
+    public List<SignDemandDTO.JoinCheckConfiguration> getIdentityVerifications() {
+        return identityVerifications;
+    }
+
+    public void setIdentityVerifications(List<SignDemandDTO.JoinCheckConfiguration> identityVerifications) {
+        this.identityVerifications = identityVerifications;
+    }
+
+    public ReadingRequirementDTO getReadingRequirement() {
+        return readingRequirement;
+    }
+
+    public void setReadingRequirement(ReadingRequirementDTO readingRequirement) {
+        this.readingRequirement = readingRequirement;
+    }
+
+    public List<String> getTerms() {
+        return terms;
+    }
+
+    public void setTerms(List<String> terms) {
+        this.terms = terms;
     }
 }

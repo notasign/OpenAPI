@@ -12,6 +12,10 @@ public class StampFieldConfigDTO {
 
     private List<String> usageMethod;
 
+    private String sizeMode;
+
+    private FieldSizeDTO fieldSize;
+
     public List<String> getUsageScope() {
         return usageScope;
     }
@@ -26,5 +30,21 @@ public class StampFieldConfigDTO {
 
     public void setUsageMethod(List<String> usageMethod) {
         this.usageMethod = usageMethod;
+    }
+
+    public String getSizeMode() {
+        return sizeMode;
+    }
+
+    public void setSizeMode(String sizeMode) {
+        this.sizeMode = sizeMode;
+    }
+
+    public FieldSizeDTO getFieldSize() {
+        return fieldSize;
+    }
+
+    public void setFieldSize(FieldSizeDTO fieldSize) {
+        this.fieldSize = fieldSize;
     }
 }
