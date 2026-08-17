@@ -1,92 +1,126 @@
-# global-openapi-java-sdk
+# Nota Sign OpenAPI Java SDK
 
+## Introduction
 
+Welcome to the Nota Sign Developer Toolkit. The Java SDK is the companion client library for the Nota Sign e-signature cloud open platform (Nota Sign Open API).
 
-## Getting started
+The SDK is published to Maven Central. Add the following dependency to your project to install it:
 
-To make it easy for you to get started with GitLab, here's a list of recommended next steps.
-
-Already a pro? Just edit this README.md and make it your own. Want to make it easy? [Use the template at the bottom](#editing-this-readme)!
-
-## Add your files
-
-- [ ] [Create](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#create-a-file) or [upload](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#upload-a-file) files
-- [ ] [Add files using the command line](https://docs.gitlab.com/ee/gitlab-basics/add-file.html#add-a-file-using-the-command-line) or push an existing Git repository with the following command:
-
-```
-cd existing_repo
-git remote add origin https://gitlab.fabigbig.com/oversea/global-openapi-java-sdk.git
-git branch -M main
-git push -uf origin main
+```xml
+<dependency>
+    <groupId>com.notasign.api</groupId>
+    <artifactId>global-openapi-java-sdk</artifactId>
+    <version>1.0.0</version>
+</dependency>
 ```
 
-## Integrate with your tools
+## Modules
 
-- [ ] [Set up project integrations](https://gitlab.fabigbig.com/oversea/global-openapi-java-sdk/-/settings/integrations)
+All API requests are made through the unified `NotaSignClient`. Individual business APIs are invoked using the request classes under `com.notasign.open.api.req`:
 
-## Collaborate with your team
+| Module         | Description                              |
+|----------------|------------------------------------------|
+| NotaSignClient | Unified client for all API invocations   |
 
-- [ ] [Invite team members and collaborators](https://docs.gitlab.com/ee/user/project/members/)
-- [ ] [Create a new merge request](https://docs.gitlab.com/ee/user/project/merge_requests/creating_merge_requests.html)
-- [ ] [Automatically close issues from merge requests](https://docs.gitlab.com/ee/user/project/issues/managing_issues.html#closing-issues-automatically)
-- [ ] [Enable merge request approvals](https://docs.gitlab.com/ee/user/project/merge_requests/approvals/)
-- [ ] [Automatically merge when pipeline succeeds](https://docs.gitlab.com/ee/user/project/merge_requests/merge_when_pipeline_succeeds.html)
+## Requirements
 
-## Test and Deploy
-
-Use the built-in continuous integration in GitLab.
-
-- [ ] [Get started with GitLab CI/CD](https://docs.gitlab.com/ee/ci/quick_start/index.html)
-- [ ] [Analyze your code for known vulnerabilities with Static Application Security Testing(SAST)](https://docs.gitlab.com/ee/user/application_security/sast/)
-- [ ] [Deploy to Kubernetes, Amazon EC2, or Amazon ECS using Auto Deploy](https://docs.gitlab.com/ee/topics/autodevops/requirements.html)
-- [ ] [Use pull-based deployments for improved Kubernetes management](https://docs.gitlab.com/ee/user/clusters/agent/)
-- [ ] [Set up protected environments](https://docs.gitlab.com/ee/ci/environments/protected_environments.html)
-
-***
-
-# Editing this README
-
-When you're ready to make this README your own, just edit this file and use the handy template below (or feel free to structure it however you want - this is just a starting point!). Thank you to [makeareadme.com](https://www.makeareadme.com/) for this template.
-
-## Suggestions for a good README
-Every project is different, so consider which of these sections apply to yours. The sections used in the template are suggestions for most open source projects. Also keep in mind that while a README can be too long and detailed, too long is better than too short. If you think your README is too long, consider utilizing another form of documentation rather than cutting out information.
-
-## Name
-Choose a self-explaining name for your project.
-
-## Description
-Let people know what your project can do specifically. Provide context and add a link to any reference visitors might be unfamiliar with. A list of Features or a Background subsection can also be added here. If there are alternatives to your project, this is a good place to list differentiating factors.
-
-## Badges
-On some READMEs, you may see small images that convey metadata, such as whether or not all the tests are passing for the project. You can use Shields to add some to your README. Many services also have instructions for adding a badge.
-
-## Visuals
-Depending on what you are making, it can be a good idea to include screenshots or even a video (you'll frequently see GIFs rather than actual videos). Tools like ttygif can help, but check out Asciinema for a more sophisticated method.
+- Java JDK 1.7 – 1.8
 
 ## Installation
-Within a particular ecosystem, there may be a common way of installing things, such as using Yarn, NuGet, or Homebrew. However, consider the possibility that whoever is reading your README is a novice and would like more guidance. Listing specific steps helps remove ambiguity and gets people to using your project as quickly as possible. If it only runs in a specific context like a particular programming language version or operating system or has dependencies that have to be installed manually, also add a Requirements subsection.
 
-## Usage
-Use examples liberally, and show the expected output if you can. It's helpful to have inline the smallest example of usage that you can demonstrate, while providing links to more sophisticated examples if they are too long to reasonably include in the README.
+### Dependencies
 
-## Support
-Tell people where they can go to for help. It can be any combination of an issue tracker, a chat room, an email address, etc.
+Include the JAR dependencies required by the SDK. They provide the full set of methods for calling the Nota Sign cloud API services:
 
-## Roadmap
-If you have ideas for releases in the future, it is a good idea to list them in the README.
+```text
+    <dependency>
+        <groupId>org.apache.httpcomponents</groupId>
+        <artifactId>httpclient</artifactId>
+        <version>4.5.12</version>
+    </dependency>
+    <dependency>
+        <groupId>org.apache.httpcomponents</groupId>
+        <artifactId>httpmime</artifactId>
+        <version>4.5.8</version>
+    </dependency>
+    <dependency>
+        <groupId>com.fasterxml.jackson.core</groupId>
+        <artifactId>jackson-databind</artifactId>
+        <version>2.10.1</version>
+    </dependency>
+    <dependency>
+        <groupId>org.slf4j</groupId>
+        <artifactId>slf4j-log4j12</artifactId>
+        <version>1.7.25</version>
+    </dependency>
+    <dependency>
+        <groupId>commons-logging</groupId>
+        <artifactId>commons-logging</artifactId>
+        <version>1.2</version>
+    </dependency>
+    <dependency>
+        <groupId>com.nimbusds</groupId>
+        <artifactId>nimbus-jose-jwt</artifactId>
+        <version>10.3</version>
+    </dependency>
+```
 
-## Contributing
-State if you are open to contributions and what your requirements are for accepting them.
+## Getting Started
 
-For people who want to make changes to your project, it's helpful to have some documentation on how to get started. Perhaps there is a script that they should run or some environment variables that they need to set. Make these steps explicit. These instructions could also be useful to your future self.
+### Initialize the Client
 
-You can also document commands to lint the code or run tests. These steps help to ensure high code quality and reduce the likelihood that the changes inadvertently break something. Having instructions for running tests is especially helpful if it requires external setup, such as starting a Selenium server for testing in a browser.
+The client must be initialized once after your application starts, before any SDK method can be invoked. After initialization, the client instance can be reused throughout your application.
 
-## Authors and acknowledgment
-Show your appreciation to those who have contributed to the project.
+Pass in the `appId` and `privateKey` issued by the Nota Sign platform, along with the API endpoint, at initialization time. HTTP timeout settings and the JSON serialization strategy can be configured after initialization.
 
-## License
-For open source projects, say how it is licensed.
+```java
+// The appId assigned by Nota Sign
+String appId = "xxxxx";
+// The private key corresponding to the assigned appId
+String privateKey = "xxxxx";
+// API endpoint
+String serverUrl = "";
+// User authorization code
+String userCode = "xxxxx";
+// Initialize the client
+NotaSignClient notaSignClient = new NotaSignClient(appId, privateKey, serverUrl, userCode);
 
-## Project status
-If you have run out of energy or time for your project, put a note at the top of the README saying that development has slowed down or stopped completely. Someone may choose to fork your project or volunteer to step in as a maintainer or owner, allowing your project to keep going. You can also make an explicit request for maintainers.
+// HTTP timeout configuration (no timeout by default; omit if not required)
+HttpConfig httpConfig = new HttpConfig();
+httpConfig.setConnectTimeout(1000000);
+httpConfig.setReadTimeout(1000000);
+notaSignClient.setHttpConfig(httpConfig);
+
+// JSON serialization strategy. Jackson is used by default.
+// To use FastJson, Gson, etc., simply implement the JsonStrategy interface.
+// Omit this setting if the default is sufficient.
+notaSignClient.setJsonStrategy(new DefaultJsonStrategy());
+```
+
+### Invoke a Business API
+
+Business APIs are invoked through the corresponding request classes under `com.notasign.open.api.req`. The following example demonstrates the invocation flow by querying envelope details:
+
+```java
+// Obtain an access token
+String privateKey = "xxxxxxxxxxxxxxxxxxxxxx";
+String jwtStr = OauthJwtUtil.generateAccessTokenJwt(privateKey, APP_ID, USER_CODE, "api.nota.com", 10000L, null);
+
+AccessTokenReq accessTokenReq = new AccessTokenReq();
+accessTokenReq.setAssertion(jwtStr);
+accessTokenReq.setGrantType(OauthGrantTypeEnum.JWT.getCode());
+ApiResponse<GetAccessTokenResp> result = notaSignClient.execute(accessTokenReq);
+String accessToken = result.getData().getAccessToken();
+
+String envelopeId = "xxxxxxxx";
+// Query envelope details
+GetEnvelopeReq getEnvelopeReq = new GetEnvelopeReq();
+getEnvelopeReq.setAccessToken(accessToken);
+getEnvelopeReq.setEnvelopeId(envelopeId);
+ApiResponse<EnvelopeDetailResp> detail = notaSignClient.execute(getEnvelopeReq);
+```
+
+## References
+
+- [Nota Sign OpenAPI (Server-side) Documentation](https://developers.uat.notasign.com/api-docs/)
+
