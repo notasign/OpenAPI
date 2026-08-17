@@ -14,6 +14,16 @@ public class FillFieldDTO {
 
     private String fieldValue;
 
+    /**
+     * 单选框预填配置，fieldType=radio时有效
+     */
+    private RadioFieldConfigDTO radioConfig;
+
+    /**
+     * 复选框预填配置，fieldType=checkbox时有效
+     */
+    private CheckboxFieldConfigDTO checkboxConfig;
+
     public String getFieldDocId() {
         return fieldDocId;
     }
@@ -44,5 +54,21 @@ public class FillFieldDTO {
 
     public void setFieldValue(String fieldValue) {
         this.fieldValue = fieldValue;
+    }
+
+    public RadioFieldConfigDTO getRadioConfig() {
+        return radioConfig;
+    }
+
+    public void setRadioConfig(RadioFieldConfigDTO radioConfig) {
+        this.radioConfig = radioConfig;
+    }
+
+    public CheckboxFieldConfigDTO getCheckboxConfig() {
+        return checkboxConfig;
+    }
+
+    public void setCheckboxConfig(CheckboxFieldConfigDTO checkboxConfig) {
+        this.checkboxConfig = checkboxConfig;
     }
 }

@@ -15,6 +15,11 @@ public class GetEnvelopeEditUrlReq extends BaseReq<GetEnvelopeEditUrlResp> {
 
     private String redirectUrl;
 
+    /**
+     * 编辑页UI控制选项
+     */
+    private UiOptions uiOptions;
+
     @Override
     public Class<GetEnvelopeEditUrlResp> getRespClass() {
         return GetEnvelopeEditUrlResp.class;
@@ -39,5 +44,45 @@ public class GetEnvelopeEditUrlReq extends BaseReq<GetEnvelopeEditUrlResp> {
 
     public void setRedirectUrl(String redirectUrl) {
         this.redirectUrl = redirectUrl;
+    }
+
+    public UiOptions getUiOptions() {
+        return uiOptions;
+    }
+
+    public void setUiOptions(UiOptions uiOptions) {
+        this.uiOptions = uiOptions;
+    }
+
+    /**
+     * 编辑页UI控制选项
+     */
+    public static class UiOptions {
+
+        /**
+         * 是否隐藏发送按钮
+         */
+        private Boolean hideSendButton;
+
+        /**
+         * 禁用的编辑区域，可选值：documents/recipients/carbonCopies/envelopeSettings
+         */
+        private java.util.List<String> disableScopes;
+
+        public Boolean getHideSendButton() {
+            return hideSendButton;
+        }
+
+        public void setHideSendButton(Boolean hideSendButton) {
+            this.hideSendButton = hideSendButton;
+        }
+
+        public java.util.List<String> getDisableScopes() {
+            return disableScopes;
+        }
+
+        public void setDisableScopes(java.util.List<String> disableScopes) {
+            this.disableScopes = disableScopes;
+        }
     }
 }

@@ -47,10 +47,12 @@ public class DocumentReqDTO {
         this.documentFileId = documentFileId;
     }
 
+    @JsonProperty("eMeteraiDocType")
     public String getEMeteraiDocType() {
         return eMeteraiDocType;
     }
 
+    @JsonProperty("eMeteraiDocType")
     public void setEMeteraiDocType(String eMeteraiDocType) {
         this.eMeteraiDocType = eMeteraiDocType;
     }

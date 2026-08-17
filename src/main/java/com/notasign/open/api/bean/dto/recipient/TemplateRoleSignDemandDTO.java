@@ -20,6 +20,16 @@ public class TemplateRoleSignDemandDTO {
 
     private List<String> terms;
 
+    /**
+     * CA限定配置
+     */
+    private CaScopeDTO caScope;
+
+    /**
+     * 是否允许参与方更名，仅签署人（signer）生效
+     */
+    private Boolean allowParticipantRename;
+
     public ESealConfigDTO getEsealConfig() {
         return esealConfig;
     }
@@ -66,5 +76,21 @@ public class TemplateRoleSignDemandDTO {
 
     public void setTerms(List<String> terms) {
         this.terms = terms;
+    }
+
+    public CaScopeDTO getCaScope() {
+        return caScope;
+    }
+
+    public void setCaScope(CaScopeDTO caScope) {
+        this.caScope = caScope;
+    }
+
+    public Boolean getAllowParticipantRename() {
+        return allowParticipantRename;
+    }
+
+    public void setAllowParticipantRename(Boolean allowParticipantRename) {
+        this.allowParticipantRename = allowParticipantRename;
     }
 }

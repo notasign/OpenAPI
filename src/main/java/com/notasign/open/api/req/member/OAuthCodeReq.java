@@ -15,6 +15,11 @@ public class OAuthCodeReq extends BaseReq<OAuthCodeResp> {
     private List<String> scope;
     private String redirectUrl;
 
+    /**
+     * 授权有效期：NY（N为1-999之间的数字，表示N年）或PERMANENT（永久），默认1年
+     */
+    private String expireDuration;
+
     public String getMemberEmail() {
         return memberEmail;
     }
@@ -37,6 +42,14 @@ public class OAuthCodeReq extends BaseReq<OAuthCodeResp> {
 
     public void setRedirectUrl(String redirectUrl) {
         this.redirectUrl = redirectUrl;
+    }
+
+    public String getExpireDuration() {
+        return expireDuration;
+    }
+
+    public void setExpireDuration(String expireDuration) {
+        this.expireDuration = expireDuration;
     }
 
     @Override

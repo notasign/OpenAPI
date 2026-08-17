@@ -16,6 +16,11 @@ public class XmlFileSignReq extends BaseReq<XmlFileSignResp> {
 
     private String credentialPin;
 
+    /**
+     * 是否启用eCOC签前/签后校验，默认true
+     */
+    private Boolean enableEcocValidation;
+
     private List<XmlDoc> xmlDocs;
 
     public String getCredentialId() {
@@ -32,6 +37,14 @@ public class XmlFileSignReq extends BaseReq<XmlFileSignResp> {
 
     public void setCredentialPin(String credentialPin) {
         this.credentialPin = credentialPin;
+    }
+
+    public Boolean getEnableEcocValidation() {
+        return enableEcocValidation;
+    }
+
+    public void setEnableEcocValidation(Boolean enableEcocValidation) {
+        this.enableEcocValidation = enableEcocValidation;
     }
 
     public List<XmlDoc> getXmlDocs() {

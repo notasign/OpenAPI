@@ -24,6 +24,21 @@ public class ParticipantReqDTO {
 
     private String signingMode;
 
+    /**
+     * 收件人角色：0-签署人（默认），1-审批人，2-查看人
+     */
+    private Integer partyRole;
+
+    /**
+     * 批量签署人角色名，participantType=bulkSigners时必填，最大128字符
+     */
+    private String bulkSignersRoleName;
+
+    /**
+     * 参与方颜色
+     */
+    private String partyColor;
+
     private List<SignField> signFields;
 
     private List<FillField> fillFields;
@@ -84,6 +99,30 @@ public class ParticipantReqDTO {
 
     public void setSigningMode(String signingMode) {
         this.signingMode = signingMode;
+    }
+
+    public Integer getPartyRole() {
+        return partyRole;
+    }
+
+    public void setPartyRole(Integer partyRole) {
+        this.partyRole = partyRole;
+    }
+
+    public String getBulkSignersRoleName() {
+        return bulkSignersRoleName;
+    }
+
+    public void setBulkSignersRoleName(String bulkSignersRoleName) {
+        this.bulkSignersRoleName = bulkSignersRoleName;
+    }
+
+    public String getPartyColor() {
+        return partyColor;
+    }
+
+    public void setPartyColor(String partyColor) {
+        this.partyColor = partyColor;
     }
 
     public List<SignField> getSignFields() {

@@ -16,6 +16,11 @@ public class SignFieldDTO {
 
     private StampFieldConfigDTO stampConfig;
 
+    /**
+     * 签署日期格式，仅fieldType=date_sign有效
+     */
+    private String signDateFormat;
+
     public String getFieldDocId() {
         return fieldDocId;
     }
@@ -46,5 +51,13 @@ public class SignFieldDTO {
 
     public void setStampConfig(StampFieldConfigDTO stampConfig) {
         this.stampConfig = stampConfig;
+    }
+
+    public String getSignDateFormat() {
+        return signDateFormat;
+    }
+
+    public void setSignDateFormat(String signDateFormat) {
+        this.signDateFormat = signDateFormat;
     }
 }

@@ -1,5 +1,6 @@
 package com.notasign.open.api.bean.dto.field;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
@@ -29,6 +30,31 @@ public class DocumentFieldReqDTO {
     private AttachmentFieldConfigDTO attachmentConfig;
 
     private DrawingFieldConfigDTO drawingConfig;
+
+    /**
+     * 字体大小
+     */
+    private Integer fontSize;
+
+    /**
+     * 选项相对位置
+     */
+    private RelativePositionDTO relativePosition;
+
+    /**
+     * 单选框配置，fieldType=radio时有效
+     */
+    private RadioFieldConfigDTO radioConfig;
+
+    /**
+     * 复选框配置，fieldType=checkbox时有效
+     */
+    private CheckboxFieldConfigDTO checkboxConfig;
+
+    /**
+     * 签署日期格式，仅fieldType=date_sign有效
+     */
+    private String signDateFormat;
 
     public String getFieldId() {
         return fieldId;
@@ -74,6 +100,7 @@ public class DocumentFieldReqDTO {
      * @deprecated 使用 {@link #getIsRequired()} 代替，保持与 JSON 字段名 isRequired 一致
      */
     @Deprecated
+    @JsonIgnore
     public Boolean getRequired() {
         return isRequired;
     }
@@ -82,6 +109,7 @@ public class DocumentFieldReqDTO {
      * @deprecated 使用 {@link #setIsRequired(Boolean)} 代替，保持与 JSON 字段名 isRequired 一致
      */
     @Deprecated
+    @JsonIgnore
     public void setRequired(Boolean required) {
         isRequired = required;
     }
@@ -124,5 +152,45 @@ public class DocumentFieldReqDTO {
 
     public void setDrawingConfig(DrawingFieldConfigDTO drawingConfig) {
         this.drawingConfig = drawingConfig;
+    }
+
+    public Integer getFontSize() {
+        return fontSize;
+    }
+
+    public void setFontSize(Integer fontSize) {
+        this.fontSize = fontSize;
+    }
+
+    public RelativePositionDTO getRelativePosition() {
+        return relativePosition;
+    }
+
+    public void setRelativePosition(RelativePositionDTO relativePosition) {
+        this.relativePosition = relativePosition;
+    }
+
+    public RadioFieldConfigDTO getRadioConfig() {
+        return radioConfig;
+    }
+
+    public void setRadioConfig(RadioFieldConfigDTO radioConfig) {
+        this.radioConfig = radioConfig;
+    }
+
+    public CheckboxFieldConfigDTO getCheckboxConfig() {
+        return checkboxConfig;
+    }
+
+    public void setCheckboxConfig(CheckboxFieldConfigDTO checkboxConfig) {
+        this.checkboxConfig = checkboxConfig;
+    }
+
+    public String getSignDateFormat() {
+        return signDateFormat;
+    }
+
+    public void setSignDateFormat(String signDateFormat) {
+        this.signDateFormat = signDateFormat;
     }
 }

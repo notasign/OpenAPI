@@ -22,6 +22,12 @@ public class UpdateParticipantReq extends BaseReq<EmptyResp> {
     private String phoneNumber;
     private String email;
     private String signingMode;
+
+    /**
+     * 收件人角色：0-签署人（默认），1-审批人，2-查看人；更正中不允许修改
+     */
+    private Integer partyRole;
+
     private SignDemandDTO signDemand;
 
     public String getEnvelopeId() {
@@ -78,6 +84,14 @@ public class UpdateParticipantReq extends BaseReq<EmptyResp> {
 
     public void setSigningMode(String signingMode) {
         this.signingMode = signingMode;
+    }
+
+    public Integer getPartyRole() {
+        return partyRole;
+    }
+
+    public void setPartyRole(Integer partyRole) {
+        this.partyRole = partyRole;
     }
 
     public SignDemandDTO getSignDemand() {

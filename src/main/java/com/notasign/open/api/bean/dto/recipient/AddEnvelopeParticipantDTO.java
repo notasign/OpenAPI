@@ -14,6 +14,12 @@ public class AddEnvelopeParticipantDTO {
     private String phoneNumber;
     private String email;
     private String signingMode;
+
+    /**
+     * 收件人角色：0-签署人（默认），1-审批人，2-查看人
+     */
+    private Integer partyRole;
+
     private SignDemandDTO signDemand;
 
     public String getParticipantId() {
@@ -70,6 +76,14 @@ public class AddEnvelopeParticipantDTO {
 
     public void setSigningMode(String signingMode) {
         this.signingMode = signingMode;
+    }
+
+    public Integer getPartyRole() {
+        return partyRole;
+    }
+
+    public void setPartyRole(Integer partyRole) {
+        this.partyRole = partyRole;
     }
 
     public SignDemandDTO getSignDemand() {

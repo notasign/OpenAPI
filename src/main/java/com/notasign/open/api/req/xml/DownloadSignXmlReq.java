@@ -19,6 +19,21 @@ public class DownloadSignXmlReq extends BaseReq<DownloadSignXmlResp> {
      */
     private String xmlDocId;
 
+    /**
+     * 原始XML文件ID
+     */
+    private String xmlFileId;
+
+    /**
+     * 系统业务定位ID
+     */
+    private String bizId;
+
+    /**
+     * 车辆VIN
+     */
+    private String vin;
+
     public String getBatchId() {
         return batchId;
     }
@@ -33,6 +48,30 @@ public class DownloadSignXmlReq extends BaseReq<DownloadSignXmlResp> {
 
     public void setXmlDocId(String xmlDocId) {
         this.xmlDocId = xmlDocId;
+    }
+
+    public String getXmlFileId() {
+        return xmlFileId;
+    }
+
+    public void setXmlFileId(String xmlFileId) {
+        this.xmlFileId = xmlFileId;
+    }
+
+    public String getBizId() {
+        return bizId;
+    }
+
+    public void setBizId(String bizId) {
+        this.bizId = bizId;
+    }
+
+    public String getVin() {
+        return vin;
+    }
+
+    public void setVin(String vin) {
+        this.vin = vin;
     }
 
     @Override

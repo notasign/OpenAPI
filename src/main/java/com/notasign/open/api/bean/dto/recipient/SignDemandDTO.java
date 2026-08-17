@@ -24,6 +24,16 @@ public class SignDemandDTO {
 
     private ReadingRequirementDTO readingRequirement;
 
+    /**
+     * CA限定配置
+     */
+    private CaScopeDTO caScope;
+
+    /**
+     * 是否允许参与方更名，仅签署人（signer）生效
+     */
+    private Boolean allowParticipantRename;
+
 
     public int getOrderNo() {
         return orderNo;
@@ -87,6 +97,22 @@ public class SignDemandDTO {
 
     public void setReadingRequirement(ReadingRequirementDTO readingRequirement) {
         this.readingRequirement = readingRequirement;
+    }
+
+    public CaScopeDTO getCaScope() {
+        return caScope;
+    }
+
+    public void setCaScope(CaScopeDTO caScope) {
+        this.caScope = caScope;
+    }
+
+    public Boolean getAllowParticipantRename() {
+        return allowParticipantRename;
+    }
+
+    public void setAllowParticipantRename(Boolean allowParticipantRename) {
+        this.allowParticipantRename = allowParticipantRename;
     }
 
     public static class JoinCheckConfiguration {

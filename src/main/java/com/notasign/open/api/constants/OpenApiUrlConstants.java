@@ -73,4 +73,34 @@ public class OpenApiUrlConstants {
     public static final String GET_XML_VALIDATION_ITEM_ISSUES = "GET /api/tsp/xml-validations/%s/items/%s/issues";
     public static final String RERUN_XML_VALIDATION = "POST /api/tsp/xml-validations/%s/rerun";
 
+    /*XML SIGN EXT*/
+    public static final String XML_DIRECT_SIGN = "POST /api/tsp/xml-sign/direct";
+    public static final String GET_XML_SIGN_RESULT = "POST /api/tsp/xml-sign/%s/result";
+    public static final String GET_XML_SIGN_ITEMS = "POST /api/tsp/xml-sign/%s/items";
+    public static final String GET_XML_SIGN_ITEM_DETAIL = "POST /api/tsp/xml-sign/%s/items/query";
+
+    /*ENVELOPE BASIC INFO*/
+    public static final String UPDATE_ENVELOPE_BASIC_INFO = "PUT /api/envelope/%s/basic-info";
+
+    /*BULK SEND TASK*/
+    public static final String BULK_TASK_CREATE = "POST /api/bulk-envelopes/task/create";
+    public static final String BULK_TASK_START = "POST /api/bulk-envelopes/task/start";
+    public static final String BULK_TASK_LIST = "GET /api/bulk-envelopes/task/list";
+    public static final String BULK_TASK_DETAIL = "GET /api/bulk-envelopes/task/%s/detail";
+    public static final String BULK_TASK_GET = "GET /api/bulk-envelopes/task/%s";
+    public static final String BULK_TASK_STATISTICS = "GET /api/bulk-envelopes/task/%s/statistics";
+    public static final String BULK_TASK_VOID = "POST /api/bulk-envelopes/task/%s/void";
+    public static final String BULK_TASK_CANCEL = "POST /api/bulk-envelopes/task/%s/cancel";
+    public static final String BULK_TASK_DELETE = "POST /api/bulk-envelopes/task/delete";
+    public static final String BULK_TASK_REMIND = "POST /api/bulk-envelopes/task/%s/remind";
+    public static final String BULK_TASK_UPDATE = "POST /api/bulk-envelopes/task/%s/update";
+    public static final String BULK_TASK_EDIT_URL = "POST /api/bulk-envelopes/task/edit-url";
+
+    /*BULK SEND LIST*/
+    public static final String BULK_LIST_CREATE = "POST /api/bulk-envelopes/list/create";
+    public static final String BULK_LIST_UPDATE = "POST /api/bulk-envelopes/list/update";
+    public static final String BULK_LIST_DELETE = "POST /api/bulk-envelopes/list/delete";
+    public static final String BULK_LIST_DETAIL = "POST /api/bulk-envelopes/list/detail";
+    public static final String BULK_LIST_TEMPLATE_URL = "POST /api/bulk-envelopes/list/template";
+
 }

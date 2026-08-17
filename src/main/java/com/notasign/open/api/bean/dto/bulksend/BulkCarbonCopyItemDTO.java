@@ -7,6 +7,7 @@ public class BulkCarbonCopyItemDTO {
 
     private String carbonCopyId;
     private String carbonCopyName;
+    private String phoneCountryCode;
     private String phoneNumber;
     private String email;
 
@@ -24,6 +25,14 @@ public class BulkCarbonCopyItemDTO {
 
     public void setCarbonCopyName(String carbonCopyName) {
         this.carbonCopyName = carbonCopyName;
+    }
+
+    public String getPhoneCountryCode() {
+        return phoneCountryCode;
+    }
+
+    public void setPhoneCountryCode(String phoneCountryCode) {
+        this.phoneCountryCode = phoneCountryCode;
     }
 
     public String getPhoneNumber() {

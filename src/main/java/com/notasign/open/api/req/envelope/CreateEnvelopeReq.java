@@ -37,6 +37,11 @@ public class CreateEnvelopeReq extends BaseReq<CreateEnvelopeResp> {
 
     private String freeformSigningMode;
 
+    /**
+     * 是否为批量发送信封，默认false；为true时配合批量发送任务使用
+     */
+    private Boolean isBulkSend;
+
     private List<DocumentReqDTO> documents;
 
     private List<ParticipantReqDTO> participants;
@@ -117,6 +122,14 @@ public class CreateEnvelopeReq extends BaseReq<CreateEnvelopeResp> {
 
     public void setFreeformSigningMode(String freeformSigningMode) {
         this.freeformSigningMode = freeformSigningMode;
+    }
+
+    public Boolean getIsBulkSend() {
+        return isBulkSend;
+    }
+
+    public void setIsBulkSend(Boolean isBulkSend) {
+        this.isBulkSend = isBulkSend;
     }
 
     public List<DocumentReqDTO> getDocuments() {
