@@ -6,6 +6,8 @@ import com.notasign.open.api.bean.base.BaseReq;
 import com.notasign.open.api.resp.recipient.ParticipantSignUrlResp;
 import com.notasign.open.api.constants.OpenApiUrlConstants;
 
+import java.util.List;
+
 /**
  * @author Nota
  * @date 2025/6/4 15:54
@@ -17,6 +19,12 @@ public class ParticipantSignUrlReq extends BaseReq<ParticipantSignUrlResp> {
     private String participantId;
 
     private String redirectUrl;
+
+    /**
+     * 允许嵌入本签署页面的父页面 Origin 白名单（可选）。
+     * null 表示未传入（走下游默认策略）；空数组等价于清空白名单
+     */
+    private List<String> frameAncestors;
 
 
     @Override
@@ -51,5 +59,13 @@ public class ParticipantSignUrlReq extends BaseReq<ParticipantSignUrlResp> {
 
     public void setRedirectUrl(String redirectUrl) {
         this.redirectUrl = redirectUrl;
+    }
+
+    public List<String> getFrameAncestors() {
+        return frameAncestors;
+    }
+
+    public void setFrameAncestors(List<String> frameAncestors) {
+        this.frameAncestors = frameAncestors;
     }
 }

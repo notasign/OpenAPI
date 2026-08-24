@@ -9,8 +9,24 @@ public class BulkSendListItemDTO {
 
     private String subject;
     private String remark;
+
+    /**
+     * 信封过期时间（yyyy/MM/dd 或 yyyy-MM-dd）
+     */
+    private String expiresTime;
+
+    /**
+     * 提醒频率（0=无, 1=每日, 2=每周, 3=每月, 5=半月）
+     */
+    private Integer remindFrequency;
+
     private List<BulkRoleItemDTO> bulkRoles;
     private List<BulkCarbonCopyItemDTO> carbonCopies;
+
+    /**
+     * 预填字段列表
+     */
+    private List<PrefillFieldItemDTO> prefillFields;
 
     public String getSubject() {
         return subject;
@@ -42,5 +58,29 @@ public class BulkSendListItemDTO {
 
     public void setCarbonCopies(List<BulkCarbonCopyItemDTO> carbonCopies) {
         this.carbonCopies = carbonCopies;
+    }
+
+    public String getExpiresTime() {
+        return expiresTime;
+    }
+
+    public void setExpiresTime(String expiresTime) {
+        this.expiresTime = expiresTime;
+    }
+
+    public Integer getRemindFrequency() {
+        return remindFrequency;
+    }
+
+    public void setRemindFrequency(Integer remindFrequency) {
+        this.remindFrequency = remindFrequency;
+    }
+
+    public List<PrefillFieldItemDTO> getPrefillFields() {
+        return prefillFields;
+    }
+
+    public void setPrefillFields(List<PrefillFieldItemDTO> prefillFields) {
+        this.prefillFields = prefillFields;
     }
 }

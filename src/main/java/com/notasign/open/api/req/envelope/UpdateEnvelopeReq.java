@@ -4,6 +4,7 @@ package com.notasign.open.api.req.envelope;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.notasign.open.api.bean.base.BaseReq;
 import com.notasign.open.api.bean.base.EmptyResp;
+import com.notasign.open.api.bean.dto.bulksend.PrefillFieldItemDTO;
 import com.notasign.open.api.bean.dto.document.DocumentReqDTO;
 import com.notasign.open.api.bean.dto.recipient.CarbonCopyReqDTO;
 import com.notasign.open.api.bean.dto.recipient.ParticipantReqDTO;
@@ -54,6 +55,11 @@ public class UpdateEnvelopeReq extends BaseReq<EmptyResp> {
     private CreateTemplateFieldDTO templateFields;
 
     private List<CreateTemplateRoleDTO> templateRoles;
+
+    /**
+     * 预填字段列表（发起方文本控件 isPrefill=1 + prefillKey 匹配写入值）
+     */
+    private List<PrefillFieldItemDTO> prefillFields;
 
     public String getEnvelopeId() {
         return envelopeId;
@@ -181,6 +187,14 @@ public class UpdateEnvelopeReq extends BaseReq<EmptyResp> {
 
     public void setTemplateRoles(List<CreateTemplateRoleDTO> templateRoles) {
         this.templateRoles = templateRoles;
+    }
+
+    public List<PrefillFieldItemDTO> getPrefillFields() {
+        return prefillFields;
+    }
+
+    public void setPrefillFields(List<PrefillFieldItemDTO> prefillFields) {
+        this.prefillFields = prefillFields;
     }
 
     @Override

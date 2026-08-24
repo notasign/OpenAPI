@@ -20,6 +20,12 @@ public class OAuthCodeReq extends BaseReq<OAuthCodeResp> {
      */
     private String expireDuration;
 
+    /**
+     * 允许嵌入授权页面的 iframe 父页面 Origin 白名单（可选）。
+     * null 表示未传入（走默认策略）；空数组等价于清空白名单
+     */
+    private List<String> frameAncestors;
+
     public String getMemberEmail() {
         return memberEmail;
     }
@@ -50,6 +56,14 @@ public class OAuthCodeReq extends BaseReq<OAuthCodeResp> {
 
     public void setExpireDuration(String expireDuration) {
         this.expireDuration = expireDuration;
+    }
+
+    public List<String> getFrameAncestors() {
+        return frameAncestors;
+    }
+
+    public void setFrameAncestors(List<String> frameAncestors) {
+        this.frameAncestors = frameAncestors;
     }
 
     @Override

@@ -123,6 +123,16 @@ public class SignDemandDTO {
 
         private String verificationEmail;
 
+        /**
+         * 手机区号 (verificationMethod=sms时使用, 如 +86, +62)
+         */
+        private String verificationAreaCode;
+
+        /**
+         * 手机号码 (verificationMethod=sms时使用)
+         */
+        private String verificationPhone;
+
         public String getVerificationMethod() {
             return verificationMethod;
         }
@@ -145,6 +155,22 @@ public class SignDemandDTO {
 
         public void setVerificationEmail(String verificationEmail) {
             this.verificationEmail = verificationEmail;
+        }
+
+        public String getVerificationAreaCode() {
+            return verificationAreaCode;
+        }
+
+        public void setVerificationAreaCode(String verificationAreaCode) {
+            this.verificationAreaCode = verificationAreaCode;
+        }
+
+        public String getVerificationPhone() {
+            return verificationPhone;
+        }
+
+        public void setVerificationPhone(String verificationPhone) {
+            this.verificationPhone = verificationPhone;
         }
     }
 

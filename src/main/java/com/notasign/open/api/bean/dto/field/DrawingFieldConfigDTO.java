@@ -16,6 +16,11 @@ public class DrawingFieldConfigDTO {
 
     private Integer promptSize;
 
+    /**
+     * 手写控件内容模式。background-背景手绘模式；inkOnly-仅笔迹填充模式
+     */
+    private String contentMode;
+
     public Integer getWidth() {
         return width;
     }
@@ -46,5 +51,13 @@ public class DrawingFieldConfigDTO {
 
     public void setPromptSize(Integer promptSize) {
         this.promptSize = promptSize;
+    }
+
+    public String getContentMode() {
+        return contentMode;
+    }
+
+    public void setContentMode(String contentMode) {
+        this.contentMode = contentMode;
     }
 }

@@ -98,6 +98,7 @@ public class OpenApiUrlConstants {
 
     /*BULK SEND LIST*/
     public static final String BULK_LIST_CREATE = "POST /api/bulk-envelopes/list/create";
+    public static final String BULK_LIST_TEMPLATE_DOWNLOAD = "GET /api/bulk-envelopes/list/template";
     public static final String BULK_LIST_UPDATE = "POST /api/bulk-envelopes/list/update";
     public static final String BULK_LIST_DELETE = "POST /api/bulk-envelopes/list/delete";
     public static final String BULK_LIST_DETAIL = "POST /api/bulk-envelopes/list/detail";

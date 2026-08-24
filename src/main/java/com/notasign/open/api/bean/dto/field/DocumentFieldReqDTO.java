@@ -56,6 +56,27 @@ public class DocumentFieldReqDTO {
      */
     private String signDateFormat;
 
+    /**
+     * 骑缝章配置。仅 fieldType=stamp 或 eseal 时有效；
+     * 骑缝章定位由 crossPageSealConfig.positionY 承载，position 将被忽略
+     */
+    private CrossPageSealConfigDTO crossPageSealConfig;
+
+    /**
+     * 是否预填控件（批量发送行级预填，1=是，默认0）
+     */
+    private Integer isPrefill;
+
+    /**
+     * 预填关联键（与清单预填字段 fieldName 匹配，isPrefill=1 时必填）
+     */
+    private String prefillKey;
+
+    /**
+     * 是否骑缝章 0-否 1-是，默认0
+     */
+    private Integer isCrossPage;
+
     public String getFieldId() {
         return fieldId;
     }
@@ -192,5 +213,37 @@ public class DocumentFieldReqDTO {
 
     public void setSignDateFormat(String signDateFormat) {
         this.signDateFormat = signDateFormat;
+    }
+
+    public CrossPageSealConfigDTO getCrossPageSealConfig() {
+        return crossPageSealConfig;
+    }
+
+    public void setCrossPageSealConfig(CrossPageSealConfigDTO crossPageSealConfig) {
+        this.crossPageSealConfig = crossPageSealConfig;
+    }
+
+    public Integer getIsPrefill() {
+        return isPrefill;
+    }
+
+    public void setIsPrefill(Integer isPrefill) {
+        this.isPrefill = isPrefill;
+    }
+
+    public String getPrefillKey() {
+        return prefillKey;
+    }
+
+    public void setPrefillKey(String prefillKey) {
+        this.prefillKey = prefillKey;
+    }
+
+    public Integer getIsCrossPage() {
+        return isCrossPage;
+    }
+
+    public void setIsCrossPage(Integer isCrossPage) {
+        this.isCrossPage = isCrossPage;
     }
 }

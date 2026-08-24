@@ -5,6 +5,8 @@ import com.notasign.open.api.bean.base.BaseReq;
 import com.notasign.open.api.resp.envelope.GetEnvelopeEditUrlResp;
 import com.notasign.open.api.constants.OpenApiUrlConstants;
 
+import java.util.List;
+
 /**
  * @author Nota
  * @date 2025/6/5 19:54
@@ -19,6 +21,12 @@ public class GetEnvelopeEditUrlReq extends BaseReq<GetEnvelopeEditUrlResp> {
      * 编辑页UI控制选项
      */
     private UiOptions uiOptions;
+
+    /**
+     * 允许嵌入本编辑页面的父页面 Origin 白名单（可选）。
+     * null 表示未传入（走默认策略）；空数组等价于清空白名单
+     */
+    private List<String> frameAncestors;
 
     @Override
     public Class<GetEnvelopeEditUrlResp> getRespClass() {
@@ -52,6 +60,14 @@ public class GetEnvelopeEditUrlReq extends BaseReq<GetEnvelopeEditUrlResp> {
 
     public void setUiOptions(UiOptions uiOptions) {
         this.uiOptions = uiOptions;
+    }
+
+    public List<String> getFrameAncestors() {
+        return frameAncestors;
+    }
+
+    public void setFrameAncestors(List<String> frameAncestors) {
+        this.frameAncestors = frameAncestors;
     }
 
     /**
