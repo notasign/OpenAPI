@@ -104,4 +104,13 @@ public class OpenApiUrlConstants {
     public static final String BULK_LIST_DETAIL = "POST /api/bulk-envelopes/list/detail";
     public static final String BULK_LIST_TEMPLATE_URL = "POST /api/bulk-envelopes/list/template";
 
+    /*STAMP*/
+    public static final String STAMP_LIST = "GET /api/stamps";
+    public static final String STAMP_CREATE = "POST /api/stamps";
+    public static final String STAMP_UPDATE = "PUT /api/stamps/%s";
+    public static final String STAMP_DELETE = "DELETE /api/stamps/%s";
+    public static final String STAMP_USER_LIST = "GET /api/stamps/%s/users";
+    public static final String STAMP_USER_ADD = "POST /api/stamps/%s/users";
+    public static final String STAMP_USER_REMOVE = "POST /api/stamps/%s/users/delete";
+
 }

@@ -1,6 +1,9 @@
 package com.notasign.open.api.bean.dto.recipient;
 
 
+import com.notasign.open.api.bean.dto.field.CheckboxFieldConfigDTO;
+import com.notasign.open.api.bean.dto.field.RadioFieldConfigDTO;
+
 import java.util.List;
 
 /**
@@ -192,6 +195,16 @@ public class ParticipantReqDTO {
 
         private String fieldValue;
 
+        /**
+         * 单选框控件配置（预填 selectedValue 时使用）
+         */
+        private RadioFieldConfigDTO radioConfig;
+
+        /**
+         * 复选框控件配置（预填 selectedValues 时使用）
+         */
+        private CheckboxFieldConfigDTO checkboxConfig;
+
         public String getFieldDocId() {
             return fieldDocId;
         }
@@ -222,6 +235,22 @@ public class ParticipantReqDTO {
 
         public void setFieldValue(String fieldValue) {
             this.fieldValue = fieldValue;
+        }
+
+        public RadioFieldConfigDTO getRadioConfig() {
+            return radioConfig;
+        }
+
+        public void setRadioConfig(RadioFieldConfigDTO radioConfig) {
+            this.radioConfig = radioConfig;
+        }
+
+        public CheckboxFieldConfigDTO getCheckboxConfig() {
+            return checkboxConfig;
+        }
+
+        public void setCheckboxConfig(CheckboxFieldConfigDTO checkboxConfig) {
+            this.checkboxConfig = checkboxConfig;
         }
     }
 }

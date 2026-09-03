@@ -38,8 +38,16 @@ public class DocumentFieldReqDTO {
 
     /**
      * 选项相对位置
+     *
+     * @deprecated 已废弃，BFF 侧不再使用该字段，请勿继续使用
      */
+    @Deprecated
     private RelativePositionDTO relativePosition;
+
+    /**
+     * eSeal 控件配置，仅 fieldType=eseal 时允许传入
+     */
+    private ESealFieldConfigDTO esealFieldConfig;
 
     /**
      * 单选框配置，fieldType=radio时有效
@@ -183,12 +191,28 @@ public class DocumentFieldReqDTO {
         this.fontSize = fontSize;
     }
 
+    /**
+     * @deprecated 已废弃，BFF 侧不再使用该字段，请勿继续使用
+     */
+    @Deprecated
     public RelativePositionDTO getRelativePosition() {
         return relativePosition;
     }
 
+    /**
+     * @deprecated 已废弃，BFF 侧不再使用该字段，请勿继续使用
+     */
+    @Deprecated
     public void setRelativePosition(RelativePositionDTO relativePosition) {
         this.relativePosition = relativePosition;
+    }
+
+    public ESealFieldConfigDTO getEsealFieldConfig() {
+        return esealFieldConfig;
+    }
+
+    public void setEsealFieldConfig(ESealFieldConfigDTO esealFieldConfig) {
+        this.esealFieldConfig = esealFieldConfig;
     }
 
     public RadioFieldConfigDTO getRadioConfig() {
