@@ -2,6 +2,7 @@ package com.notasign.open.api.resp.envelope;
 
 
 import com.notasign.open.api.bean.base.BaseResp;
+import com.notasign.open.api.bean.dto.recipient.SenderDTO;
 import com.notasign.open.api.resp.document.DocumentDTO;
 import com.notasign.open.api.resp.field.DocumentFieldDTO;
 import com.notasign.open.api.resp.recipient.CarbonCopyDTO;
@@ -19,9 +20,15 @@ public class EnvelopeDetailResp extends BaseResp {
     private String senderAccountId;
     private String senderMemberId;
     private String senderName;
+    private Integer currentRoutingOrder;
+    private SenderDTO sender;
     private String subject;
     private String remark;
     private Boolean signInOrder;
+    /**
+     * 是否按文档顺序签署
+     */
+    private Boolean docSignInOrder;
     private String envelopeStatus;
     private String terminationNote;
     private String signatureLevel;
@@ -67,6 +74,22 @@ public class EnvelopeDetailResp extends BaseResp {
         this.senderName = senderName;
     }
 
+    public Integer getCurrentRoutingOrder() {
+        return currentRoutingOrder;
+    }
+
+    public void setCurrentRoutingOrder(Integer currentRoutingOrder) {
+        this.currentRoutingOrder = currentRoutingOrder;
+    }
+
+    public SenderDTO getSender() {
+        return sender;
+    }
+
+    public void setSender(SenderDTO sender) {
+        this.sender = sender;
+    }
+
     public String getSubject() {
         return subject;
     }
@@ -89,6 +112,14 @@ public class EnvelopeDetailResp extends BaseResp {
 
     public void setSignInOrder(Boolean signInOrder) {
         this.signInOrder = signInOrder;
+    }
+
+    public Boolean getDocSignInOrder() {
+        return docSignInOrder;
+    }
+
+    public void setDocSignInOrder(Boolean docSignInOrder) {
+        this.docSignInOrder = docSignInOrder;
     }
 
     public String getEnvelopeStatus() {

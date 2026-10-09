@@ -81,6 +81,21 @@ public class DocumentFieldReqDTO {
     private String prefillKey;
 
     /**
+     * 批量发送清单预填关联字段名（与清单预填字段 fieldName 匹配）
+     */
+    private String bulkPrefillFieldName;
+
+    /**
+     * 文本控件配置，fieldType=text时有效
+     */
+    private TextFieldConfigDTO textConfig;
+
+    /**
+     * 图片控件配置，fieldType=img时有效
+     */
+    private ImageFieldConfigDTO imageConfig;
+
+    /**
      * 是否骑缝章 0-否 1-是，默认0
      */
     private Integer isCrossPage;
@@ -261,6 +276,30 @@ public class DocumentFieldReqDTO {
 
     public void setPrefillKey(String prefillKey) {
         this.prefillKey = prefillKey;
+    }
+
+    public String getBulkPrefillFieldName() {
+        return bulkPrefillFieldName;
+    }
+
+    public void setBulkPrefillFieldName(String bulkPrefillFieldName) {
+        this.bulkPrefillFieldName = bulkPrefillFieldName;
+    }
+
+    public TextFieldConfigDTO getTextConfig() {
+        return textConfig;
+    }
+
+    public void setTextConfig(TextFieldConfigDTO textConfig) {
+        this.textConfig = textConfig;
+    }
+
+    public ImageFieldConfigDTO getImageConfig() {
+        return imageConfig;
+    }
+
+    public void setImageConfig(ImageFieldConfigDTO imageConfig) {
+        this.imageConfig = imageConfig;
     }
 
     public Integer getIsCrossPage() {

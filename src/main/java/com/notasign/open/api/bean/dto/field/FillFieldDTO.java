@@ -24,6 +24,11 @@ public class FillFieldDTO {
      */
     private CheckboxFieldConfigDTO checkboxConfig;
 
+    /**
+     * 图片控件预填配置，fieldType=img时有效
+     */
+    private ImageFieldConfigDTO imageConfig;
+
     public String getFieldDocId() {
         return fieldDocId;
     }
@@ -70,5 +75,13 @@ public class FillFieldDTO {
 
     public void setCheckboxConfig(CheckboxFieldConfigDTO checkboxConfig) {
         this.checkboxConfig = checkboxConfig;
+    }
+
+    public ImageFieldConfigDTO getImageConfig() {
+        return imageConfig;
+    }
+
+    public void setImageConfig(ImageFieldConfigDTO imageConfig) {
+        this.imageConfig = imageConfig;
     }
 }

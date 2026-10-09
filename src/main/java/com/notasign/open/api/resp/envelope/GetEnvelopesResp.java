@@ -1,6 +1,7 @@
 package com.notasign.open.api.resp.envelope;
 
 import com.notasign.open.api.bean.base.BasePageResp;
+import com.notasign.open.api.bean.dto.recipient.SenderDTO;
 
 import java.util.List;
 
@@ -20,6 +21,8 @@ public class GetEnvelopesResp extends BasePageResp {
         private String sendTime;
         private String expiresTime;
         private String finishTime;
+        private String startTime;
+        private SenderDTO sender;
 
         public String getEnvelopeId() {
             return envelopeId;
@@ -75,6 +78,22 @@ public class GetEnvelopesResp extends BasePageResp {
 
         public void setFinishTime(String finishTime) {
             this.finishTime = finishTime;
+        }
+
+        public String getStartTime() {
+            return startTime;
+        }
+
+        public void setStartTime(String startTime) {
+            this.startTime = startTime;
+        }
+
+        public SenderDTO getSender() {
+            return sender;
+        }
+
+        public void setSender(SenderDTO sender) {
+            this.sender = sender;
         }
     }
 

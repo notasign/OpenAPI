@@ -11,6 +11,11 @@ public class DocumentDTO {
 
     private String documentName;
 
+    /**
+     * eMeterai 文档类型（印尼电子邮票场景）
+     */
+    private String eMeteraiDocType;
+
     public String getDocumentId() {
         return documentId;
     }
@@ -25,5 +30,13 @@ public class DocumentDTO {
 
     public void setDocumentName(String documentName) {
         this.documentName = documentName;
+    }
+
+    public String getEMeteraiDocType() {
+        return eMeteraiDocType;
+    }
+
+    public void setEMeteraiDocType(String eMeteraiDocType) {
+        this.eMeteraiDocType = eMeteraiDocType;
     }
 }

@@ -11,9 +11,56 @@ public class ParticipantDTO {
     private String participantId;
     private String participantType;
     private String participantName;
+
+    /**
+     * 收件人角色：0=签署人 1=审批人 2=查看人
+     */
+    private Integer partyRole;
+
+    /**
+     * 邮箱
+     */
+    private String email;
+
+    /**
+     * 电话国家码
+     */
+    private String phoneCountryCode;
+
+    /**
+     * 电话号码
+     */
+    private String phoneNumber;
+
     private String joinStatus;
     private String joinTime;
     private String signStatus;
+
+    /**
+     * 审批状态：wait_approve/approved/approval_declined（仅审批人返回）
+     */
+    private String approvalStatus;
+
+    /**
+     * 审批时间（仅审批人返回）
+     */
+    private String approvalTime;
+
+    /**
+     * 审批拒绝原因（仅审批人返回）
+     */
+    private String approvalRejectReason;
+
+    /**
+     * 查看状态：wait_view/viewed（仅查看人返回）
+     */
+    private String viewStatus;
+
+    /**
+     * 查看时间（仅查看人返回）
+     */
+    private String viewTime;
+
     private String fillStatus;
     private String fillTime;
     private String signTime;
@@ -44,6 +91,38 @@ public class ParticipantDTO {
         this.participantName = participantName;
     }
 
+    public Integer getPartyRole() {
+        return partyRole;
+    }
+
+    public void setPartyRole(Integer partyRole) {
+        this.partyRole = partyRole;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPhoneCountryCode() {
+        return phoneCountryCode;
+    }
+
+    public void setPhoneCountryCode(String phoneCountryCode) {
+        this.phoneCountryCode = phoneCountryCode;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
     public String getJoinStatus() {
         return joinStatus;
     }
@@ -66,6 +145,46 @@ public class ParticipantDTO {
 
     public void setSignStatus(String signStatus) {
         this.signStatus = signStatus;
+    }
+
+    public String getApprovalStatus() {
+        return approvalStatus;
+    }
+
+    public void setApprovalStatus(String approvalStatus) {
+        this.approvalStatus = approvalStatus;
+    }
+
+    public String getApprovalTime() {
+        return approvalTime;
+    }
+
+    public void setApprovalTime(String approvalTime) {
+        this.approvalTime = approvalTime;
+    }
+
+    public String getApprovalRejectReason() {
+        return approvalRejectReason;
+    }
+
+    public void setApprovalRejectReason(String approvalRejectReason) {
+        this.approvalRejectReason = approvalRejectReason;
+    }
+
+    public String getViewStatus() {
+        return viewStatus;
+    }
+
+    public void setViewStatus(String viewStatus) {
+        this.viewStatus = viewStatus;
+    }
+
+    public String getViewTime() {
+        return viewTime;
+    }
+
+    public void setViewTime(String viewTime) {
+        this.viewTime = viewTime;
     }
 
     public String getFillStatus() {

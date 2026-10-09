@@ -12,6 +12,8 @@ public class QueryItemDetailResp extends BaseResp {
 
     private String bizId;
     private String fileName;
+    private String xsdProfileCode;
+    private String xsdSchemaVersion;
     private Integer attemptNo;
     private String documentHash;
     private String normalizedDocumentHash;
@@ -32,6 +34,10 @@ public class QueryItemDetailResp extends BaseResp {
     public void setBizId(String bizId) { this.bizId = bizId; }
     public String getFileName() { return fileName; }
     public void setFileName(String fileName) { this.fileName = fileName; }
+    public String getXsdProfileCode() { return xsdProfileCode; }
+    public void setXsdProfileCode(String xsdProfileCode) { this.xsdProfileCode = xsdProfileCode; }
+    public String getXsdSchemaVersion() { return xsdSchemaVersion; }
+    public void setXsdSchemaVersion(String xsdSchemaVersion) { this.xsdSchemaVersion = xsdSchemaVersion; }
     public Integer getAttemptNo() { return attemptNo; }
     public void setAttemptNo(Integer attemptNo) { this.attemptNo = attemptNo; }
     public String getDocumentHash() { return documentHash; }

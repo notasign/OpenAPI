@@ -12,6 +12,11 @@ public class CarbonCopyReqDTO {
 
     private String carbonCopyName;
 
+    /**
+     * 抄送方参与人ID（批量发送清单场景）
+     */
+    private String participantId;
+
     private String phoneCountryCode;
 
     private String phoneNumber;
@@ -24,6 +29,14 @@ public class CarbonCopyReqDTO {
 
     public void setCarbonCopyId(String carbonCopyId) {
         this.carbonCopyId = carbonCopyId;
+    }
+
+    public String getParticipantId() {
+        return participantId;
+    }
+
+    public void setParticipantId(String participantId) {
+        this.participantId = participantId;
     }
 
     public String getCarbonCopyName() {

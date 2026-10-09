@@ -9,9 +9,9 @@ import com.notasign.open.api.bean.base.BaseResp;
 public class CreateBulkSendListResp extends BaseResp {
 
     /**
-     * 批量发送清单ID
+     * 批量发送清单ID（服务端JSON键为 bulkSendListId）
      */
-    @JsonProperty("bulkSendListID")
+    @JsonProperty("bulkSendListId")
     private String bulkSendListID;
 
     /**

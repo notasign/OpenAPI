@@ -5,11 +5,23 @@ package com.notasign.open.api.bean.dto.bulksend;
  */
 public class BulkCarbonCopyItemDTO {
 
+    /**
+     * 抄送方参与方ID（清单文件 participantId 列）
+     */
+    private String participantId;
     private String carbonCopyId;
     private String carbonCopyName;
     private String phoneCountryCode;
     private String phoneNumber;
     private String email;
+
+    public String getParticipantId() {
+        return participantId;
+    }
+
+    public void setParticipantId(String participantId) {
+        this.participantId = participantId;
+    }
 
     public String getCarbonCopyId() {
         return carbonCopyId;

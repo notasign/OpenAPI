@@ -22,6 +22,8 @@ public class QueryValidationJobResp extends BaseResp {
     private ProgressInfo progress;
     private JobSummary summary;
     private List<ItemSummary> items;
+    private String xsdProfileCode;
+    private String xsdSchemaVersion;
 
     public String getJobId() { return jobId; }
     public void setJobId(String jobId) { this.jobId = jobId; }
@@ -47,6 +49,10 @@ public class QueryValidationJobResp extends BaseResp {
     public void setSummary(JobSummary summary) { this.summary = summary; }
     public List<ItemSummary> getItems() { return items; }
     public void setItems(List<ItemSummary> items) { this.items = items; }
+    public String getXsdProfileCode() { return xsdProfileCode; }
+    public void setXsdProfileCode(String xsdProfileCode) { this.xsdProfileCode = xsdProfileCode; }
+    public String getXsdSchemaVersion() { return xsdSchemaVersion; }
+    public void setXsdSchemaVersion(String xsdSchemaVersion) { this.xsdSchemaVersion = xsdSchemaVersion; }
 
     public static class ProgressInfo {
         private Integer totalItems;
@@ -141,6 +147,8 @@ public class QueryValidationJobResp extends BaseResp {
         private ItemLayerSummary summary;
         private Integer errorCount;
         private Integer warningCount;
+        private String xsdProfileCode;
+        private String xsdSchemaVersion;
 
         public String getItemId() { return itemId; }
         public void setItemId(String itemId) { this.itemId = itemId; }
@@ -162,5 +170,9 @@ public class QueryValidationJobResp extends BaseResp {
         public void setErrorCount(Integer errorCount) { this.errorCount = errorCount; }
         public Integer getWarningCount() { return warningCount; }
         public void setWarningCount(Integer warningCount) { this.warningCount = warningCount; }
+        public String getXsdProfileCode() { return xsdProfileCode; }
+        public void setXsdProfileCode(String xsdProfileCode) { this.xsdProfileCode = xsdProfileCode; }
+        public String getXsdSchemaVersion() { return xsdSchemaVersion; }
+        public void setXsdSchemaVersion(String xsdSchemaVersion) { this.xsdSchemaVersion = xsdSchemaVersion; }
     }
 }

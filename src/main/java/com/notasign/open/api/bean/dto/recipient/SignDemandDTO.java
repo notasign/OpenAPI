@@ -18,6 +18,16 @@ public class SignDemandDTO {
 
     private List<String> signatureOptions;
 
+    /**
+     * 签名布局样式：horizontal-横向，vertical-纵向，adaptive-自适应（默认）
+     */
+    private String layoutMode;
+
+    /**
+     * 阻塞信息，仅参与方被阻塞时返回
+     */
+    private BlockInfoDTO blockInfo;
+
     private BlockConfigDTO blockConfig;
 
     private List<String> terms;
@@ -73,6 +83,22 @@ public class SignDemandDTO {
 
     public void setSignatureOptions(List<String> signatureOptions) {
         this.signatureOptions = signatureOptions;
+    }
+
+    public String getLayoutMode() {
+        return layoutMode;
+    }
+
+    public void setLayoutMode(String layoutMode) {
+        this.layoutMode = layoutMode;
+    }
+
+    public BlockInfoDTO getBlockInfo() {
+        return blockInfo;
+    }
+
+    public void setBlockInfo(BlockInfoDTO blockInfo) {
+        this.blockInfo = blockInfo;
     }
 
     public BlockConfigDTO getBlockConfig() {

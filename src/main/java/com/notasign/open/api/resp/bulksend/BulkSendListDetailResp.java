@@ -1,5 +1,6 @@
 package com.notasign.open.api.resp.bulksend;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.notasign.open.api.bean.base.BaseResp;
 
 import java.util.List;
@@ -60,6 +61,21 @@ public class BulkSendListDetailResp extends BaseResp {
          */
         private List<CarbonCopyResp> carbonCopies;
 
+        /**
+         * 链接过期时间，Unix标准时间戳（毫秒）
+         */
+        private Long expiresTime;
+
+        /**
+         * 发送提醒频率（分钟）
+         */
+        private Integer remindFrequency;
+
+        /**
+         * 预填字段列表
+         */
+        private List<PrefillFieldResp> prefillFields;
+
         public String getSubject() {
             return subject;
         }
@@ -90,6 +106,30 @@ public class BulkSendListDetailResp extends BaseResp {
 
         public void setCarbonCopies(List<CarbonCopyResp> carbonCopies) {
             this.carbonCopies = carbonCopies;
+        }
+
+        public Long getExpiresTime() {
+            return expiresTime;
+        }
+
+        public void setExpiresTime(Long expiresTime) {
+            this.expiresTime = expiresTime;
+        }
+
+        public Integer getRemindFrequency() {
+            return remindFrequency;
+        }
+
+        public void setRemindFrequency(Integer remindFrequency) {
+            this.remindFrequency = remindFrequency;
+        }
+
+        public List<PrefillFieldResp> getPrefillFields() {
+            return prefillFields;
+        }
+
+        public void setPrefillFields(List<PrefillFieldResp> prefillFields) {
+            this.prefillFields = prefillFields;
         }
     }
 
@@ -206,8 +246,9 @@ public class BulkSendListDetailResp extends BaseResp {
         private String carbonCopyName;
 
         /**
-         * 抄送方邮箱
+         * 抄送方邮箱（服务端JSON键为 carbonCopyEmail）
          */
+        @JsonProperty("carbonCopyEmail")
         private String email;
 
         /**

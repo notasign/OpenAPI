@@ -43,6 +43,11 @@ public class CreateEnvelopeReq extends BaseReq<CreateEnvelopeResp> {
      */
     private Boolean isBulkSend;
 
+    /**
+     * 发送提醒频率（分钟）
+     */
+    private Integer remindFrequency;
+
     private List<DocumentReqDTO> documents;
 
     private List<ParticipantReqDTO> participants;
@@ -136,6 +141,14 @@ public class CreateEnvelopeReq extends BaseReq<CreateEnvelopeResp> {
 
     public void setIsBulkSend(Boolean isBulkSend) {
         this.isBulkSend = isBulkSend;
+    }
+
+    public Integer getRemindFrequency() {
+        return remindFrequency;
+    }
+
+    public void setRemindFrequency(Integer remindFrequency) {
+        this.remindFrequency = remindFrequency;
     }
 
     public List<DocumentReqDTO> getDocuments() {

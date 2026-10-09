@@ -1,14 +1,14 @@
 package com.notasign.open.api.resp.xml;
 
-import com.notasign.open.api.bean.base.BaseResp;
-
 /**
- * XML签署创建成功后已登记的文件定位信息
+ * XML签署已受理项（对齐服务端 XmlAcceptedItemResp）
+ *
+ * @author Nota
  */
-public class XmlAcceptedItemResp extends BaseResp {
+public class XmlAcceptedItemResp {
 
     /**
-     * 原始XML文件ID
+     * XML文件ID
      */
     private Long xmlFileId;
 

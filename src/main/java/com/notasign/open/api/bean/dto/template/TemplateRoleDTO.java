@@ -1,5 +1,7 @@
 package com.notasign.open.api.bean.dto.template;
 
+import com.notasign.open.api.bean.dto.recipient.TemplateRoleSignDemandDTO;
+
 /**
  * @author Nota
  * @date 2025/8/22 15:47
@@ -7,6 +9,11 @@ package com.notasign.open.api.bean.dto.template;
 public class TemplateRoleDTO {
 
     private String roleName;
+
+    /**
+     * 收件人角色：0=签署人 1=审批人 2=查看人，旧模板缺省时返回 0
+     */
+    private Integer partyRole;
 
     private String name;
 
@@ -16,12 +23,40 @@ public class TemplateRoleDTO {
 
     private String phoneNumber;
 
+    /**
+     * 签署顺序号，仅有序签署时返回
+     */
+    private Integer orderNo;
+
+    /**
+     * 角色类型：signer-签署人，eseal-电子印章，bulkSigners-批量签署人
+     */
+    private String roleType;
+
+    /**
+     * 参与方角色类型：1-固定单个参与方，2-批量参与方
+     */
+    private Integer partyRoleType;
+
+    /**
+     * 签署需求信息
+     */
+    private TemplateRoleSignDemandDTO signDemand;
+
     public String getRoleName() {
         return roleName;
     }
 
     public void setRoleName(String roleName) {
         this.roleName = roleName;
+    }
+
+    public Integer getPartyRole() {
+        return partyRole;
+    }
+
+    public void setPartyRole(Integer partyRole) {
+        this.partyRole = partyRole;
     }
 
     public String getName() {
@@ -54,5 +89,37 @@ public class TemplateRoleDTO {
 
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
+    }
+
+    public Integer getOrderNo() {
+        return orderNo;
+    }
+
+    public void setOrderNo(Integer orderNo) {
+        this.orderNo = orderNo;
+    }
+
+    public String getRoleType() {
+        return roleType;
+    }
+
+    public void setRoleType(String roleType) {
+        this.roleType = roleType;
+    }
+
+    public Integer getPartyRoleType() {
+        return partyRoleType;
+    }
+
+    public void setPartyRoleType(Integer partyRoleType) {
+        this.partyRoleType = partyRoleType;
+    }
+
+    public TemplateRoleSignDemandDTO getSignDemand() {
+        return signDemand;
+    }
+
+    public void setSignDemand(TemplateRoleSignDemandDTO signDemand) {
+        this.signDemand = signDemand;
     }
 }

@@ -9,9 +9,9 @@ import com.notasign.open.api.bean.base.BaseResp;
 public class CreateBulkSendTaskResp extends BaseResp {
 
     /**
-     * 批次ID
+     * 批次ID（服务端JSON键为 bulkId）
      */
-    @JsonProperty("bulkID")
+    @JsonProperty("bulkId")
     private String bulkID;
 
     /**
@@ -23,6 +23,21 @@ public class CreateBulkSendTaskResp extends BaseResp {
      * 创建时间，Unix标准时间戳（毫秒）
      */
     private String createTime;
+
+    /**
+     * 批次名称
+     */
+    private String bulkName;
+
+    /**
+     * 任务来源类型
+     */
+    private String sourceType;
+
+    /**
+     * 任务来源ID
+     */
+    private String sourceId;
 
     public String getBulkID() {
         return bulkID;
@@ -46,5 +61,29 @@ public class CreateBulkSendTaskResp extends BaseResp {
 
     public void setCreateTime(String createTime) {
         this.createTime = createTime;
+    }
+
+    public String getBulkName() {
+        return bulkName;
+    }
+
+    public void setBulkName(String bulkName) {
+        this.bulkName = bulkName;
+    }
+
+    public String getSourceType() {
+        return sourceType;
+    }
+
+    public void setSourceType(String sourceType) {
+        this.sourceType = sourceType;
+    }
+
+    public String getSourceId() {
+        return sourceId;
+    }
+
+    public void setSourceId(String sourceId) {
+        this.sourceId = sourceId;
     }
 }

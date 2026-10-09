@@ -13,6 +13,19 @@ public class ParticipantSignUrlResp extends BaseResp {
 
     private String signShortUrl;
 
+    /**
+     * 是否允许多次盖章
+     */
+    private Boolean stampAllowMultiple;
+
+    public Boolean getStampAllowMultiple() {
+        return stampAllowMultiple;
+    }
+
+    public void setStampAllowMultiple(Boolean stampAllowMultiple) {
+        this.stampAllowMultiple = stampAllowMultiple;
+    }
+
     public String getSignUrl() {
         return signUrl;
     }

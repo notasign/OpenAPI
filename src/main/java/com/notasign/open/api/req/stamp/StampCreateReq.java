@@ -20,9 +20,14 @@ public class StampCreateReq extends BaseReq<StampCreateResp> {
     private Integer stampHeightMm;
 
     /**
-     * 图章图片 base64
+     * 图章图片 base64（与 stampFileId 二选一）
      */
     private String stampImage;
+
+    /**
+     * 图章图片文件ID（与 stampImage 二选一）
+     */
+    private String stampFileId;
 
     public String getStampName() {
         return stampName;
@@ -46,6 +51,14 @@ public class StampCreateReq extends BaseReq<StampCreateResp> {
 
     public void setStampImage(String stampImage) {
         this.stampImage = stampImage;
+    }
+
+    public String getStampFileId() {
+        return stampFileId;
+    }
+
+    public void setStampFileId(String stampFileId) {
+        this.stampFileId = stampFileId;
     }
 
     @Override

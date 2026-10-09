@@ -28,6 +28,8 @@ public class QueryValidationItemResp extends BaseResp {
         private String itemId;
         private String bizId;
         private String fileName;
+        private String xsdProfileCode;
+        private String xsdSchemaVersion;
         private String status;
         private Boolean valid;
         private Integer attemptNo;
@@ -44,6 +46,10 @@ public class QueryValidationItemResp extends BaseResp {
         public void setBizId(String bizId) { this.bizId = bizId; }
         public String getFileName() { return fileName; }
         public void setFileName(String fileName) { this.fileName = fileName; }
+        public String getXsdProfileCode() { return xsdProfileCode; }
+        public void setXsdProfileCode(String xsdProfileCode) { this.xsdProfileCode = xsdProfileCode; }
+        public String getXsdSchemaVersion() { return xsdSchemaVersion; }
+        public void setXsdSchemaVersion(String xsdSchemaVersion) { this.xsdSchemaVersion = xsdSchemaVersion; }
         public String getStatus() { return status; }
         public void setStatus(String status) { this.status = status; }
         public Boolean getValid() { return valid; }

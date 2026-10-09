@@ -1,5 +1,6 @@
 package com.notasign.open.api.resp.bulksend;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.notasign.open.api.bean.base.BaseResp;
 
 /**
@@ -8,8 +9,9 @@ import com.notasign.open.api.bean.base.BaseResp;
 public class BulkSendTemplateResp extends BaseResp {
 
     /**
-     * 模板下载地址
+     * 模板下载地址（服务端JSON键为 downloadUrl）
      */
+    @JsonProperty("downloadUrl")
     private String templateUrl;
 
     /**

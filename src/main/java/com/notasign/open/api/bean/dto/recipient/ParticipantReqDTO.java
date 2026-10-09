@@ -2,6 +2,7 @@ package com.notasign.open.api.bean.dto.recipient;
 
 
 import com.notasign.open.api.bean.dto.field.CheckboxFieldConfigDTO;
+import com.notasign.open.api.bean.dto.field.ImageFieldConfigDTO;
 import com.notasign.open.api.bean.dto.field.RadioFieldConfigDTO;
 
 import java.util.List;
@@ -205,6 +206,11 @@ public class ParticipantReqDTO {
          */
         private CheckboxFieldConfigDTO checkboxConfig;
 
+        /**
+         * 图片控件配置（预填 fileId 时使用）
+         */
+        private ImageFieldConfigDTO imageConfig;
+
         public String getFieldDocId() {
             return fieldDocId;
         }
@@ -251,6 +257,14 @@ public class ParticipantReqDTO {
 
         public void setCheckboxConfig(CheckboxFieldConfigDTO checkboxConfig) {
             this.checkboxConfig = checkboxConfig;
+        }
+
+        public ImageFieldConfigDTO getImageConfig() {
+            return imageConfig;
+        }
+
+        public void setImageConfig(ImageFieldConfigDTO imageConfig) {
+            this.imageConfig = imageConfig;
         }
     }
 }

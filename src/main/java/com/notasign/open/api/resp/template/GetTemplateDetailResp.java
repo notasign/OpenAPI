@@ -30,6 +30,21 @@ public class GetTemplateDetailResp extends BaseResp {
 
     private Boolean signInOrder;
 
+    /**
+     * 文档间签署顺序：0-无序签署，1-顺序签署
+     */
+    private Integer docSignInOrder;
+
+    /**
+     * 是否批量发送模板
+     */
+    private Boolean isBulkSendTemplate;
+
+    /**
+     * 批量发送清单ID
+     */
+    private String bulkSendListID;
+
     private List<DocumentDTO> documents;
 
     private List<TemplateRoleDTO> roles;
@@ -98,6 +113,30 @@ public class GetTemplateDetailResp extends BaseResp {
 
     public void setSignInOrder(Boolean signInOrder) {
         this.signInOrder = signInOrder;
+    }
+
+    public Integer getDocSignInOrder() {
+        return docSignInOrder;
+    }
+
+    public void setDocSignInOrder(Integer docSignInOrder) {
+        this.docSignInOrder = docSignInOrder;
+    }
+
+    public Boolean getIsBulkSendTemplate() {
+        return isBulkSendTemplate;
+    }
+
+    public void setIsBulkSendTemplate(Boolean isBulkSendTemplate) {
+        this.isBulkSendTemplate = isBulkSendTemplate;
+    }
+
+    public String getBulkSendListID() {
+        return bulkSendListID;
+    }
+
+    public void setBulkSendListID(String bulkSendListID) {
+        this.bulkSendListID = bulkSendListID;
     }
 
     public List<DocumentDTO> getDocuments() {

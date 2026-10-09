@@ -26,6 +26,16 @@ public class StampUserListReq extends BasePageReq<StampUserListResp> {
      */
     private String memberName;
 
+    /**
+     * 成员ID，精确匹配（对齐服务端字段名 queryMemberId）
+     */
+    private String queryMemberId;
+
+    /**
+     * 成员ID，精确匹配（兼容旧字段名）
+     */
+    private String memberId;
+
     public String getStampId() {
         return stampId;
     }
@@ -48,6 +58,22 @@ public class StampUserListReq extends BasePageReq<StampUserListResp> {
 
     public void setMemberName(String memberName) {
         this.memberName = memberName;
+    }
+
+    public String getQueryMemberId() {
+        return queryMemberId;
+    }
+
+    public void setQueryMemberId(String queryMemberId) {
+        this.queryMemberId = queryMemberId;
+    }
+
+    public String getMemberId() {
+        return memberId;
+    }
+
+    public void setMemberId(String memberId) {
+        this.memberId = memberId;
     }
 
     @Override
