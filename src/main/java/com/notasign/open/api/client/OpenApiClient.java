@@ -330,9 +330,13 @@ public abstract class OpenApiClient {
     private BaseResponseEntity request(String url, Map<String, String> headerMap, Map<String, String> bodyMap) throws ApiException {
         try {
             return HttpUtil.downLoadFiles(url, headerMap, bodyMap);
+        } catch (ApiException e) {
+            // HttpUtil已携带原始异常根因，直接透传避免二次包裹丢失
+            throw e;
         } catch (Exception e) {
+            e.printStackTrace();
             log.error("httpDownLoad请求失败：{}", e.getMessage(), e);
-            throw new ApiException("httpDownLoad请求失败");
+            throw new ApiException("httpDownLoad请求失败: " + e.getMessage(), e);
         }
     }
 

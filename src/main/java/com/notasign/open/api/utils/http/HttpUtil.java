@@ -27,12 +27,13 @@ import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.impl.conn.PoolingHttpClientConnectionManager;
 import org.apache.http.message.BasicNameValuePair;
-import org.apache.http.ssl.SSLContexts;
 import org.apache.http.util.EntityUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import javax.net.ssl.SSLContext;
+import javax.net.ssl.SSLException;
+import javax.net.ssl.TrustManager;
 import java.io.File;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
@@ -61,6 +62,11 @@ public class HttpUtil {
     public static HttpConfig httpConfig;
 
     private static volatile CloseableHttpClient closeableHttpClient;
+
+    /**
+     * 支持热加载的信任管理器，服务端更换HTTPS证书后更新信任库文件即可自动生效
+     */
+    private static volatile DynamicTrustManager dynamicTrustManager;
 
     private static Lock lock = new ReentrantLock();
 
@@ -178,8 +184,9 @@ public class HttpUtil {
         } catch (ApiException e) {
             throw e;
         } catch (Exception e) {
+            printStackTrace(e);
             log.error("url=[{}] http请求失败：{}", url, e.getMessage(), e);
-            throw new ApiException("请求失败");
+            throw new ApiException("请求失败: " + e.getMessage(), e);
         }
     }
 
@@ -201,8 +208,9 @@ public class HttpUtil {
         } catch (ApiException e) {
             throw e;
         } catch (Exception e) {
+            printStackTrace(e);
             log.error("url=[{}] http请求失败：{}", url, e.getMessage(), e);
-            throw new ApiException("请求失败");
+            throw new ApiException("请求失败: " + e.getMessage(), e);
         }
     }
 
@@ -222,20 +230,19 @@ public class HttpUtil {
             if (closeableHttpClient != null) {
                 return closeableHttpClient;
             }
-            Registry<ConnectionSocketFactory> sfr = null;
-            if (httpConfig != null && Boolean.TRUE.equals(httpConfig.getProxyFlag())) {
-                sfr = RegistryBuilder.<ConnectionSocketFactory>create()
-                        .register("http", PlainConnectionSocketFactory.getSocketFactory())
-                        .register("https", SSLConnectionSocketFactory.getSocketFactory())
-                        .build();
-            } else {
-                SSLContext ctx = SSLContexts.custom().setProtocol("TLSv1.2").build();
-                SSLConnectionSocketFactory sslsf = new SSLConnectionSocketFactory(ctx);
-                sfr = RegistryBuilder.<ConnectionSocketFactory>create()
-                        .register("http", PlainConnectionSocketFactory.getSocketFactory())
-                        .register("https", sslsf != null ? sslsf : SSLConnectionSocketFactory.getSocketFactory())
-                        .build();
-            }
+            // 使用支持热加载的DynamicTrustManager构建SSLContext：
+            // 服务端更换HTTPS证书后，更新信任库文件即可自动生效，无需重建HttpClient、无需重启应用
+            DynamicTrustManager dynamicTm = new DynamicTrustManager(
+                    httpConfig == null ? null : httpConfig.getTrustStorePath(),
+                    httpConfig == null ? null : httpConfig.getTrustStorePassword());
+            SSLContext ctx = SSLContext.getInstance("TLSv1.2");
+            ctx.init(null, new TrustManager[]{dynamicTm}, null);
+            dynamicTrustManager = dynamicTm;
+            SSLConnectionSocketFactory sslsf = new SSLConnectionSocketFactory(ctx);
+            Registry<ConnectionSocketFactory> sfr = RegistryBuilder.<ConnectionSocketFactory>create()
+                    .register("http", PlainConnectionSocketFactory.getSocketFactory())
+                    .register("https", sslsf)
+                    .build();
             PoolingHttpClientConnectionManager connectionManager = new PoolingHttpClientConnectionManager(sfr);
             Integer defaultMaxPerRoute = DEFAULT_MAX_PER_ROUTE;
             Integer defaultSocketMaxTotal = DEFAULT_SOCKET_MAX_TOTAL;
@@ -251,8 +258,9 @@ public class HttpUtil {
             connectionManager.closeExpiredConnections();
             closeableHttpClient = HttpClients.custom().setConnectionManager(connectionManager).build();
         } catch (Exception e) {
+            printStackTrace(e);
             log.error("HttpClient生成失败：{}", e.getMessage(), e);
-            throw new ApiException("HttpClient生成失败");
+            throw new ApiException("HttpClient生成失败: " + e.getMessage(), e);
         } finally {
             lock.unlock();
         }
@@ -298,9 +306,13 @@ public class HttpUtil {
             }
 
             return executeHttpRequest(httpClient, httpPut, reqHeader);
+        } catch (ApiException e) {
+            // 保持上层异常语义（如请求超时）直接透传，避免二次包裹丢失根因
+            throw e;
         } catch (Exception e) {
+            printStackTrace(e);
             log.error("PUT请求失败 url={}", url, e);
-            throw new ApiException("PUT请求失败");
+            throw new ApiException("PUT请求失败: " + e.getMessage(), e);
         }
     }
 
@@ -325,9 +337,13 @@ public class HttpUtil {
             }
 
             return executeHttpRequest(httpClient, httpPut, reqHeader);
+        } catch (ApiException e) {
+            // 保持上层异常语义（如请求超时）直接透传，避免二次包裹丢失根因
+            throw e;
         } catch (Exception e) {
+            printStackTrace(e);
             log.error("PUT请求失败 url={}", url, e);
-            throw new ApiException("PUT请求失败");
+            throw new ApiException("PUT请求失败: " + e.getMessage(), e);
         }
     }
 
@@ -356,9 +372,13 @@ public class HttpUtil {
             }
 
             return executeHttpRequest(httpClient, httpDelete, reqHeader);
+        } catch (ApiException e) {
+            // 保持上层异常语义（如请求超时）直接透传，避免二次包裹丢失根因
+            throw e;
         } catch (Exception e) {
+            printStackTrace(e);
             log.error("DELETE请求失败 url={}", url, e);
-            throw new ApiException("DELETE请求失败");
+            throw new ApiException("DELETE请求失败: " + e.getMessage(), e);
         }
     }
 
@@ -373,19 +393,36 @@ public class HttpUtil {
             }
             response = client.execute(request);
             reqesutAndResponseLog(request, response);
-            HttpInfoRes httpInfoRes = HttpInfoRes.getInstance();
-            if (response.getEntity() != null) {
-                httpInfoRes.setBody(EntityUtils.toString(response.getEntity()));
-            }
-            setResponseRequestId(response,httpInfoRes);
-            httpInfoRes.setHttpStatusCode(response.getStatusLine().getStatusCode());
-            return httpInfoRes;
+            return buildHttpInfoRes(response);
         } catch (SocketTimeoutException eto) {
+            printStackTrace(eto);
             log.error("请求链接超时：{}", eto.getMessage(), eto);
-            throw new ApiException("请求超时");
+            throw new ApiException("请求超时: " + eto.getMessage(), eto);
         } catch (Exception e) {
+            // 服务端HTTPS证书更换后，静态client中缓存的SSLContext不会重新加载信任证书库，
+            // 新建TLS连接时会因信任链校验失败出现PKIX path building failed。
+            // PKIX失败发生在TLS握手阶段，HTTP报文尚未发出，重建client并重试一次是安全的。
+            if (isSslTrustFailure(e)) {
+                log.warn("检测到SSL证书信任异常，重新加载信任库并重试: {}", e.getMessage(), e);
+                // SSLContext持有DynamicTrustManager引用，reload后新握手即使用新信任库，
+                // 无需重建HttpClient与连接池，直接重试一次
+                if (dynamicTrustManager != null) {
+                    dynamicTrustManager.reload();
+                }
+                CloseableHttpClient retryClient = getHttpClient(httpConfig);
+                try {
+                    response = retryClient.execute(request);
+                    reqesutAndResponseLog(request, response);
+                    return buildHttpInfoRes(response);
+                } catch (Exception retryException) {
+                    printStackTrace(retryException);
+                    log.error("信任库重载后重试仍失败：{}", retryException.getMessage(), retryException);
+                    throw new ApiException("请求失败: " + retryException.getMessage(), retryException);
+                }
+            }
+            printStackTrace(e);
             log.error("executeHttpRequest请求失败：{}", e.getMessage(), e);
-            throw new ApiException("请求失败");
+            throw new ApiException("请求失败: " + e.getMessage(), e);
         } finally {
             if (response != null) {
                 try {
@@ -394,6 +431,91 @@ public class HttpUtil {
                     log.error("CloseableHttpResponse关闭失败：{}", e.getMessage(), e);
                 }
             }
+        }
+    }
+
+    /**
+     * 构建响应结果
+     *
+     * @param response http响应
+     * @return HttpInfoRes
+     * @throws IOException 读取响应体失败
+     */
+    private static HttpInfoRes buildHttpInfoRes(CloseableHttpResponse response) throws IOException {
+        HttpInfoRes httpInfoRes = HttpInfoRes.getInstance();
+        if (response.getEntity() != null) {
+            httpInfoRes.setBody(EntityUtils.toString(response.getEntity()));
+        }
+        setResponseRequestId(response, httpInfoRes);
+        httpInfoRes.setHttpStatusCode(response.getStatusLine().getStatusCode());
+        return httpInfoRes;
+    }
+
+    /**
+     * 判断异常链中是否存在SSL证书信任校验失败异常（如PKIX path building failed）
+     *
+     * @param e 原始异常
+     * @return 是否为证书信任失败
+     */
+    private static boolean isSslTrustFailure(Throwable e) {
+        Throwable cause = e;
+        while (cause != null) {
+            if (cause instanceof SSLException) {
+                String message = cause.getMessage();
+                if (message != null && (message.contains("PKIX")
+                        || message.contains("unable to find valid certification path")
+                        || message.contains("certificate_unknown")
+                        || message.contains("certificate verify failed"))) {
+                    return true;
+                }
+            }
+            cause = cause.getCause();
+        }
+        return false;
+    }
+
+    /**
+     * 打印异常堆栈到标准错误流。
+     * 调用方环境日志框架未配置时（如无log4j配置），log.error不会产生任何输出，
+     * 此处兜底直接打印，确保请求失败时异常堆栈始终可见，便于排查PKIX等问题。
+     *
+     * @param e 异常
+     */
+    private static void printStackTrace(Throwable e) {
+        e.printStackTrace();
+    }
+
+    /**
+     * 重建HttpClient。
+     * 服务端HTTPS证书更换后，旧client的SSLContext不会重新加载信任证书库，
+     * 更新cacerts后调用本方法可免重启恢复，也可用于定时主动刷新。
+     */
+    public static void refreshHttpClient() {
+        refreshHttpClient(closeableHttpClient);
+    }
+
+    /**
+     * 重建指定引用的HttpClient。
+     * 仅当当前单例引用与传入引用一致时才关闭重建，避免并发重建时误关闭新client。
+     *
+     * @param oldClient 需要重建的client引用
+     */
+    private static void refreshHttpClient(CloseableHttpClient oldClient) {
+        lock.lock();
+        try {
+            if (oldClient == null || closeableHttpClient != oldClient) {
+                // 已被其他线程重建，无需处理
+                return;
+            }
+            closeableHttpClient = null;
+            try {
+                oldClient.close();
+                log.info("旧HttpClient已关闭，重建后将重新加载信任证书库");
+            } catch (IOException e) {
+                log.warn("旧HttpClient关闭失败：{}", e.getMessage(), e);
+            }
+        } finally {
+            lock.unlock();
         }
     }
 
@@ -447,8 +569,9 @@ public class HttpUtil {
                 entity.setContentType(contentType.getValue());
             }
         } catch (Exception e) {
+            printStackTrace(e);
             log.error("文件下载失败：{}", e.getMessage(), e);
-            throw new ApiException("文件下载失败");
+            throw new ApiException("文件下载失败: " + e.getMessage(), e);
         } finally {
             if (response != null) {
                 try {

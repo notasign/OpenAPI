@@ -33,6 +33,15 @@ public class HttpConfig {
      * http代理端口号
      */
     private Integer proxyPort;
+    /**
+     * 自定义信任证书库文件路径（支持JKS/PKCS12），null时使用JVM默认cacerts。
+     * 配置后信任库支持热加载：服务端更换证书后更新该文件即可自动生效，无需重启应用
+     */
+    private String trustStorePath;
+    /**
+     * 信任证书库密码
+     */
+    private String trustStorePassword;
 
 
     public HttpConfig() {
@@ -110,5 +119,21 @@ public class HttpConfig {
 
     public void setProxyPort(Integer proxyPort) {
         this.proxyPort = proxyPort;
+    }
+
+    public String getTrustStorePath() {
+        return trustStorePath;
+    }
+
+    public void setTrustStorePath(String trustStorePath) {
+        this.trustStorePath = trustStorePath;
+    }
+
+    public String getTrustStorePassword() {
+        return trustStorePassword;
+    }
+
+    public void setTrustStorePassword(String trustStorePassword) {
+        this.trustStorePassword = trustStorePassword;
     }
 }
