@@ -42,6 +42,12 @@ public class HttpConfig {
      * 信任证书库密码
      */
     private String trustStorePassword;
+    /**
+     * 是否信任所有HTTPS证书（跳过证书链校验）。
+     * 默认false。仅供第三方证书更换、信任库暂未就绪时的临时止血方案，
+     * 会引入中间人攻击风险，生产环境不建议长期开启。
+     */
+    private Boolean trustAllCerts = false;
 
 
     public HttpConfig() {
@@ -135,5 +141,13 @@ public class HttpConfig {
 
     public void setTrustStorePassword(String trustStorePassword) {
         this.trustStorePassword = trustStorePassword;
+    }
+
+    public Boolean getTrustAllCerts() {
+        return trustAllCerts;
+    }
+
+    public void setTrustAllCerts(Boolean trustAllCerts) {
+        this.trustAllCerts = trustAllCerts;
     }
 }

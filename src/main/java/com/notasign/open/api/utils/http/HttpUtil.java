@@ -236,7 +236,12 @@ public class HttpUtil {
                     httpConfig == null ? null : httpConfig.getTrustStorePath(),
                     httpConfig == null ? null : httpConfig.getTrustStorePassword());
             SSLContext ctx = SSLContext.getInstance("TLSv1.2");
-            ctx.init(null, new TrustManager[]{dynamicTm}, null);
+            if (httpConfig != null && Boolean.TRUE.equals(httpConfig.getTrustAllCerts())) {
+                // 信任所有证书（跳过证书链校验），临时止血方案，生产不建议长期开启
+                ctx.init(null, new TrustManager[]{new InsecureTrustManager()}, null);
+            } else {
+                ctx.init(null, new TrustManager[]{dynamicTm}, null);
+            }
             dynamicTrustManager = dynamicTm;
             SSLConnectionSocketFactory sslsf = new SSLConnectionSocketFactory(ctx);
             Registry<ConnectionSocketFactory> sfr = RegistryBuilder.<ConnectionSocketFactory>create()
@@ -639,5 +644,25 @@ public class HttpUtil {
             }
         }
         return custom.build();
+    }
+
+    /**
+     * 信任所有证书的TrustManager实现。
+     * 仅当 HttpConfig.trustAllCerts=true 时启用，跳过证书链校验。
+     * 会引入中间人攻击风险，仅用于第三方证书更换、信任库暂未就绪时的临时止血。
+     */
+    private static class InsecureTrustManager implements javax.net.ssl.X509TrustManager {
+        @Override
+        public void checkClientTrusted(java.security.cert.X509Certificate[] chain, String authType) {
+        }
+
+        @Override
+        public void checkServerTrusted(java.security.cert.X509Certificate[] chain, String authType) {
+        }
+
+        @Override
+        public java.security.cert.X509Certificate[] getAcceptedIssuers() {
+            return new java.security.cert.X509Certificate[0];
+        }
     }
 }
