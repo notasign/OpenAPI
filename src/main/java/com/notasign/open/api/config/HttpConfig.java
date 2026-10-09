@@ -44,10 +44,11 @@ public class HttpConfig {
     private String trustStorePassword;
     /**
      * 是否信任所有HTTPS证书（跳过证书链校验）。
-     * 默认false。仅供第三方证书更换、信任库暂未就绪时的临时止血方案，
-     * 会引入中间人攻击风险，生产环境不建议长期开启。
+     * 默认true（临时）。仅供第三方证书更换、信任库暂未就绪时的临时止血方案，
+     * 会引入中间人攻击风险，生产环境不建议长期开启；
+     * 证书/信任库就绪后请显式设置为 false 恢复证书校验。
      */
-    private Boolean trustAllCerts = false;
+    private Boolean trustAllCerts = true;
 
 
     public HttpConfig() {
