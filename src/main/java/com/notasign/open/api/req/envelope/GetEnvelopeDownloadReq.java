@@ -18,6 +18,13 @@ public class GetEnvelopeDownloadReq extends BaseReq<GetEnvelopeDownloadResp> {
 
     private String customFileName;
 
+    /**
+     * 指定要下载的文档ID，来自信封详情接口返回的 documents[].documentId，最大50字符；
+     * 不传或传null时返回整个信封的合并件下载链接（与现状一致），传入时返回该文档的单文档下载链接；
+     * 传入的 documentId 必须属于当前信封，否则返回参数错误
+     */
+    private String documentId;
+
     @Override
     public Class<GetEnvelopeDownloadResp> getRespClass() {
         return GetEnvelopeDownloadResp.class;
@@ -42,5 +49,13 @@ public class GetEnvelopeDownloadReq extends BaseReq<GetEnvelopeDownloadResp> {
 
     public void setCustomFileName(String customFileName) {
         this.customFileName = customFileName;
+    }
+
+    public String getDocumentId() {
+        return documentId;
+    }
+
+    public void setDocumentId(String documentId) {
+        this.documentId = documentId;
     }
 }

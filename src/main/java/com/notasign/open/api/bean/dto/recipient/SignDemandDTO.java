@@ -44,6 +44,18 @@ public class SignDemandDTO {
      */
     private Boolean allowParticipantRename;
 
+    /**
+     * 收件人语言（通知文案与签署界面语言），取值为平台支持的语言代码（如 th、vi）；
+     * 不传/传空时按系统默认规则解析（未注册收件人邮件用英文、已注册用账号设置语言、签署页未注册用浏览器语言）；
+     * 仅本地化系统文案与界面，不翻译自定义的邮件标题/正文
+     */
+    private String language;
+
+    /**
+     * 收件人级通知文案覆盖（邮件标题/正文），不传时回退信封级 subject/remark
+     */
+    private CustomNotificationDTO customNotification;
+
 
     public int getOrderNo() {
         return orderNo;
@@ -139,6 +151,22 @@ public class SignDemandDTO {
 
     public void setAllowParticipantRename(Boolean allowParticipantRename) {
         this.allowParticipantRename = allowParticipantRename;
+    }
+
+    public String getLanguage() {
+        return language;
+    }
+
+    public void setLanguage(String language) {
+        this.language = language;
+    }
+
+    public CustomNotificationDTO getCustomNotification() {
+        return customNotification;
+    }
+
+    public void setCustomNotification(CustomNotificationDTO customNotification) {
+        this.customNotification = customNotification;
     }
 
     public static class JoinCheckConfiguration {

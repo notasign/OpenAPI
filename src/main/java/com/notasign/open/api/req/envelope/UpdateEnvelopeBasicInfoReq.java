@@ -2,6 +2,7 @@ package com.notasign.open.api.req.envelope;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.notasign.open.api.bean.base.BaseReq;
+import com.notasign.open.api.bean.dto.envelope.EnvelopeCustomFieldsDTO;
 import com.notasign.open.api.constants.OpenApiUrlConstants;
 import com.notasign.open.api.resp.envelope.UpdateEnvelopeBasicInfoResp;
 
@@ -35,6 +36,11 @@ public class UpdateEnvelopeBasicInfoReq extends BaseReq<UpdateEnvelopeBasicInfoR
      * 自由签署模式：allow-允许，disallow-不允许
      */
     private String freeformSigningMode;
+
+    /**
+     * 信封自定义字段：不传保持原值不变；传入非空对象整体替换全部自定义字段；传入空对象清空；传null返回参数错误
+     */
+    private EnvelopeCustomFieldsDTO customFields;
 
     public String getEnvelopeId() {
         return envelopeId;
@@ -74,6 +80,14 @@ public class UpdateEnvelopeBasicInfoReq extends BaseReq<UpdateEnvelopeBasicInfoR
 
     public void setFreeformSigningMode(String freeformSigningMode) {
         this.freeformSigningMode = freeformSigningMode;
+    }
+
+    public EnvelopeCustomFieldsDTO getCustomFields() {
+        return customFields;
+    }
+
+    public void setCustomFields(EnvelopeCustomFieldsDTO customFields) {
+        this.customFields = customFields;
     }
 
     @Override

@@ -4,6 +4,7 @@ package com.notasign.open.api.req.envelope;
 import com.notasign.open.api.bean.base.BaseReq;
 import com.notasign.open.api.bean.dto.bulksend.PrefillFieldItemDTO;
 import com.notasign.open.api.bean.dto.document.DocumentReqDTO;
+import com.notasign.open.api.bean.dto.envelope.EnvelopeCustomFieldsDTO;
 import com.notasign.open.api.bean.dto.recipient.CarbonCopyReqDTO;
 import com.notasign.open.api.bean.dto.recipient.ParticipantReqDTO;
 import com.notasign.open.api.bean.dto.template.CreateTemplateFieldDTO;
@@ -62,6 +63,12 @@ public class CreateEnvelopeReq extends BaseReq<CreateEnvelopeResp> {
      * 预填字段列表（发起方文本控件 isPrefill=1 + prefillKey 匹配写入值）
      */
     private List<PrefillFieldItemDTO> prefillFields;
+
+    /**
+     * 信封自定义字段（信封级业务元数据，收件人不可见、不渲染进签署文档）；
+     * 不传等价于空，text 与 list 两类字段数之和上限20
+     */
+    private EnvelopeCustomFieldsDTO customFields;
 
     public String getTemplateId() {
         return templateId;
@@ -197,6 +204,14 @@ public class CreateEnvelopeReq extends BaseReq<CreateEnvelopeResp> {
 
     public void setPrefillFields(List<PrefillFieldItemDTO> prefillFields) {
         this.prefillFields = prefillFields;
+    }
+
+    public EnvelopeCustomFieldsDTO getCustomFields() {
+        return customFields;
+    }
+
+    public void setCustomFields(EnvelopeCustomFieldsDTO customFields) {
+        this.customFields = customFields;
     }
 
     @Override

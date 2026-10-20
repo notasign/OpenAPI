@@ -6,6 +6,7 @@ import com.notasign.open.api.bean.base.BaseReq;
 import com.notasign.open.api.bean.base.EmptyResp;
 import com.notasign.open.api.bean.dto.bulksend.PrefillFieldItemDTO;
 import com.notasign.open.api.bean.dto.document.DocumentReqDTO;
+import com.notasign.open.api.bean.dto.envelope.EnvelopeCustomFieldsDTO;
 import com.notasign.open.api.bean.dto.recipient.CarbonCopyReqDTO;
 import com.notasign.open.api.bean.dto.recipient.ParticipantReqDTO;
 import com.notasign.open.api.bean.dto.template.CreateTemplateFieldDTO;
@@ -65,6 +66,11 @@ public class UpdateEnvelopeReq extends BaseReq<EmptyResp> {
      * 预填字段列表（发起方文本控件 isPrefill=1 + prefillKey 匹配写入值）
      */
     private List<PrefillFieldItemDTO> prefillFields;
+
+    /**
+     * 信封自定义字段：不传保持原值不变；传入非空对象整体替换全部自定义字段；传入空对象清空；传null返回参数错误
+     */
+    private EnvelopeCustomFieldsDTO customFields;
 
     public String getEnvelopeId() {
         return envelopeId;
@@ -208,6 +214,14 @@ public class UpdateEnvelopeReq extends BaseReq<EmptyResp> {
 
     public void setPrefillFields(List<PrefillFieldItemDTO> prefillFields) {
         this.prefillFields = prefillFields;
+    }
+
+    public EnvelopeCustomFieldsDTO getCustomFields() {
+        return customFields;
+    }
+
+    public void setCustomFields(EnvelopeCustomFieldsDTO customFields) {
+        this.customFields = customFields;
     }
 
     @Override

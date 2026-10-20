@@ -30,6 +30,18 @@ public class TemplateRoleSignDemandDTO {
      */
     private Boolean allowParticipantRename;
 
+    /**
+     * 收件人语言（通知文案与签署界面语言），取值为平台支持的语言代码（如 th、vi）；
+     * 不传/传空时按系统默认规则解析；基于模板创建信封时带入为已覆盖值
+     */
+    private String language;
+
+    /**
+     * 收件人级通知文案覆盖（邮件标题/正文），不传时回退信封级 subject/remark；
+     * 基于模板创建信封时带入为已覆盖值
+     */
+    private CustomNotificationDTO customNotification;
+
     public ESealConfigDTO getEsealConfig() {
         return esealConfig;
     }
@@ -92,5 +104,21 @@ public class TemplateRoleSignDemandDTO {
 
     public void setAllowParticipantRename(Boolean allowParticipantRename) {
         this.allowParticipantRename = allowParticipantRename;
+    }
+
+    public String getLanguage() {
+        return language;
+    }
+
+    public void setLanguage(String language) {
+        this.language = language;
+    }
+
+    public CustomNotificationDTO getCustomNotification() {
+        return customNotification;
+    }
+
+    public void setCustomNotification(CustomNotificationDTO customNotification) {
+        this.customNotification = customNotification;
     }
 }

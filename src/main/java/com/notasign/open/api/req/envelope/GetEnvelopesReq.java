@@ -19,6 +19,11 @@ public class GetEnvelopesReq extends BasePageReq<GetEnvelopesResp> {
 
     private String endCreateTime;
 
+    /**
+     * 自定义字段值模糊搜索关键字，命中任一字段即返回该信封；与其他筛选条件为交集（AND）
+     */
+    private String customFieldKeyword;
+
     public String getSubject() {
         return subject;
     }
@@ -49,6 +54,14 @@ public class GetEnvelopesReq extends BasePageReq<GetEnvelopesResp> {
 
     public void setEndCreateTime(String endCreateTime) {
         this.endCreateTime = endCreateTime;
+    }
+
+    public String getCustomFieldKeyword() {
+        return customFieldKeyword;
+    }
+
+    public void setCustomFieldKeyword(String customFieldKeyword) {
+        this.customFieldKeyword = customFieldKeyword;
     }
 
     @Override

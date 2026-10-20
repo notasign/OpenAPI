@@ -2,6 +2,7 @@ package com.notasign.open.api.resp.envelope;
 
 
 import com.notasign.open.api.bean.base.BaseResp;
+import com.notasign.open.api.bean.dto.envelope.EnvelopeCustomFieldsDTO;
 import com.notasign.open.api.bean.dto.recipient.SenderDTO;
 import com.notasign.open.api.resp.document.DocumentDTO;
 import com.notasign.open.api.resp.field.DocumentFieldDTO;
@@ -41,6 +42,10 @@ public class EnvelopeDetailResp extends BaseResp {
     private List<ParticipantDTO> participants;
     private List<CarbonCopyDTO> carbonCopies;
     private List<DocumentFieldDTO> fields;
+    /**
+     * 信封自定义字段，未设置时返回空对象（list 项回显 listItems 快照）
+     */
+    private EnvelopeCustomFieldsDTO customFields;
 
     public String getEnvelopeId() {
         return envelopeId;
@@ -216,5 +221,13 @@ public class EnvelopeDetailResp extends BaseResp {
 
     public void setFields(List<DocumentFieldDTO> fields) {
         this.fields = fields;
+    }
+
+    public EnvelopeCustomFieldsDTO getCustomFields() {
+        return customFields;
+    }
+
+    public void setCustomFields(EnvelopeCustomFieldsDTO customFields) {
+        this.customFields = customFields;
     }
 }
