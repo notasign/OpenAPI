@@ -117,12 +117,12 @@ public class OauthJwtUtil {
 
     public static void main(String[] args) {
         try {
-            String privateKeyStr = "MIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQCYCldhBx264E4CmftSTXJ8as6xNa8KWECfctMo/aXaO3dEq3av+vbUrTfE30cLvGfWFUpBPB7iuKfTBjUmB21piR/IyenXrQm8t6wWfDo5EHMFigelWLPDD01h7+JZ+gwPoS6M3tdlyghSJW1exmDYcGJ5c+n6R0WFYdWqCywFGJlMNJJcLe84W/bVI/dnITLWrCC6kFvPtg8jPTbC0/D8dd9kEYCicgkXm2QyGzEUUMSexQ59ZakFKj8iQoJ5baG4gyUkvI7CZoDvmWfP0gbkOoXJjEFrHu82rMhaCaBUwbywqpKURi3fIe1mSpskbMpFISwTt+tb2nE4aW+ad7PdAgMBAAECggEAU1owB0CYevAntGNolflhj3YatKpCuUAixYd03l8Ygujg/SOnYNkMYxJHpcXmtDdpEcQAPn1QTWmAkD8x+hROVnJXm4OekKAL24sya+1VGh27gUjn4i0b+A82lD+n7z4XSKZL1+z/V42IPEjKig/l3iLWydDTcGOMaJB3S87uJig3U2zKPmM5vTqStVdGeRoHyRZdcF6Q+Yc+GZe715iXS+hGBa9FFmAUY/7Nmz6U2rVap+Cse2OVLGRwG+ngykmdjaOCVwYfS0QIUyCZHloejmPOhETGQZOHf/3MCvwvHjW3NfNx9VFn5/rCoAvEVqoOmEQJ3W1hC9kKyY1MwQ/tXQKBgQDsnwwD5e5FxDH32g++mbpQKrByf+YzckYNrkhUBEmrtzrA4szU51QEF4VKcQfY2CBRtSF5lX8Quv6TZ7wxU6UODgDb/UWOxGsV8y+21/8AIw/R/VE2mCIQXv/XkHNIfWnqI44d9JUQ+3kab/u/kNaP/JewBSvAH/GIzZPRtJWYvwKBgQCkff0wH5xH8VKLt7XvmIIat657mYH4JCZQEeku39NnbppKXFJ7I8yJr0HQ+jmkR6jGqtQNNOi4pwOlK8PWdyDsQFuYpVPbPN3Q1sy3DaWh84SLT+MoInTM+dpT3xxcDnUW8rJysc78sBx9WsxtyfaX+hlGzqIReZWnJ1n1F9jeYwKBgQDoFEr9m8yrAvabiXZ91Fun+2battV7Si6phnIMbbQwRuPKgeizPTzrUoJ6dAhlR/3TBhwSG23oY/ADdfBgVREDivqOyogpsj7x5Xa8GHhUkw8WQCYirO5kLjkzHcvkopV6f2sJuHVola2/H2zFBHNeADpq+3dg1jPZoQDF4yADEwKBgQCY7SzzjZ/c3sXQcYZq702eC0DjVk8X5HveGxjAZIUFdzVohraEFz80jkRRRiFK0vhdYzpr4NGvwk5IRAz5GZ35JshBfQseG1NZsil20fA4Rc7nOelFSetvGabaLOYPy70eDZrLuPVnxU9nV4ARXh+tIW5Yfwj72B7C3XnrvDT6YwKBgFvsAGpjaKOJjSGdI/pkz3BfwHb1vgdRZKr+399M5epe1+s8BYoQFeWKucozY0cOsIdPxXDX9Mu3CpYIdblWV3RHBmgUgfV+ltI3Q6HnZOWORroTopYC27cqWWkpVjFnsR1Sx8E3NcFlIx6ACjNYTIAB/vSxnzmi2N94JHU0o/Vy";
+            String privateKeyStr = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx";
             // 1. 加载私钥
             PrivateKey privateKey = loadPrivateKey(privateKeyStr);
 
             String appId = "46199801";
-            String memberCode = "372c3c5fda57425d92efa7ec5f88cd43";
+            String memberCode = "372cxxxxxxxxxxxxxxxxxxxxxxxxxx88cd43";
             String audience = "baidu.com";
             // 2. 创建 JWT 声明集
             JWTClaimsSet claimsSet = buildClaimsSet(appId, memberCode, audience, 99999999999999999L, null);
