@@ -15,6 +15,11 @@ public class BlockConfigDTO {
 
     private Boolean notifyWhenBlocked;
 
+    /**
+     * 解阻塞原因
+     */
+    private String unblockReason;
+
     public Boolean getBlockHere() {
         return blockHere;
     }
@@ -37,5 +42,13 @@ public class BlockConfigDTO {
 
     public void setNotifyWhenBlocked(Boolean notifyWhenBlocked) {
         this.notifyWhenBlocked = notifyWhenBlocked;
+    }
+
+    public String getUnblockReason() {
+        return unblockReason;
+    }
+
+    public void setUnblockReason(String unblockReason) {
+        this.unblockReason = unblockReason;
     }
 }

@@ -6,6 +6,8 @@ import com.notasign.open.api.bean.base.EmptyResp;
 import com.notasign.open.api.bean.dto.recipient.SignDemandDTO;
 import com.notasign.open.api.constants.OpenApiUrlConstants;
 
+import java.util.List;
+
 /**
  * 更新信封参与方请求
  */
@@ -20,6 +22,12 @@ public class UpdateParticipantReq extends BaseReq<EmptyResp> {
     private String participantName;
     private String phoneCountryCode;
     private String phoneNumber;
+
+    /**
+     * 手机号投递渠道数组：SMS（短信）/ WHATSAPP（WhatsApp）
+     */
+    private List<String> phoneDeliveryMethod;
+
     private String email;
     private String signingMode;
 
@@ -68,6 +76,14 @@ public class UpdateParticipantReq extends BaseReq<EmptyResp> {
 
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
+    }
+
+    public List<String> getPhoneDeliveryMethod() {
+        return phoneDeliveryMethod;
+    }
+
+    public void setPhoneDeliveryMethod(List<String> phoneDeliveryMethod) {
+        this.phoneDeliveryMethod = phoneDeliveryMethod;
     }
 
     public String getEmail() {

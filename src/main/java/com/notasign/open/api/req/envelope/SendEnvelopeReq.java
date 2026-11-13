@@ -14,12 +14,25 @@ public class SendEnvelopeReq extends BaseReq<EmptyResp> {
     @JsonIgnore
     private String envelopeId;
 
+    /**
+     * 自由签署模式：allow-允许，disallow-不允许
+     */
+    private String freeformSigningMode;
+
     public String getEnvelopeId() {
         return envelopeId;
     }
 
     public void setEnvelopeId(String envelopeId) {
         this.envelopeId = envelopeId;
+    }
+
+    public String getFreeformSigningMode() {
+        return freeformSigningMode;
+    }
+
+    public void setFreeformSigningMode(String freeformSigningMode) {
+        this.freeformSigningMode = freeformSigningMode;
     }
 
     @Override

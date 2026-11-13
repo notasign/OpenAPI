@@ -49,6 +49,11 @@ public class CreateEnvelopeReq extends BaseReq<CreateEnvelopeResp> {
      */
     private Integer remindFrequency;
 
+    /**
+     * 到期前提醒天数：0-120，0-不发送到期提醒，不传默认3天
+     */
+    private Integer expireWarnDays;
+
     private List<DocumentReqDTO> documents;
 
     private List<ParticipantReqDTO> participants;
@@ -156,6 +161,14 @@ public class CreateEnvelopeReq extends BaseReq<CreateEnvelopeResp> {
 
     public void setRemindFrequency(Integer remindFrequency) {
         this.remindFrequency = remindFrequency;
+    }
+
+    public Integer getExpireWarnDays() {
+        return expireWarnDays;
+    }
+
+    public void setExpireWarnDays(Integer expireWarnDays) {
+        this.expireWarnDays = expireWarnDays;
     }
 
     public List<DocumentReqDTO> getDocuments() {

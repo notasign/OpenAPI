@@ -169,6 +169,11 @@ public class BulkSendListDetailResp extends BaseResp {
         private String phoneNumber;
 
         /**
+         * 手机号投递渠道数组：SMS（短信）/ WHATSAPP（WhatsApp）
+         */
+        private List<String> phoneDeliveryMethod;
+
+        /**
          * 访问密码
          */
         private String accessCode;
@@ -219,6 +224,14 @@ public class BulkSendListDetailResp extends BaseResp {
 
         public void setPhoneNumber(String phoneNumber) {
             this.phoneNumber = phoneNumber;
+        }
+
+        public List<String> getPhoneDeliveryMethod() {
+            return phoneDeliveryMethod;
+        }
+
+        public void setPhoneDeliveryMethod(List<String> phoneDeliveryMethod) {
+            this.phoneDeliveryMethod = phoneDeliveryMethod;
         }
 
         public String getAccessCode() {

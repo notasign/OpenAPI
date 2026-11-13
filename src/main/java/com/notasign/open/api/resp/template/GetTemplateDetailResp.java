@@ -31,9 +31,9 @@ public class GetTemplateDetailResp extends BaseResp {
     private Boolean signInOrder;
 
     /**
-     * 文档间签署顺序：0-无序签署，1-顺序签署
+     * 是否按文档顺序签署
      */
-    private Integer docSignInOrder;
+    private Boolean docSignInOrder;
 
     /**
      * 是否批量发送模板
@@ -115,11 +115,11 @@ public class GetTemplateDetailResp extends BaseResp {
         this.signInOrder = signInOrder;
     }
 
-    public Integer getDocSignInOrder() {
+    public Boolean getDocSignInOrder() {
         return docSignInOrder;
     }
 
-    public void setDocSignInOrder(Integer docSignInOrder) {
+    public void setDocSignInOrder(Boolean docSignInOrder) {
         this.docSignInOrder = docSignInOrder;
     }
 

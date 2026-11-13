@@ -38,6 +38,12 @@ public class EnvelopeDetailResp extends BaseResp {
     private String sendTime;
     private String finishTime;
     private String expiresTime;
+
+    /**
+     * 到期前提醒天数（0-120，0=不提醒）
+     */
+    private Integer expireWarnDays;
+
     private List<DocumentDTO> documents;
     private List<ParticipantDTO> participants;
     private List<CarbonCopyDTO> carbonCopies;
@@ -189,6 +195,14 @@ public class EnvelopeDetailResp extends BaseResp {
 
     public void setExpiresTime(String expiresTime) {
         this.expiresTime = expiresTime;
+    }
+
+    public Integer getExpireWarnDays() {
+        return expireWarnDays;
+    }
+
+    public void setExpireWarnDays(Integer expireWarnDays) {
+        this.expireWarnDays = expireWarnDays;
     }
 
     public List<DocumentDTO> getDocuments() {

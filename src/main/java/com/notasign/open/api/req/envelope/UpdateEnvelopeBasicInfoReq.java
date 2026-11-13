@@ -33,6 +33,11 @@ public class UpdateEnvelopeBasicInfoReq extends BaseReq<UpdateEnvelopeBasicInfoR
     private Long expiresTime;
 
     /**
+     * 到期前提醒天数：0-120，0-不发送到期提醒，不传默认3天；须小于信封有效天数
+     */
+    private Integer expireWarnDays;
+
+    /**
      * 自由签署模式：allow-允许，disallow-不允许
      */
     private String freeformSigningMode;
@@ -72,6 +77,14 @@ public class UpdateEnvelopeBasicInfoReq extends BaseReq<UpdateEnvelopeBasicInfoR
 
     public void setExpiresTime(Long expiresTime) {
         this.expiresTime = expiresTime;
+    }
+
+    public Integer getExpireWarnDays() {
+        return expireWarnDays;
+    }
+
+    public void setExpireWarnDays(Integer expireWarnDays) {
+        this.expireWarnDays = expireWarnDays;
     }
 
     public String getFreeformSigningMode() {

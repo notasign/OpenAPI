@@ -24,6 +24,8 @@ public class OpenApiUrlConstants {
     public static final String GET_ENVELOPE_DOWNLOAD_URL = "POST /api/envelope/%s/download-url";
     public static final String GET_ENVELOPE_REPORT_URL = "POST /api/envelope/%s/report-url";
     public static final String GET_RECIPIENT_SIGN_URL = "POST /api/envelope/%s/participant/sign-url";
+    public static final String GET_BATCH_SIGN_URL = "POST /api/envelope/batch-sign-url";
+    public static final String GET_ENVELOPE_AUDIT_EVENTS = "GET /api/envelope/%s/audit-events";
 
 
     /*DOCUMENT*/

@@ -2,6 +2,8 @@ package com.notasign.open.api.bean.dto.template;
 
 import com.notasign.open.api.bean.dto.recipient.TemplateRoleSignDemandDTO;
 
+import java.util.List;
+
 /**
  * @author Nota
  * @date 2025/8/22 15:47
@@ -22,6 +24,11 @@ public class TemplateRoleDTO {
     private String phoneCountryCode;
 
     private String phoneNumber;
+
+    /**
+     * 手机号投递渠道数组：SMS（短信）/ WHATSAPP（WhatsApp）
+     */
+    private List<String> phoneDeliveryMethod;
 
     /**
      * 签署顺序号，仅有序签署时返回
@@ -89,6 +96,14 @@ public class TemplateRoleDTO {
 
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
+    }
+
+    public List<String> getPhoneDeliveryMethod() {
+        return phoneDeliveryMethod;
+    }
+
+    public void setPhoneDeliveryMethod(List<String> phoneDeliveryMethod) {
+        this.phoneDeliveryMethod = phoneDeliveryMethod;
     }
 
     public Integer getOrderNo() {

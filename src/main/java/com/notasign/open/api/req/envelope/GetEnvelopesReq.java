@@ -24,6 +24,16 @@ public class GetEnvelopesReq extends BasePageReq<GetEnvelopesResp> {
      */
     private String customFieldKeyword;
 
+    /**
+     * 按信封ID集合过滤：逗号分隔的信封ID列表，最多100个；传入时忽略分页，与其他筛选条件为交集
+     */
+    private String envelopeIds;
+
+    /**
+     * 是否待当前成员处理；true=待我处理，false=待他人处理
+     */
+    private String isActionRequired;
+
     public String getSubject() {
         return subject;
     }
@@ -62,6 +72,22 @@ public class GetEnvelopesReq extends BasePageReq<GetEnvelopesResp> {
 
     public void setCustomFieldKeyword(String customFieldKeyword) {
         this.customFieldKeyword = customFieldKeyword;
+    }
+
+    public String getEnvelopeIds() {
+        return envelopeIds;
+    }
+
+    public void setEnvelopeIds(String envelopeIds) {
+        this.envelopeIds = envelopeIds;
+    }
+
+    public String getIsActionRequired() {
+        return isActionRequired;
+    }
+
+    public void setIsActionRequired(String isActionRequired) {
+        this.isActionRequired = isActionRequired;
     }
 
     @Override

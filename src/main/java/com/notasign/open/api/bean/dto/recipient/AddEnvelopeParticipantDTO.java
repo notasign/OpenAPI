@@ -12,6 +12,12 @@ public class AddEnvelopeParticipantDTO {
     private String participantName;
     private String phoneCountryCode;
     private String phoneNumber;
+
+    /**
+     * 手机号投递渠道数组：SMS（短信）/ WHATSAPP（WhatsApp）
+     */
+    private List<String> phoneDeliveryMethod;
+
     private String email;
     private String signingMode;
 
@@ -60,6 +66,14 @@ public class AddEnvelopeParticipantDTO {
 
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
+    }
+
+    public List<String> getPhoneDeliveryMethod() {
+        return phoneDeliveryMethod;
+    }
+
+    public void setPhoneDeliveryMethod(List<String> phoneDeliveryMethod) {
+        this.phoneDeliveryMethod = phoneDeliveryMethod;
     }
 
     public String getEmail() {

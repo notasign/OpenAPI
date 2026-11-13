@@ -2,6 +2,7 @@ package com.notasign.open.api.resp.recipient;
 
 import com.notasign.open.api.bean.dto.recipient.SignDemandDTO;
 
+import java.util.List;
 
 /**
  * @author Nota
@@ -31,6 +32,16 @@ public class ParticipantDTO {
      * 电话号码
      */
     private String phoneNumber;
+
+    /**
+     * 签署模式：remoteSigning-通知签署；embeddedSigning-内嵌签署；autoSigning-自动签署
+     */
+    private String signMode;
+
+    /**
+     * 手机号投递渠道数组：SMS（短信）/ WHATSAPP（WhatsApp）
+     */
+    private List<String> phoneDeliveryMethod;
 
     private String joinStatus;
     private String joinTime;
@@ -121,6 +132,22 @@ public class ParticipantDTO {
 
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
+    }
+
+    public String getSignMode() {
+        return signMode;
+    }
+
+    public void setSignMode(String signMode) {
+        this.signMode = signMode;
+    }
+
+    public List<String> getPhoneDeliveryMethod() {
+        return phoneDeliveryMethod;
+    }
+
+    public void setPhoneDeliveryMethod(List<String> phoneDeliveryMethod) {
+        this.phoneDeliveryMethod = phoneDeliveryMethod;
     }
 
     public String getJoinStatus() {
